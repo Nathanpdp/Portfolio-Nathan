@@ -3,41 +3,48 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Épreuve E6 – Nathan Pondepeyre</title>
-<meta name="description" content="Portfolio BTS SIO option SISR de Nathan Pondepeyre, IRIS École supérieure d’informatique">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light dark">
+<title>Épreuve E6 du BTS SIO – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E6 (option SISR) de Nathan Pondepeyre : réalisations en administration des systèmes et des réseaux, dont la modernisation du système d’information de Lumivia.">
 <link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
 </head>
 <body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="site"><div class="wrap">
-<a class="logo" href="index.html">Nathan Pondepeyre</a>
-<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html">Épreuve E5</a></li><li><a href="e6.html" aria-current="page">Épreuve E6</a></li><li><a href="entreprise.html">Entreprise</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html">Épreuve E5</a></li><li><a href="e6.html" aria-current="page">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
 </div></header>
-<main><div class="wrap">
-<div class="page-title"><h1>Épreuve E6</h1><p>Les projets réalisés pour l’épreuve E6 pendant ma première et ma deuxième année.</p></div>
-<section><h2>Première année</h2><div class="projets">
-<article class="projet">
-<p class="meta">Année 1 – contexte du projet</p>
-<h3>Titre du projet 1</h3>
-<p>Décris ici le besoin, la solution mise en place et ton rôle dans le projet.</p>
-<ul class="liste"><li>Réalisation 1</li><li>Réalisation 2</li><li>Résultat obtenu</li></ul>
-<ul class="tags"><li>Windows Server</li><li>Active Directory</li><li>VLAN</li></ul>
-<a class="lien" href="documents/mon-projet.pdf">Télécharger la documentation (PDF)</a>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="page-title"><h1>Épreuve E6</h1><p>Épreuve de l’option SISR : 1 h 30 de pratique et 40 minutes d’oral. Le jury choisit l’une de mes deux réalisations et me demande de la faire évoluer ou de la dépanner en direct.</p></div>
+<section id="projets"><h2>Première année</h2><div class="projets projets-epreuve">
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/logo-lumivia.svg" width="640" height="320" alt="" loading="lazy"></span>
+<p class="meta">1re année · Réalisation 1 · Atelier 1</p>
+<h3><a class="lien-carte" href="projet-lumivia.html">Modernisation du système d’information de Lumivia</a></h3>
+<p>Une société audiovisuelle dont le matériel avait fait son temps. En groupe, nous avons étudié ses besoins, comparé les solutions, prévu les VLAN et un budget de 9&nbsp;439&nbsp;€. Seul, j’ai ensuite monté un domaine Windows Server (AD DS, DNS, DHCP) et joint un client Windows 10 au domaine.</p>
+<ul class="tags"><li>Analyse des besoins</li><li>VLAN</li><li>Windows Server</li><li>AD DS, DNS, DHCP</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/Contexte%20Atelier1.pdf">Contexte</a><a class="lien-rapport" href="documents/E5-E6/Atelier1-IRIS.pdf">Cahier des charges</a></div>
 </article>
+
 </div></section>
-<section><h2>Deuxième année</h2><div class="projets">
-<article class="projet">
-<p class="meta">Année 2 – contexte du projet</p>
-<h3>Titre du projet 2</h3>
-<p>Décris ici le besoin, la solution mise en place et ton rôle dans le projet.</p>
-<ul class="liste"><li>Réalisation 1</li><li>Réalisation 2</li><li>Résultat obtenu</li></ul>
-<ul class="tags"><li>Windows Server</li><li>Active Directory</li><li>VLAN</li></ul>
-<a class="lien" href="documents/mon-projet.pdf">Télécharger la documentation (PDF)</a>
+<section id="deuxieme-annee"><h2>Deuxième année</h2><div class="projets projets-epreuve">
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/StadiumCompany.png" width="900" height="520" alt="" loading="lazy"></span>
+<p class="meta">2e année · Réalisation 2 · en cours</p>
+<h3><a class="lien-carte" href="projet-infrastructure.html">StadiumCompany : environnement virtualisé <span class="titre-outil">(VMware)</span></a></h3>
+<p>Une plateforme en machines virtuelles : domaine stadiumcompany.local avec trois contrôleurs et un domaine enfant, DNS sur Ares, DHCP sur Kratos, et un pare-feu pfSense qui relaie le DHCP et filtre les réseaux. Un premier poste Windows 11 reçoit déjà son adresse.</p>
+<ul class="tags"><li>Windows Server</li><li>AD DS</li><li>DNS, DHCP</li><li>pfSense</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
 </article>
+
 </div></section>
 </div></main>
-<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="index.html#contact">Me contacter</a></div></footer>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
 </body>
 </html>

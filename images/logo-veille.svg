@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" width="1600" height="700" role="img" aria-label="Veille technologique et certification">
+  <defs>
+    <linearGradient id="vc-fond" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d1856"/>
+      <stop offset="1" stop-color="#0a0922"/>
+    </linearGradient>
+    <radialGradient id="vc-halo-radar" cx="520" cy="350" r="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3cd8c5" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#3cd8c5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vc-halo-badge" cx="1120" cy="330" r="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8c7cff" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#8c7cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="vc-balayage" x1="590" y1="140" x2="740" y2="285" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3cd8c5" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3cd8c5" stop-opacity=".42"/>
+    </linearGradient>
+    <linearGradient id="vc-badge" x1="990" y1="200" x2="1250" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8c7cff"/>
+      <stop offset="1" stop-color="#2fbfae"/>
+    </linearGradient>
+    <pattern id="vc-points" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.8" fill="#ffffff" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <!-- Fond -->
+  <rect width="1600" height="700" fill="url(#vc-fond)"/>
+  <rect width="1600" height="700" fill="url(#vc-points)"/>
+  <rect width="1600" height="700" fill="url(#vc-halo-radar)"/>
+  <rect width="1600" height="700" fill="url(#vc-halo-badge)"/>
+
+  <!-- Radar : la veille -->
+  <g fill="none" stroke="#3cd8c5" stroke-width="4">
+    <circle cx="520" cy="350" r="80" stroke-opacity=".45"/>
+    <circle cx="520" cy="350" r="160" stroke-opacity=".3"/>
+    <circle cx="520" cy="350" r="240" stroke-opacity=".2"/>
+    <path d="M280 350H760M520 110V590" stroke-opacity=".1"/>
+  </g>
+  <path d="M520 350L561.7 113.6A240 240 0 0 1 745.5 267.9Z" fill="url(#vc-balayage)"/>
+  <path d="M520 350L745.5 267.9" stroke="#3cd8c5" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="520" cy="350" r="11" fill="#3cd8c5"/>
+
+  <!-- Sources repérées -->
+  <g fill="#3cd8c5">
+    <circle cx="420" cy="262" r="8"/>
+    <circle cx="420" cy="262" r="18" fill-opacity=".18"/>
+    <circle cx="612" cy="478" r="7"/>
+    <circle cx="612" cy="478" r="16" fill-opacity=".18"/>
+    <circle cx="372" cy="430" r="6" fill-opacity=".8"/>
+    <circle cx="700" cy="395" r="6" fill-opacity=".8"/>
+  </g>
+
+  <!-- Menace détectée : un e-mail hameçonné -->
+  <g>
+    <circle cx="650" cy="242" r="58" fill="#ff8a6b" fill-opacity=".14"/>
+    <path d="M650 70V168" stroke="#ffd2c4" stroke-width="5" stroke-opacity=".75" stroke-dasharray="3 11" stroke-linecap="round"/>
+    <rect x="606" y="222" width="88" height="62" rx="10" fill="#ff8a6b"/>
+    <path d="M613 231L650 258L687 231" fill="none" stroke="#1d1856" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M650 168V236C650 266 686 266 686 236V222" fill="none" stroke="#ffe3da" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M686 222L674 234" fill="none" stroke="#ffe3da" stroke-width="9" stroke-linecap="round"/>
+  </g>
+
+  <!-- Badge de certification -->
+  <g>
+    <path d="M1078 396L1046 560L1084 538L1104 574L1124 420Z" fill="#5a43f0"/>
+    <path d="M1162 396L1194 560L1156 538L1136 574L1116 420Z" fill="#4430c4"/>
+    <circle cx="1120" cy="330" r="124" fill="url(#vc-badge)"/>
+    <circle cx="1120" cy="330" r="128" fill="none" stroke="url(#vc-badge)" stroke-width="24" stroke-linecap="round" stroke-dasharray=".01 21.16"/>
+    <circle cx="1120" cy="330" r="96" fill="#0a0922" fill-opacity=".18" stroke="#ffffff" stroke-opacity=".45" stroke-width="4"/>
+    <path d="M1076 332L1106 362L1164 298" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Éclats -->
+  <g fill="#ffffff">
+    <path d="M1300 186l7 19 19 7-19 7-7 19-7-19-19-7 19-7z" fill-opacity=".85"/>
+    <path d="M948 160l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill-opacity=".55"/>
+    <path d="M1296 470l5 13 13 5-13 5-5 13-5-13-13-5 13-5z" fill-opacity=".5"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+# Vercel : fichiers de travail à ne pas publier sur le site (équivalent de _config.yml pour GitHub Pages)
+.claude
+.impeccable
+captures-e6
+DESIGN.md
+PRODUCT.md
+Lancer le site.bat
+_config.yml
+.vercelignore

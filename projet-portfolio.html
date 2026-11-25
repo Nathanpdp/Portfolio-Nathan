@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Création de mon portfolio – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E5 – Conception de mon portfolio en HTML, CSS et JavaScript : objectifs, contenus, choix graphiques et tests, avec Claude Code comme assistant de programmation.">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e5.html#projets">← Projets E5</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html" aria-current="page">Portfolio</a><a href="projet-audit.html">Étude critique</a><a href="projet-nathphone.html">NathPhone</a><a href="projet-acl.html">ACL IPv4</a><a href="projet-stadium.html">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html">Lumivia</a><a href="projet-infrastructure.html">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e5.html#projets">← Retour aux projets de l’épreuve E5</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E5 · Atelier 2</p>
+<h1>Création de mon portfolio professionnel</h1>
+<p>Le site que vous lisez, support de mes épreuves E5 et E6. J’en ai défini la structure et rédigé tout le contenu, puis je l’ai développé en HTML, CSS et JavaScript, sans CMS, avec l’aide de Claude Code.</p>
+</div>
+
+<div class="capture-hero">
+<div class="barre" aria-hidden="true"><i></i><i></i><i></i><span>portfolio · accueil</span></div>
+<button class="capture" type="button" data-zoom="images/projets/portfolio-accueil-sombre.png" data-zoom-titre="Page d’accueil du portfolio"><img src="images/projets/portfolio-accueil-sombre.png" width="1440" height="900" alt="Page d’accueil du portfolio en mode sombre : nom, présentation, boutons Voir mes projets et Télécharger mon CV, et photo entourée d’un réseau animé"></button>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Période</dt><dd>2026–2027</dd></div>
+<div><dt>Technologies</dt><dd>HTML, CSS, JavaScript</dd></div>
+<div><dt>Outils</dt><dd><ul class="outils-logos"><li><img src="images/outils/claude.svg" alt="" width="24" height="24">Claude Code</li><li><img src="images/outils/visualstudiocode.svg" alt="" width="24" height="24">Visual Studio Code</li><li><img src="images/outils/vercel.svg" alt="" width="24" height="24">Vercel</li></ul></dd></div>
+</dl>
+
+<section id="methode"><h2>Ma méthode de travail</h2>
+<p>Je m’appuie sur Claude Code, un assistant de programmation, pour écrire le HTML, le CSS et le JavaScript à partir de demandes que je formule en français. Le reste du projet relève de moi :</p>
+<ul class="resume-liste methode">
+<li>Je fixe les objectifs du site et l’organisation de ses pages.</li>
+<li>Je fournis tout le contenu : textes, documents, captures et informations sur mes stages et mes projets.</li>
+<li>Les choix graphiques viennent de moi, comme la baie de brassage de l’accueil et les thèmes clair et sombre.</li>
+<li>Je relis chaque modification proposée par l’outil, puis je la garde ou je la refuse.</li>
+<li>Je teste moi-même le fonctionnement du site, comme le décrit l’étape « Tests » plus bas.</li>
+</ul>
+</section>
+
+<section><h2>Les étapes du projet</h2>
+<ol class="etapes">
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Des compétences reliées à leurs preuves</h3>
+<p>Chaque compétence renvoie au stage ou au projet qui la prouve ; chaque stage et projet coche ses compétences du référentiel.</p>
+<ul class="tags"><li>Preuves</li><li>Navigation</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/portfolio-competences.png" data-zoom-titre="Compétences reliées à leurs preuves"><img src="images/projets/portfolio-competences.png" width="1440" height="900" alt="Section Compétences : filtres par domaine, puis un schéma par thème où chaque compétence est branchée sur un bus et suivie de liens colorés vers les stages et les épreuves" loading="lazy"></button><figcaption>Chaque compétence renvoie à la mission qui la prouve</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Stages et épreuves</h3>
+<p>Une page par stage et par projet, avec le détail de chaque mission, et le tableau de synthèse avec visionneuse.</p>
+<ul class="tags"><li>E5</li><li>E6</li><li>Stages</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/portfolio-e5.png" data-zoom-titre="Tableau de synthèse sur la page E5"><img src="images/projets/portfolio-e5.png" width="1440" height="900" alt="Page E5 : section Tableau de synthèse avec le tableau affiché" loading="lazy"></button><figcaption>Le tableau de synthèse sur la page E5</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps seul">
+<div><h3>Une page de veille technologique</h3>
+<p>Ma veille sur le phishing face à l’IA a sa propre page : des chiffres clés sourcés, mon dispositif (sources officielles, Feedly, Google Alerts et une tâche planifiée avec Claude), un faux e-mail annoté, des fiches d’articles qui défilent et s’ouvrent en grand, puis mes recommandations et mon analyse.</p>
+<ul class="tags"><li>Veille</li><li>Phishing</li><li>IA</li></ul></div>
+</div></li>
+
+<li class="etape"><div class="etape-corps seul">
+<div><h3>Un design en baie de brassage, clair et sombre</h3>
+<p>L’accueil présente mon parcours comme une baie réseau : un panneau de brassage par domaine (stages, E5, E6 et veille), un port étiqueté par projet ou par stage, avec un cordon de la couleur du domaine. Chaque port ouvre la page correspondante, et un dernier panneau mène au CV et au contact. Le thème clair ou sombre suit le réglage de l’appareil. Sur grand écran, un sommaire dans la marge suit la lecture de la page.</p>
+<ul class="tags"><li>CSS</li><li>Thèmes</li></ul></div>
+</div></li>
+
+<li class="etape"><div class="etape-corps seul">
+<div><h3>Protéger les données avant de publier</h3>
+<p>Attestations retirées, captures vérifiées pour ne laisser aucun mot de passe, prénoms des camarades enlevés, entreprise réelle d’un exercice remplacée par un nom fictif.</p>
+<ul class="tags"><li>RGPD</li><li>Données personnelles</li></ul></div>
+</div></li>
+
+<li class="etape"><div class="etape-corps seul">
+<div><h3>Tests</h3>
+<p>Serveur local, vérification de tous les liens et documents, affichage contrôlé sur ordinateur et téléphone, en clair et en sombre.</p>
+<ul class="tags"><li>Responsive</li></ul></div>
+</div></li>
+
+</ol>
+</section>
+
+<section><h2>Compétences mobilisées</h2>
+<p class="comp-score"><span><strong>2</strong>compétences sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.3</span><span class="comp-titre">Développer la présence en ligne de l’organisation</span><span class="comp-via">Conception et publication d’un site web professionnel</span></li>
+<li class="oui"><span class="comp-num">B1.6</span><span class="comp-titre">Organiser son développement professionnel</span><span class="comp-via">Identité professionnelle en ligne, mise en valeur de mon parcours, usage d’un outil d’IA</span></li>
+</ul>
+</section>
+
+<section><h2>Bilan</h2>
+<p class="bilan">Claude Code écrit le code à ma demande. Le contenu, la présentation et le choix de garder ou non chaque modification restent de mon ressort.</p>
+</section>
+
+<section><h2>Sujet de l’atelier</h2>
+<div class="docs-projet"><a class="lien-rapport" href="documents/E5-E6/Atelier_2_Portfolio_BTS_SIO.pdf">Cahier des charges</a></div>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

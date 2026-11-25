@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" role="img" aria-label="Lumivia, productions audiovisuelles">
+  <defs>
+    <linearGradient id="lv-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb23e"/>
+      <stop offset="0.5" stop-color="#ef3f6d"/>
+      <stop offset="1" stop-color="#6c3ff0"/>
+    </linearGradient>
+    <linearGradient id="lv-texte" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1c1240"/>
+      <stop offset="1" stop-color="#3a1f7a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icône : objectif de caméra + bouton lecture -->
+  <g transform="translate(150 160)">
+    <!-- faisceau lumineux -->
+    <path d="M58 -30 L104 -56 L104 56 L58 30 Z" fill="url(#lv-grad)" opacity="0.16"/>
+    <circle r="78" fill="url(#lv-grad)"/>
+    <!-- lamelles du diaphragme -->
+    <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.35">
+      <path d="M0 -62 L42 -16"/>
+      <path d="M54 -31 L30 30"/>
+      <path d="M54 31 L-14 46"/>
+      <path d="M0 62 L-42 16"/>
+      <path d="M-54 31 L-30 -30"/>
+      <path d="M-54 -31 L14 -46"/>
+    </g>
+    <circle r="62" fill="none" stroke="#fff" stroke-width="3" opacity="0.5"/>
+    <circle r="44" fill="#fff"/>
+    <!-- bouton lecture -->
+    <path d="M-13 -22 L25 0 L-13 22 Z" fill="url(#lv-grad)" stroke="url(#lv-grad)" stroke-width="6" stroke-linejoin="round"/>
+    <!-- éclat -->
+    <circle cx="56" cy="-58" r="7" fill="#ffb23e"/>
+  </g>
+
+  <!-- Nom -->
+  <text x="270" y="172" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="78" font-weight="700" letter-spacing="-2" fill="url(#lv-texte)">Lumivia</text>
+  <text x="274" y="210" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="3.4" fill="#ef3f6d">PRODUCTIONS AUDIOVISUELLES</text>
+</svg>

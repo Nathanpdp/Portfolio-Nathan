@@ -1,81 +1,1994 @@
-:root{--bg:#0e1522;--surface:#151e2f;--surface2:#1b2639;--ink:#e7ecf5;--muted:#9aa6bb;--line:#27344d;--accent:#6cb2ff;--accent-soft:rgba(108,178,255,.13);--warm:#f2b45a}
+/* Polices hébergées en local (licence SIL OFL, voir dossier fonts/) */
+@font-face{font-family:"Overpass";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/overpass-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Overpass";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/overpass-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Point median";src:local("Segoe UI"),local("Arial"),local("Helvetica Neue"),local("Roboto");unicode-range:U+00B7}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/jetbrains-mono-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+/* ==========================================================================
+   Portfolio Nathan Pondepeyre — feuille de style
+   Thème : fond nuit bleutée / gris clair avec grille de points et halos bleu-indigo ;
+   la baie de brassage garde ses propres couleurs (panneaux noirs, étiquettes blanches, cordons).
+   Le thème suit le système, ou le choix fait avec le bouton soleil/lune
+   (attribut data-theme sur <html>).
+   ========================================================================== */
+
+/* ---------- Couleurs : thème clair ---------- */
+:root{
+  --bg:#f7f8fa;
+  --bg-grid:rgba(15,23,42,.07);
+  --surface:#f1f4f9;
+  --card:#ffffff;
+  --card-glass:#ffffff;
+  --ink:#0b0f19;
+  --ink2:#1e2433;
+  --muted:#525d73;
+  --line:rgba(15,23,42,.09);
+  --line-strong:rgba(15,23,42,.16);
+  --accent:#2563eb;
+  --accent-ink:#ffffff;
+  --accent-text:#1d4ed8;
+  --accent-soft:rgba(37,99,235,.1);
+  --accent2:#4f46e5;
+  --accent2-text:#4338ca;
+  --accent2-soft:rgba(79,70,229,.1);
+  --glow1:rgba(37,99,235,.08);
+  --glow2:rgba(79,70,229,.06);
+  --header-bg:#f7f8fa;
+  --barre:rgba(255,255,255,.88);
+  --barre-ombre:0 4px 20px -6px rgba(15,23,42,.08);
+  --node:37,99,235;
+  --node2:79,70,229;
+  --l-stages:#2f7de1;
+  --l-e5:#f0c419;
+  --l-e6:#3aa35b;
+  --l-veille:#d9452b;
+  --l-ink-e5:#16181b;
+  --station:#ffffff;
+  --shadow:0 1px 2px rgba(22,24,27,.06),0 6px 16px -10px rgba(22,24,27,.18);
+  --shadow-hover:0 2px 4px rgba(22,24,27,.08),0 14px 28px -14px rgba(22,24,27,.28);
+  --radius:8px;
+  --chassis:#1c1f22;
+  --facade:#25292d;
+  --prise:#0c0d0f;
+  --etiquette:#f4f4ef;
+  --etiquette-ink:#16181b;
+  --led:#7be27b;
+  color-scheme:light;
+}
+/* ---------- Couleurs : thème sombre (système) ---------- */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#070a11;
+    --bg-grid:rgba(255,255,255,.055);
+    --surface:#0e131f;
+    --card:#0e131f;
+    --card-glass:#0e131f;
+    --ink:#f4f6fb;
+    --ink2:#dbe1ec;
+    --muted:#94a3b8;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(255,255,255,.15);
+    --accent:#3b82f6;
+    --accent-ink:#070a11;
+    --accent-text:#60a5fa;
+    --accent-soft:rgba(59,130,246,.14);
+    --accent2:#6366f1;
+    --accent2-text:#818cf8;
+    --accent2-soft:rgba(99,102,241,.14);
+    --glow1:rgba(59,130,246,.14);
+    --glow2:rgba(99,102,241,.10);
+    --header-bg:#070a11;
+    --barre:rgba(15,20,32,.82);
+    --barre-ombre:0 4px 20px -6px rgba(0,0,0,.5);
+    --node:96,165,250;
+    --node2:129,140,248;
+    --l-stages:#4a90ea;
+    --l-e5:#f5cd3a;
+    --l-e6:#4cbb6c;
+    --l-veille:#e8604a;
+    --l-ink-e5:#111418;
+    --station:#070a11;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 20px -12px rgba(0,0,0,.6);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.45),0 16px 32px -14px rgba(0,0,0,.7);
+    --radius:8px;
+    color-scheme:dark;
+  }
+}
+/* ---------- Couleurs : thème sombre (choisi avec le bouton) ---------- */
+:root[data-theme="dark"]{
+  --bg:#070a11;
+  --bg-grid:rgba(255,255,255,.055);
+  --surface:#0e131f;
+  --card:#0e131f;
+  --card-glass:#0e131f;
+  --ink:#f4f6fb;
+  --ink2:#dbe1ec;
+  --muted:#94a3b8;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,255,255,.15);
+  --accent:#3b82f6;
+  --accent-ink:#070a11;
+  --accent-text:#60a5fa;
+  --accent-soft:rgba(59,130,246,.14);
+  --accent2:#6366f1;
+  --accent2-text:#818cf8;
+  --accent2-soft:rgba(99,102,241,.14);
+  --glow1:rgba(59,130,246,.14);
+  --glow2:rgba(99,102,241,.10);
+  --header-bg:#070a11;
+  --barre:rgba(15,20,32,.82);
+  --barre-ombre:0 4px 20px -6px rgba(0,0,0,.5);
+  --node:96,165,250;
+  --node2:129,140,248;
+  --l-stages:#4a90ea;
+  --l-e5:#f5cd3a;
+  --l-e6:#4cbb6c;
+  --l-veille:#e8604a;
+  --l-ink-e5:#111418;
+  --station:#070a11;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 20px -12px rgba(0,0,0,.6);
+  --shadow-hover:0 2px 4px rgba(0,0,0,.45),0 16px 32px -14px rgba(0,0,0,.7);
+  --radius:8px;
+  color-scheme:dark;
+}
+
+/* ---------- Base ---------- */
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Inter",system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:"Manrope","Inter",system-ui,sans-serif;line-height:1.15;margin:0 0 .6em;letter-spacing:-.02em}
-h1{font-size:clamp(2.4rem,5.5vw,3.9rem);font-weight:800}
-h2{font-size:1.65rem;font-weight:700}
-h3{font-size:1.2rem;font-weight:700}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--warm);outline-offset:3px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
-header.site{position:sticky;top:0;z-index:10;background:rgba(14,21,34,.9);backdrop-filter:blur(8px)}
-header.site .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;align-items:center;justify-content:space-between;padding-top:.9rem;padding-bottom:.9rem}
-.logo{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.1rem;color:var(--ink);text-decoration:none}
-nav ul{display:flex;flex-wrap:wrap;gap:.3rem;list-style:none;margin:0;padding:0}
-nav a{display:block;color:var(--muted);text-decoration:none;font-size:.96rem;font-weight:500;padding:.4rem .95rem;border-radius:99px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scrollbar-color:var(--line-strong) var(--bg)}
+body{
+  margin:0;color:var(--ink);
+  background-color:var(--bg);
+  isolation:isolate;
+  font:400 17px/1.65 "Point median","Overpass",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;min-height:100vh;display:flex;flex-direction:column;
+}
+::selection{background:var(--accent);color:var(--accent-ink)}
+
+h1,h2,h3{font-family:"Point median","Overpass",sans-serif;color:var(--ink);line-height:1.15;margin:0 0 .6em;text-wrap:balance}
+h1{font-size:clamp(2.5rem,5.6vw,4.4rem);font-weight:800;letter-spacing:-.035em;line-height:1}
+h2{font-size:clamp(1.6rem,2.6vw,2.1rem);font-weight:800;letter-spacing:-.025em}
+h3{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1em}
+a{color:var(--accent-text);text-decoration-thickness:1px;text-underline-offset:.2em;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+/* Lien « Aller au contenu » : invisible au repos, il apparaît en haut à gauche, au-dessus de l'en-tête,
+   dès qu'il reçoit le focus clavier (première touche Tab de la page). */
+.lien-evitement{
+  position:fixed;left:1rem;top:.75rem;z-index:100;
+  padding:.7rem 1.1rem;border-radius:999px;border:2px solid var(--ink);
+  background:var(--ink);color:var(--bg);font-weight:700;font-size:.95rem;text-decoration:none;
+  transform:translateY(calc(-100% - 1rem));
+}
+.lien-evitement:focus{transform:none;outline:3px solid var(--accent);outline-offset:3px}
+/* Cible du lien : le contenu principal, placé sous l'en-tête collant */
+#contenu{scroll-margin-top:6rem}
+#contenu:focus{outline:none}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--line-strong);border:3px solid var(--bg);border-radius:999px}
+input,textarea{caret-color:var(--accent)}
+.meta,td,.timeline p{font-variant-numeric:tabular-nums}
+
+/* Textes alignés à gauche, sans césure automatique, sur tous les écrans :
+   la justification créait des espaces irréguliers entre les mots dans les colonnes étroites.
+   Les mises en forme particulières (chiffres centrés, montants à droite…) gardent leurs propres règles. */
+main p,main li,main dd{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+
+/* ---------- En-tête : bandeau de signalétique, plein, filet épais en bas ---------- */
+header.site{position:sticky;top:0;z-index:30;background:var(--header-bg);border-bottom:3px solid var(--ink)}
+header.site>.wrap{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  min-height:64px;padding-top:.4rem;padding-bottom:.4rem;
+}
+/* Nom dans l'en-tête : prénom normal + nom en gras, comme un nom de station */
+.logo{
+  position:relative;display:inline-flex;align-items:baseline;gap:.3em;padding:.35rem 0;
+  font-family:"Point median","Overpass",sans-serif;font-size:1.12rem;letter-spacing:-.015em;
+  color:var(--ink);text-decoration:none;white-space:nowrap;
+}
+.logo .prenom{font-weight:500;color:var(--ink);line-height:1.45}
+.logo .nom{font-weight:800}
+.header-actions{display:flex;align-items:center;gap:.5rem}
+nav ul{display:flex;gap:.1rem;list-style:none;margin:0;padding:0}
+nav a{
+  position:relative;display:block;color:var(--ink2);text-decoration:none;white-space:nowrap;
+  font-size:.92rem;font-weight:600;padding:.55rem .8rem;border-radius:4px;
+  transition:color .15s ease,background .15s ease;
+}
 nav a:hover{color:var(--ink);background:var(--surface)}
-nav a[aria-current="page"]{color:#08121f;background:var(--accent)}
-main{padding:2.5rem 0 5rem}
-.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center;padding:3.5rem 0 4.5rem;position:relative}
-.hero::before{content:"";position:absolute;inset:-6rem -50vw auto;height:30rem;background:radial-gradient(ellipse at 70% 40%,rgba(108,178,255,.16),transparent 65%);z-index:-1}
-.hero .role{font-size:1.3rem;color:var(--accent);font-weight:600;margin:0 0 1.1rem}
-.hero p{max-width:52ch;color:var(--muted)}
-.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
-.btn{display:inline-block;padding:.8rem 1.5rem;border-radius:99px;background:var(--accent);color:#08121f;text-decoration:none;font-weight:600}
-.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
-.btn:hover{filter:brightness(1.1)}
-.btn.alt:hover{box-shadow:inset 0 0 0 1.5px var(--accent)}
-.photo{width:min(100%,340px);aspect-ratio:4/5;margin-left:auto;border-radius:28px;background:linear-gradient(155deg,#223556,#142036 70%);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.photo span{font-family:"Manrope",sans-serif;font-weight:800;font-size:5rem;color:var(--accent);opacity:.85}
+nav a[aria-current="page"]{color:var(--ink);font-weight:800}
+nav a[aria-current="page"]::after{content:"";position:absolute;left:.8rem;right:.8rem;bottom:-.55rem;height:5px;border-radius:3px;background:var(--line-color,var(--ink))}
+nav a[href="e5.html"]{--line-color:var(--l-e5)}
+nav a[href="e6.html"]{--line-color:var(--l-e6)}
+nav a[href="entreprise.html"]{--line-color:var(--l-stages)}
+nav a[href="veille.html"]{--line-color:var(--l-veille)}
+
+.contact-toggle,.theme-toggle,.menu-toggle{
+  position:relative;flex:none;width:40px;height:40px;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;overflow:hidden;color:var(--ink);
+  background:var(--station);border:2px solid var(--ink);
+  transition:background .2s ease,color .2s ease;
+}
+.contact-toggle:hover,.theme-toggle:hover,.menu-toggle:hover{background:var(--ink);color:var(--bg)}
+.contact-toggle svg,.theme-toggle svg,.menu-toggle svg{position:absolute;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .25s ease}
+.contact-toggle{text-decoration:none}
+.theme-toggle .soleil{opacity:0;transform:rotate(-90deg) scale(.4)}
+.theme-toggle .lune{opacity:1;transform:none}
+:root[data-theme="dark"] .theme-toggle .soleil{opacity:1;transform:none}
+:root[data-theme="dark"] .theme-toggle .lune{opacity:0;transform:rotate(90deg) scale(.4)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .theme-toggle .soleil{opacity:1;transform:none}
+  :root:not([data-theme="light"]) .theme-toggle .lune{opacity:0;transform:rotate(90deg) scale(.4)}
+}
+.menu-toggle{display:none}
+.menu-toggle .fermer{opacity:0;transform:rotate(-90deg)}
+header.site.menu-open .menu-toggle .ouvrir{opacity:0;transform:rotate(90deg)}
+header.site.menu-open .menu-toggle .fermer{opacity:1;transform:none}
+
+/* Sous-barre des stages : cachée en haut de page, elle apparaît après un peu de défilement
+   (classe .subbar-visible ajoutée par script.js). Positionnée sous la barre principale
+   sans prendre de place, pour ne pas faire sauter la page quand elle apparaît. */
+.subbar{
+  position:absolute;left:0;right:0;top:100%;margin-top:3px;background:var(--header-bg);
+  opacity:0;visibility:hidden;transform:translateY(-10px);
+  transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s linear .35s;
+}
+header.site.subbar-visible .subbar{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s}
+header.site .subbar .wrap{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.4rem 1.5rem;
+  width:calc(100% - 3rem);padding:.35rem .4rem .35rem 1rem;
+  background:var(--header-bg);border:1px solid var(--line);border-radius:14px;
+  
+}
+.subbar a{font-size:.86rem;font-weight:500;text-decoration:none;color:var(--muted);line-height:1.45}
+.subbar a:hover{color:var(--ink)}
+.subbar .retour{color:var(--accent-text)}
+.subbar .onglets{display:flex;gap:.2rem}
+.subbar .onglets a{padding:.3rem .8rem;border-radius:4px}
+.subbar .onglets a[aria-current="page"]{background:var(--accent-soft);color:var(--accent-text);font-weight:600} /* même surlignement que la barre du haut de page */
+
+/* ---------- Structure et titres de section ---------- */
+main{padding:2rem 0 6rem;flex:1}
+section{margin-bottom:6rem}
+main section>h2,main .about>div>h2{display:flex;align-items:center;gap:.85rem;margin-bottom:2rem}
+/* marqueur de station : disque blanc cerclé d'encre */
+main section>h2::before,main .about>div>h2::before{
+  content:"";flex:none;width:.72em;height:.72em;border-radius:50%;
+  background:var(--station);border:.16em solid var(--ink);box-sizing:border-box;
+}
+main section>h2::after,main .about>div>h2::after{content:"";flex:1;height:3px;border-radius:2px;background:var(--ink);opacity:.9}
+
+/* ---------- Accueil : hero (nom + plan de lignes) ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem 3rem;align-items:end;padding:1.8rem 0 1rem;margin-bottom:1rem;position:relative}
+.hero h1{margin-bottom:.2em;font-size:clamp(2.7rem,6.6vw,5.4rem);line-height:.92;letter-spacing:-.04em}
+.hero .role{margin:0 0 1.1rem;font-weight:700;font-size:1.15rem;color:var(--ink2)}
+.hero p:not(.role){color:var(--muted);font-size:1.08rem;max-width:58ch;margin-bottom:0}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.6rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1.35rem;border-radius:999px;
+  background:var(--ink);color:var(--bg);border:2px solid var(--ink);
+  text-decoration:none;font-weight:700;font-size:.95rem;line-height:1.2;
+  transition:background .2s ease,color .2s ease,transform .2s cubic-bezier(.16,1,.3,1);
+}
+.btn:hover{transform:translateY(-1px);background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.alt{background:var(--station);color:var(--ink)}
+.btn.alt:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+/* « Voir mes projets » : menu E5 / E6 au survol (ou au clic sur mobile) */
+.btn-menu{position:relative;display:inline-flex}
+.btn-menu .chevron{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.btn-menu-list{
+  position:absolute;left:0;top:100%;z-index:15;min-width:100%;width:max-content;
+  display:grid;gap:.2rem;margin-top:.6rem;padding:.35rem;
+  background:var(--card);border:2px solid var(--ink);border-radius:10px;
+  box-shadow:var(--shadow-hover);
+  opacity:0;visibility:hidden;transform:translateY(-6px);transform-origin:top left;
+  transition:opacity .2s ease,transform .25s cubic-bezier(.16,1,.3,1),visibility 0s linear .25s;
+}
+.btn-menu-list::before{content:"";position:absolute;left:0;right:0;top:-.8rem;height:.8rem}
+.btn-menu:hover .btn-menu-list,.btn-menu:focus-within .btn-menu-list,.btn-menu.open .btn-menu-list{
+  opacity:1;visibility:visible;transform:none;transition:opacity .2s ease,transform .25s cubic-bezier(.16,1,.3,1),visibility 0s;
+}
+.btn-menu:hover .chevron,.btn-menu:focus-within .chevron,.btn-menu.open .chevron{transform:rotate(180deg)}
+.btn-menu-list>a{
+  display:flex;align-items:center;gap:.8rem;padding:.55rem .8rem .55rem .55rem;border-radius:6px;
+  color:var(--ink);text-decoration:none;text-align:left;transition:background .15s ease;
+}
+.btn-menu-list>a:hover,.btn-menu-list>a:focus-visible{background:var(--surface)}
+.btn-menu-list .pastille{
+  display:grid;place-items:center;min-width:2.6rem;height:1.9rem;padding:0 .5rem;border-radius:999px;flex:none;
+  font:800 .85rem "Point median","Overpass",sans-serif;color:var(--l-ink-e5);background:var(--l-e5);
+}
+.btn-menu-list>a:nth-child(2) .pastille{background:var(--l-e6);color:var(--l-ink-e5)}
+.btn-menu-list .choix{display:grid;gap:.05rem;padding-right:.6rem}
+.btn-menu-list .choix strong{font-weight:800;font-size:.95rem}
+.btn-menu-list .choix small{font-size:.82rem;color:var(--muted)}
+
+/* Fiche atteinte depuis le menu : mise en évidence */
+.projet{scroll-margin-top:7rem}
+.projet.cible{animation:surbrillance 2.4s cubic-bezier(.2,.7,.2,1) both}
+
+/* Photo : petite vignette d'identité à droite du nom */
+.photo{
+  position:relative;width:clamp(120px,14vw,176px);aspect-ratio:4/5;border-radius:10px;overflow:hidden;
+  background:var(--surface);border:3px solid var(--ink);
+}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-section{margin-bottom:4rem}
-.about{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem}
+
+/* ---------- À propos ---------- */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem 3.5rem;align-items:start}
 .about p{color:var(--muted);margin:0}
-.facts{list-style:none;margin:0;padding:0}
-.facts li{padding:.7rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem}
-.facts li:last-child{border-bottom:0}
-.facts span{color:var(--muted)}
-.facts strong{text-align:right;font-weight:600}
-.timeline{list-style:none;margin:0;padding:0 0 0 1.6rem;border-left:2px solid var(--line)}
-.timeline li{position:relative;margin-bottom:1.8rem}
-.timeline li::before{content:"";position:absolute;left:calc(-1.6rem - 7px);top:.5rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
-.timeline h3{margin:0}
-.timeline p{margin:0;color:var(--muted)}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-.panel{background:var(--surface);border-radius:16px;padding:1.7rem}
-.panel h2{font-size:1.2rem}
-.panel ul{margin:0;padding-left:1.1rem;color:var(--muted)}
-.panel li{margin-bottom:.35rem}
-.page-title{padding:2rem 0 2.5rem}
-.page-title p{color:var(--muted);max-width:60ch;margin:0}
-.projets{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.5rem}
-.projet{background:var(--surface);border-radius:16px;padding:1.7rem;display:flex;flex-direction:column;transition:transform .2s,background .2s}
-.projet:hover{transform:translateY(-3px);background:var(--surface2)}
-.projet .meta{color:var(--warm);font-size:.9rem;font-weight:600;margin:0 0 .4rem}
-.projet p{color:var(--muted);margin:0 0 .8rem}
-.projet ul.liste{margin:0 0 .8rem;padding-left:1.2rem;color:var(--muted)}
-.projet .lien{margin-top:auto;font-weight:600}
-.tags{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;margin:.4rem 0 1rem}
-.tags li{background:var(--accent-soft);color:var(--accent);border-radius:99px;padding:.15rem .8rem;font-size:.85rem;font-weight:500}
-dl.infos{display:grid;grid-template-columns:max-content 1fr;gap:.9rem 2rem;background:var(--surface);border-radius:16px;padding:1.8rem;margin:0}
-dl.infos dt{font-weight:600}
-dl.infos dd{margin:0;color:var(--muted)}
-.table-scroll{overflow-x:auto;border-radius:16px;background:var(--surface)}
-table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:.9rem 1.1rem;border-bottom:1px solid var(--line);vertical-align:top}
+/* centré verticalement sur le paragraphe (sans le titre) */
+.facts{align-self:center;margin:5.2rem 0 0;list-style:none;padding:0;display:grid;gap:.6rem}
+.facts li{
+  display:flex;flex-direction:column;gap:.1rem;padding:.75rem 0 .8rem;
+  border-bottom:1px solid var(--line-strong);
+}
+.facts li:first-child{border-top:3px solid var(--ink)}
+.facts span{font:700 .78rem "Point median","Overpass",sans-serif;letter-spacing:.02em;color:var(--muted)}
+.facts strong{font-family:"Point median","Overpass",sans-serif;font-weight:800;font-size:1.02rem}
+
+/* ---------- Parcours ---------- */
+/* Liste verticale : BTS au-dessus du Bac Pro, barre et points sur la gauche */
+.timeline{list-style:none;margin:0;padding:0 0 0 2.4rem;position:relative}
+.timeline::before{content:"";position:absolute;left:.62rem;top:.5rem;bottom:.5rem;width:8px;border-radius:4px;background:var(--l-stages)}
+.timeline li{position:relative;margin-bottom:2.2rem}
+.timeline li:last-child{margin-bottom:0}
+.timeline li::before{
+  content:"";position:absolute;left:-2.4rem;top:.15rem;width:1.65rem;height:1.65rem;border-radius:50%;
+  background:var(--station);border:4px solid var(--ink);box-sizing:border-box;
+}
+.timeline h3{margin:0 0 .2rem;font-size:1.2rem}
+.timeline p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* Puces des listes dans les fiches projet */
+.projet ul.liste li::marker{color:var(--accent)}
+
+/* ---------- Titres de page (pages internes) ---------- */
+.page-title{position:relative;padding:4.5rem 0 0;margin-bottom:3.5rem}
+.page-title h1{font-size:clamp(2.3rem,5vw,3.8rem);margin-bottom:.8rem}
+.page-title p{color:var(--muted);font-size:1.1rem;max-width:60ch;margin:0}
+.page-title::after{content:"";display:block;margin-top:2.5rem;height:1px;background:var(--line-strong)}
+
+/* ---------- Fiches projets / missions / stages ---------- */
+.projets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:1.25rem}
+.projet{
+  position:relative;overflow:hidden;
+  background:var(--card-glass);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem 1.7rem 1.5rem;
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+  transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;
+}
+.projet::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:var(--page-line,var(--ink))}
+.projet:has(.lien-carte):hover,a.projet:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.projet h3,.projet h2{order:-1;margin-bottom:.6rem;font-size:1.15rem;font-weight:600;letter-spacing:-.015em;padding:0;border:0}
+.projet .meta{
+  align-self:flex-start;margin:0 0 1rem;padding:.25rem .65rem;border-radius:8px;
+  font:500 .76rem/1.5 "Point median","Overpass",sans-serif;color:var(--accent2-text);background:var(--accent2-soft);
+}
+.projet p{color:var(--muted);margin:0 0 1rem}
+.projet ul.liste{margin:0 0 1.1rem;padding-left:1.1rem;color:var(--muted);line-height:1.45}
+.projet ul.liste li{margin-bottom:.35rem}
+.projet .lien{margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);font-weight:600;font-size:.92rem;text-decoration:none}
+a.projet{color:var(--ink);text-decoration:none}
+a.projet .lien{color:var(--accent-text)}
+a.projet:hover h3,a.projet:hover h2{color:var(--accent-text)}
+
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;padding:0;margin:.2rem 0 1.1rem}
+.tags li{background:var(--accent-soft);color:var(--accent-text);border-radius:8px;padding:.12rem .6rem;font-size:.78rem;font-weight:500;line-height:1.7}
+
+/* ---------- Fiche entreprise (pages de stage) ----------
+   À gauche : la carte d'identité de l'entreprise (logo + infos).
+   À droite : les infos pratiques du stage, chacune avec une icône. */
+.entreprise{display:grid;grid-template-columns:1.2fr 1fr;gap:1.25rem;align-items:stretch}
+.entreprise-carte,.stage-infos{
+  margin:0;background:var(--card-glass);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.entreprise .info{margin:0}
+.entreprise dt{font:500 .72rem/1.5 "Point median","Overpass",sans-serif;color:var(--accent2-text);margin-bottom:.25rem}
+.entreprise dd{margin:0;color:var(--ink2);text-align:left;hyphens:manual;font-variant-numeric:tabular-nums}
+
+/* Bandeau du logo, intégré à la carte (plus de cadre blanc) */
+.logo-entreprise{
+  display:flex;align-items:center;min-height:118px;padding:1.6rem 1.8rem;
+  border-bottom:1px solid var(--line);
+}
+.logo-entreprise img{display:block;height:52px;width:auto;max-width:100%}
+/* En sombre, le logo violet foncé devient clair pour rester lisible */
+:root[data-theme="dark"] .logo-entreprise img{filter:brightness(0) invert(1);opacity:.92}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .logo-entreprise img{filter:brightness(0) invert(1);opacity:.92}
+}
+/* Pas de fichier logo (SERTECH) : nom de l'entreprise en logotype */
+.logo-entreprise.logo-texte{justify-content:center}
+.logo-texte span{font:800 2rem/1 "Point median","Overpass",sans-serif;letter-spacing:.14em;margin-right:-.14em;color:var(--ink)}
+
+.entreprise-infos{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0}
+.entreprise-infos .info{padding:1rem 1.8rem;border-bottom:1px solid var(--line)}
+.entreprise-infos .info:nth-child(3){border-right:1px solid var(--line)}
+.entreprise-infos .info-large{grid-column:1/-1}
+.entreprise-infos .info:last-child{border-bottom:0}
+.entreprise-infos .info:first-child dd{font:600 1.15rem/1.35 "Point median","Overpass",sans-serif;color:var(--ink);letter-spacing:-.015em}
+
+.stage-infos{display:grid;align-content:space-around;padding:.6rem 0}
+.stage-infos .info{position:relative;padding:1rem 1.6rem 1rem 4.4rem}
+.stage-infos .info+.info::after{content:"";position:absolute;left:4.4rem;right:1.6rem;top:0;height:1px;background:var(--line)}
+.stage-infos .info::before{
+  content:"";position:absolute;left:1.5rem;top:1.05rem;width:38px;height:38px;border-radius:11px;
+  background:var(--accent-soft);
+}
+.stage-infos dt::before{
+  content:"";position:absolute;left:calc(1.5rem + 10px);top:calc(1.05rem + 10px);width:18px;height:18px;
+  background:var(--accent-text);
+  -webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat;
+}
+.i-lieu{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E")}
+.i-service{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='3' width='16' height='18' rx='2'/%3E%3Cpath d='M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3'/%3E%3C/svg%3E")}
+.i-duree{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E")}
+.i-tuteur{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E")}
+
+.entreprise-desc{margin:1.4rem 0 0;color:var(--muted);max-width:none}
+
+@media (max-width:860px){
+  .entreprise{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .entreprise-infos{grid-template-columns:1fr}
+  .entreprise-infos .info{padding:.9rem 1.25rem}
+  .entreprise-infos .info:nth-child(3){border-right:0}
+  .logo-entreprise{padding:1.3rem 1.25rem;min-height:96px}
+  .stage-infos .info{padding:.9rem 1.25rem .9rem 4rem}
+  .stage-infos .info::before{left:1.1rem}
+  .stage-infos dt::before{left:calc(1.1rem + 10px)}
+  .stage-infos .info+.info::after{left:4rem;right:1.25rem}
+}
+
+.epv{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+.epv p{margin:0;color:var(--muted);line-height:1.45}
+.epv-figure{margin:0}
+.epv-photo{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line-strong);box-shadow:0 24px 50px -28px rgba(10,8,40,.55)}
+.epv-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.epv-figure figcaption{margin-top:.8rem;color:var(--muted);font:500 .78rem "Point median","Overpass",sans-serif;text-align:center}
+
+/* ---------- Tableau de veille ---------- */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card-glass);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:.95rem 1.2rem;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
-th{background:var(--surface2);font-weight:600;font-size:.92rem}
-td{color:var(--muted)}
-footer.site{background:#0a101b;color:var(--muted);font-size:.93rem;padding:1.8rem 0;text-align:center}
-@media(max-width:780px){.hero{grid-template-columns:1fr;padding-top:2rem}.photo{margin:0 auto;order:-1;width:min(100%,260px)}.about{grid-template-columns:1fr;gap:2rem}dl.infos{grid-template-columns:1fr;gap:.2rem}dl.infos dd{margin-bottom:.7rem}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.projet{transition:none}.projet:hover{transform:none}}
-#contact{scroll-margin-top:5rem}
-.contact-intro{color:var(--muted);max-width:60ch;margin:0 0 1.5rem}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
-.contact-card{display:flex;align-items:center;gap:1rem;background:var(--surface);border-radius:16px;padding:1.2rem 1.4rem;color:var(--ink);text-decoration:none;transition:transform .2s,background .2s}
-a.contact-card:hover{transform:translateY(-3px);background:var(--surface2)}
-.contact-card .ico{flex:none;width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center}
-.contact-card svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.contact-card small{display:block;color:var(--muted);font-size:.85rem}
-.contact-card strong{font-weight:600;overflow-wrap:anywhere;font-size:.86rem}
+tbody tr{transition:background .15s ease}
+tbody tr:hover{background:var(--accent-soft)}
+th{background:var(--surface);font:500 .74rem "Point median","Overpass",sans-serif;color:var(--accent2-text)}
+td{color:var(--muted);line-height:1.45}
+td:first-child{white-space:nowrap;font-family:"Point median","Overpass",sans-serif;font-size:.85rem}
+
+/* ---------- Contact ---------- */
+#contact{scroll-margin-top:7rem}
+.contact-intro{color:var(--muted);margin:0 0 1.75rem}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1rem}
+.contact-card{
+  display:flex;align-items:center;gap:1rem;padding:1.25rem 1.35rem;color:var(--ink);text-decoration:none;
+  background:var(--card-glass);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+a.contact-card:hover{border-color:var(--ink);background:var(--surface)}
+.contact-card .ico{flex:none;width:48px;height:48px;border-radius:50%;background:var(--station);color:var(--ink);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.contact-card svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.contact-card small{display:block;color:var(--muted);font:700 .8rem/1.6 "Point median","Overpass",sans-serif}
+.contact-card strong{font-weight:800;overflow-wrap:anywhere;font-size:.92rem;line-height:1.4}
+
+/* Animation « Me contacter » (et fiche projet atteinte depuis le menu) :
+   un seul contour violet, les trois cartes de contact en même temps */
+#contact.flash .contact-card{animation:surbrillance 2.4s cubic-bezier(.2,.7,.2,1) both}
+#contact.flash h2{animation:titre-contact 2.4s cubic-bezier(.2,.7,.2,1)}
+@keyframes surbrillance{
+  0%{box-shadow:var(--shadow);transform:none}
+  25%{box-shadow:var(--shadow-hover);border-color:var(--ink);background-color:var(--surface);transform:translateY(-4px)}
+  60%{box-shadow:var(--shadow-hover);border-color:var(--ink);transform:translateY(-2px)}
+  100%{box-shadow:var(--shadow);transform:none}
+}
+@keyframes titre-contact{0%,100%{color:var(--ink)}25%{color:var(--accent-text)}}
+
+/* ---------- Apparition au défilement (classes ajoutées par script.js) ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Bouton « retour en haut » ---------- */
+.to-top{
+  position:fixed;right:1.5rem;bottom:1.5rem;z-index:20;
+  width:52px;height:52px;border:0;border-radius:16px;cursor:pointer;
+  display:grid;place-items:center;color:#fff;
+  background:var(--accent);
+  box-shadow:var(--shadow);
+  opacity:0;visibility:hidden;transform:translateY(24px) scale(.7);
+  transition:opacity .3s ease,transform .45s cubic-bezier(.16,1,.3,1),visibility 0s linear .45s,box-shadow .2s ease;
+}
+.to-top.visible{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .45s cubic-bezier(.16,1,.3,1),visibility 0s,box-shadow .2s ease}
+.to-top svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.to-top:hover{transform:translateY(-4px)}
+.to-top:hover svg{animation:fleche .8s ease-in-out infinite}
+@keyframes fleche{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+/* ---------- Pied de page ---------- */
+footer.site{border-top:1px solid var(--line);background:var(--card-glass);color:var(--muted);font-size:.88rem;padding:2.2rem 0;text-align:center}
+
+/* Fondu des couleurs au changement de thème */
+.theme-anim,.theme-anim *,.theme-anim *::before,.theme-anim *::after{transition:background-color .4s ease,color .4s ease,border-color .4s ease!important}
+
+/* ---------- Adaptation tablette / mobile ---------- */
+@media (max-width:960px){
+  header.site>.wrap{position:relative}
+  .menu-toggle{display:grid}
+  .header-actions nav{
+    position:absolute;left:0;right:0;top:calc(100% + .5rem);
+    background:var(--card);border:1px solid var(--line-strong);border-radius:18px;padding:.5rem;
+    
+    box-shadow:0 20px 40px -20px rgba(20,10,80,.5);
+    opacity:0;visibility:hidden;transform:translateY(-8px);
+    transition:opacity .2s ease,transform .25s ease,visibility 0s linear .25s;
+  }
+  header.site.menu-open .header-actions nav{opacity:1;visibility:visible;transform:none;transition:opacity .2s ease,transform .25s ease}
+  nav ul{flex-direction:column;gap:.15rem}
+  nav a{padding:.75rem 1rem;font-size:1rem}
+  .about{grid-template-columns:1fr;gap:2rem}
+  .facts{margin-top:0}
+}
+@media (max-width:780px){
+  .epv{grid-template-columns:1fr;gap:1.5rem}
+  .page-title{padding-top:2.5rem;margin-bottom:2.5rem}
+  section{margin-bottom:4rem}
+  .to-top{right:1rem;bottom:1rem;width:48px;height:48px}
+  main section>h2{gap:.7rem}
+}
+@media (max-width:520px){
+  header.site>.wrap,header.site .subbar .wrap{width:calc(100% - 2rem)}
+  .wrap{padding:0 1rem}
+}
+
+/* À propos : le titre passe au-dessus, le bloc de droite se centre sur le paragraphe */
+.about>div{display:contents}
+.about>div>h2{grid-column:1/-1;grid-row:1;margin-bottom:0}
+.about>div>p{grid-column:1;grid-row:2}
+.about>.facts{grid-column:2;grid-row:2;margin:0;align-self:center}
+@media (max-width:960px){
+  .about>div>p,.about>.facts{grid-column:1}
+  .about>.facts{grid-row:3}
+}
+
+/* Petits écrans : en-tête resserré pour que nom + 3 boutons tiennent sur une ligne */
+@media (max-width:520px){
+  header.site>.wrap{gap:.4rem;padding-left:.35rem;padding-right:.45rem}
+  .logo{font-size:.98rem;padding-left:.45rem;padding-right:.2rem}
+  .header-actions{gap:.35rem}
+  .contact-toggle,.theme-toggle,.menu-toggle{width:36px;height:36px;border-radius:11px}
+}
+
+/* Deux logos (Econocom + EPV) centrés dans le bandeau, séparés par un trait fin */
+.logo-entreprise.logos-duo{justify-content:center;gap:1.6rem;flex-wrap:wrap}
+.logos-duo img{height:46px}
+.logos-duo .logo-epv{height:50px}
+.logo-sep{width:1px;align-self:stretch;margin:.4rem 0;background:var(--line-strong)}
+/* En sombre : le texte noir du logo EPV passe en clair, le soleil garde une teinte dorée */
+:root[data-theme="dark"] .logo-entreprise .logo-epv{filter:invert(1) hue-rotate(180deg) brightness(1.15);opacity:1}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .logo-entreprise .logo-epv{filter:invert(1) hue-rotate(180deg) brightness(1.15);opacity:1}
+}
+@media (max-width:520px){
+  .logo-entreprise.logos-duo{gap:1rem}
+  .logos-duo img{height:30px}
+  .logos-duo .logo-epv{height:34px}
+}
+
+/* La barre principale (et son menu mobile) passe au-dessus de la sous-barre des stages */
+header.site>.wrap{position:relative;z-index:2}
+
+/* Pages de stage : pas de trait dégradé sous le titre */
+.page-title.sans-trait::after{display:none}
+
+/* Haut des pages de stage : « Retour aux stages » à gauche, un bouton par autre stage à droite */
+.stage-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem;margin:1.5rem 0 0}
+.stage-retour{font-weight:500;font-size:.92rem;text-decoration:none;color:var(--accent-text)}
+.stage-retour:hover{text-decoration:underline}
+.stage-autres{display:flex;flex-wrap:wrap;gap:.5rem}
+.stage-nav+.page-title{padding-top:2.5rem}
+
+/* Photo d'accueil : recadrée sur le visage (zoom centré sur la tête) */
+.photo img{transform:scale(1.65);transform-origin:49% 38%}
+
+/* Bouton « descendre » en bas du bandeau d'accueil → À propos de moi */
+#a-propos{scroll-margin-top:7.5rem}
+
+@keyframes rebond{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* =====================================================================
+   Page Entreprise : cartes de stage (BTS et lycée) et blocs « En résumé »
+   ===================================================================== */
+.groupe-infos{display:flex;flex-wrap:wrap;gap:.5rem;margin:-1.1rem 0 2rem}
+main .groupe-infos span{
+  padding:.3rem .8rem;border-radius:99px;font-size:.84rem;font-weight:500;text-align:left;
+  color:var(--ink2);background:var(--card-glass);border:1px solid var(--line);
+}
+main .groupe-infos span:last-child{color:var(--accent-text);background:var(--accent-soft);border-color:transparent;font-weight:600}
+
+/* --- Stages de BTS : une grande carte horizontale par stage --- */
+.stages-liste{display:grid;gap:1.25rem}
+.stage-carte{
+  display:grid;grid-template-columns:150px 1fr 220px;
+  border-radius:var(--radius);overflow:hidden;text-decoration:none;color:var(--ink);
+  background:var(--card-glass);border:1px solid var(--line);box-shadow:var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.stage-carte:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.stage-carte-cote{
+  position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;padding:1.4rem 1.3rem;color:#fff;
+  background:var(--accent);
+}
+.stage-carte:nth-child(even) .stage-carte-cote{background:var(--accent2)}
+/* petit motif en filigrane dans la bande colorée */
+.stage-carte-cote::after{
+  content:"";position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.25);box-shadow:0 0 0 18px rgba(255,255,255,.07),0 0 0 36px rgba(255,255,255,.05);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.stage-carte:hover .stage-carte-cote::after{transform:scale(1.15)}
+.stage-num{font:800 3rem/1 "Point median","Overpass",sans-serif;letter-spacing:-.04em}
+.stage-duree{
+  align-self:flex-start;padding:.25rem .65rem;border-radius:99px;font:500 .72rem "Point median","Overpass",sans-serif;letter-spacing:.04em;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+}
+.stage-carte-corps{padding:1.5rem 1.7rem 1.4rem;display:flex;flex-direction:column}
+.stage-carte-corps h3{font-size:1.3rem;margin:0 0 .4rem}
+.stage-carte:hover h3{color:var(--accent-text)}
+.stage-carte .meta{
+  align-self:flex-start;margin:0 0 .9rem;padding:.25rem .65rem;border-radius:8px;
+  font:500 .76rem/1.5 "Point median","Overpass",sans-serif;color:var(--accent2-text);background:var(--accent2-soft);
+}
+main .stage-carte-corps p:not(.meta){color:var(--muted);margin:0 0 1rem;text-align:left}
+.stage-carte .tags{margin-bottom:1.2rem}
+.stage-carte .lien{margin-top:auto;display:inline-flex;align-items:center;gap:.45rem;font-weight:600;font-size:.93rem;color:var(--accent-text)}
+.stage-carte .lien svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}
+.stage-carte:hover .lien svg{transform:translateX(5px)}
+.stage-carte-logo{display:grid;place-items:center;padding:1.5rem;border-left:1px solid var(--line);background:var(--surface)}
+.stage-carte-logo img{width:100%;max-width:170px;height:auto}
+.stage-carte-logo.logo-texte span{font-size:1.55rem}
+:root[data-theme="dark"] .stage-carte-logo img{filter:brightness(0) invert(1);opacity:.92}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stage-carte-logo img{filter:brightness(0) invert(1);opacity:.92}}
+
+@media (max-width:860px){
+  .stage-carte{grid-template-columns:1fr}
+  .stage-carte-cote{flex-direction:row;align-items:center;padding:1rem 1.3rem}
+  .stage-num{font-size:2.2rem}
+  .stage-duree{align-self:center}
+  .stage-carte-logo{grid-row:2;border-left:0;border-bottom:1px solid var(--line);padding:1rem;min-height:84px}
+  .stage-carte-logo img{max-width:140px}
+}
+
+/* Page Entreprise : pas de justification dans les cartes, badges et liens */
+main .stage-carte p,main .stage-carte .meta,main .resume-bloc li{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+
+/* --- Cartes de stage : toute la carte est cliquable (lien étiré), les documents restent cliquables à part --- */
+.stage-carte{position:relative}
+.lien-carte{color:inherit;text-decoration:none}
+.lien-carte::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit}
+.lien-carte:focus-visible{outline:none}
+.stage-carte:has(.lien-carte:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
+.stage-pied{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1rem}
+.stage-carte .stage-pied .lien{margin-top:0}
+.stage-docs{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:.5rem}
+.lien-rapport{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.42rem .8rem .42rem .5rem;border-radius:10px;font-weight:600;font-size:.86rem;text-decoration:none;
+  color:var(--accent-text);background:var(--accent-soft);border:1px solid transparent;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.lien-rapport::before{
+  content:"PDF";display:grid;place-items:center;width:30px;height:22px;border-radius:5px;
+  font:700 .6rem "Point median","Overpass",sans-serif;color:#fff;background:var(--accent);
+}
+.lien-rapport:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+
+/* Stages du lycée */
+.stages-lycee .stage-num{font-size:2.5rem}
+.stage-carte-logo.logo-texte span{text-align:center;line-height:1.15}
+.stages-lycee .stage-carte-logo.logo-texte span{font-size:1.3rem}
+
+/* --- « En résumé » : un seul bloc en deux colonnes (compétences | outils) --- */
+.resume-bloc{
+  display:grid;grid-template-columns:1.15fr 1fr;
+  background:var(--card-glass);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.resume-col{padding:1.7rem 1.9rem}
+.resume-col+.resume-col{border-left:1px solid var(--line);background:var(--surface)}
+.resume-col h3{display:flex;align-items:center;gap:.65rem;font-size:1.1rem;margin:0 0 1.2rem}
+.resume-col h3::before{content:"";width:10px;height:10px;border-radius:3px;transform:rotate(45deg);background:var(--accent)}
+.resume-liste{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+.resume-liste li{
+  display:flex;align-items:center;gap:.8rem;margin:0;padding:.55rem .75rem;border-radius:12px;
+  color:var(--ink2);font-weight:500;background:var(--surface);
+  transition:transform .2s ease,background .2s ease;
+}
+.resume-liste li::before{
+  content:"";flex:none;width:26px;height:26px;border-radius:8px;background:var(--accent-soft) center/15px no-repeat;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a66ff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+}
+.resume-liste li:hover{transform:translateX(4px);background:var(--accent-soft)}
+.tags.tags-grands{gap:.5rem;margin:0}
+.tags.tags-grands li{font-size:.86rem;padding:.35rem .8rem;border-radius:10px;background:var(--card);border:1px solid var(--line);color:var(--ink2);transition:border-color .2s ease,color .2s ease,transform .2s ease}
+.tags.tags-grands li:hover{border-color:var(--accent);color:var(--accent-text);transform:translateY(-2px)}
+
+@media (max-width:860px){
+  .resume-bloc{grid-template-columns:1fr}
+  .resume-col+.resume-col{border-left:0;border-top:1px solid var(--line)}
+  .stage-pied{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:520px){
+  .resume-col{padding:1.3rem 1.2rem}
+}
+
+/* « Ma contribution personnelle » (projets de groupe) : travail collectif en retrait (fond gris),
+   puis mes configurations et mes vérifications */
+.resume-bloc.contribution{grid-template-columns:repeat(3,minmax(0,1fr))}
+.contribution .resume-col:first-child{background:color-mix(in srgb,var(--ink) 5%,var(--card))}
+.contribution .resume-col:first-child .resume-liste li{background:var(--card)}
+.contribution .resume-col+.resume-col{background:none}
+@media (max-width:960px){
+  .resume-bloc.contribution{grid-template-columns:1fr}
+  .contribution .resume-col+.resume-col{border-left:0;border-top:1px solid var(--line)}
+}
+/* « Ma méthode de travail » (page Portfolio) : liste de mes responsabilités */
+.resume-liste.methode{max-width:75ch;margin-top:1.2rem}
+
+/* --- Pages de stage du lycée --- */
+.logo-entreprise.logo-seul{justify-content:center}
+.logo-entreprise.logo-seul img{height:auto;width:min(100%,250px);max-height:64px;object-fit:contain}
+/* Logos en couleur (ACCEDIA, Federation Studios) : lisibles sur fond sombre, on garde leurs couleurs */
+:root[data-theme="dark"] .logo-entreprise img.logo-couleur,:root[data-theme="dark"] .stage-carte-logo img.logo-couleur{filter:none;opacity:1}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .logo-entreprise img.logo-couleur,:root:not([data-theme="light"]) .stage-carte-logo img.logo-couleur{filter:none;opacity:1}
+}
+.resume-col p{color:var(--muted);margin:0 0 .9rem}
+.resume-col p:last-child{margin-bottom:0}
+.bilan{color:var(--muted);line-height:1.45}
+main section > .lien-rapport{margin-top:.4rem}
+.stages-lycee .stage-carte .stage-pied .lien{margin-left:auto}
+/* Sous-barre avec beaucoup d'onglets (stages du lycée) : passage à la ligne */
+.subbar .onglets{flex-wrap:wrap;row-gap:.2rem}
+
+/* ==========================================================================
+   Domaines des stages : une couleur par domaine (frise, badges des cartes)
+   ========================================================================== */
+:root{--d-support:#5a43f0;--d-reseau:#0d8f84;--d-sys:#b0620a;--d-cyber:#c4245a;--d-elec:#2a66d0}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--d-support:#a99cff;--d-reseau:#3cd8c5;--d-sys:#f2b04a;--d-cyber:#ff6f9c;--d-elec:#6aa8ff}
+}
+:root[data-theme="dark"]{--d-support:#a99cff;--d-reseau:#3cd8c5;--d-sys:#f2b04a;--d-cyber:#ff6f9c;--d-elec:#6aa8ff}
+.d-support{--d:var(--d-support)}
+.d-reseau{--d:var(--d-reseau)}
+.d-sys{--d:var(--d-sys)}
+.d-cyber{--d:var(--d-cyber)}
+.d-elec{--d:var(--d-elec)}
+.d-encours{--d:var(--accent)}
+
+/* --- Parcours : badges du Bac Pro (mention, P-Tech) --- */
+.parcours-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.parcours-badges span{
+  display:inline-flex;align-items:center;gap:.5rem;font-size:.86rem;font-weight:500;line-height:1.35;
+  padding:.38rem .8rem;border-radius:10px;background:var(--card);border:1px solid var(--line);color:var(--ink2);
+}
+.parcours-badges svg{width:16px;height:16px;flex:none;fill:var(--d-sys)}
+.parcours-badges .badge-mention{border-color:color-mix(in srgb,var(--d-sys) 45%,var(--line));background:color-mix(in srgb,var(--d-sys) 10%,var(--card))}
+.parcours-badges .badge-ptech strong{
+  font-family:"Point median","Overpass",sans-serif;font-size:.74rem;font-weight:500;letter-spacing:.02em;
+  color:var(--accent-ink);background:var(--accent2);padding:.08rem .45rem;border-radius:6px;
+}
+
+/* --- Badges de domaine sur les cartes de stage --- */
+.domaines{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;padding:0;margin:0 0 .7rem}
+.domaines li{
+  display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:600;
+  color:var(--ink2);padding:.16rem .6rem .16rem .5rem;border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--d) 50%,transparent);background:color-mix(in srgb,var(--d) 12%,transparent);
+}
+.domaines li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--d);flex:none}
+.domaines li.d-encours::before{animation:pulse-point 1.8s ease-out infinite}
+
+/* --- Frise chronologique des stages --- */
+.frise{
+  background:var(--card-glass);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.6rem 1.4rem 1.3rem;box-shadow:var(--shadow);
+}
+.frise-phases,.frise-liste{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) 2.2rem repeat(2,minmax(0,1fr))}
+.frise-phases{margin-bottom:.9rem}
+.frise-phases span{
+  position:relative;text-align:center;font-size:.74rem;font-weight:600;color:var(--muted);
+  padding:0 .5rem .55rem;margin:0 .4rem;border-bottom:1.5px solid var(--line-strong);
+}
+.frise-phases span::before,.frise-phases span::after{content:"";position:absolute;bottom:-1.5px;width:1.5px;height:7px;background:var(--line-strong)}
+.frise-phases span::before{left:0}
+.frise-phases span::after{right:0}
+.frise-phases .phase-lycee{grid-column:1/6}
+.frise-phases .phase-bts{grid-column:7/9}
+.frise-liste{list-style:none;margin:0;padding:0}
+.frise-liste li{position:relative}
+.frise-liste li:nth-child(6){grid-column:7}
+/* segment de ligne de chaque étape, au niveau des points */
+.frise-liste li::before{
+  content:"";position:absolute;left:0;right:0;top:calc(.4rem + 1.2rem + .5rem + 7px);height:2px;
+  background:var(--accent);opacity:.55;
+}
+.frise-liste li:nth-child(1)::before,.frise-liste li:nth-child(6)::before{left:50%}
+.frise-liste li:nth-child(5)::before,.frise-liste li:nth-child(7)::before{right:50%}
+.frise-liste a{
+  position:relative;display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center;
+  padding:.4rem .3rem .5rem;border-radius:12px;color:inherit;text-decoration:none;
+}
+.frise-liste a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.frise-date{font-family:"Point median","Overpass",sans-serif;font-size:.78rem;line-height:1.2rem;height:1.2rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.frise-point{
+  width:16px;height:16px;border-radius:50%;flex:none;background:var(--bg);
+  box-shadow:inset 0 0 0 4px var(--d),0 0 0 4px var(--card);transition:transform .25s ease,background .25s ease;
+}
+.frise-txt{display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.frise-nom{font-family:"Point median","Overpass",sans-serif;font-weight:600;font-size:.95rem;color:var(--ink);transition:color .2s ease}
+.frise-ent{font-size:.8rem;color:var(--muted);line-height:1.3}
+.frise-liste a:hover .frise-point,.frise-liste a:focus-visible .frise-point{transform:scale(1.35);background:var(--d)}
+.frise-liste a:hover .frise-nom{color:var(--accent-text)}
+.frise-liste .en-cours .frise-point{background:var(--d);animation:pulse-point 1.8s ease-out infinite}
+.frise-liste .en-cours .frise-ent{color:var(--accent-text);font-weight:600}
+@keyframes pulse-point{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--d) 55%,transparent)}
+  100%{box-shadow:0 0 0 10px transparent}
+}
+.frise-legende{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.2rem;list-style:none;
+  margin:1.3rem 0 0;padding:1rem 0 0;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);
+}
+.frise-legende li{display:inline-flex;align-items:center;gap:.45rem}
+.frise-legende li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--d)}
+@media (max-width:760px){
+  .frise{padding:1.2rem 1rem}
+  .frise-phases{display:none}
+  .frise-liste{grid-template-columns:1fr}
+  .frise-liste li:nth-child(6){grid-column:auto;margin-top:1.1rem}
+  .frise-liste a{flex-direction:row;align-items:center;text-align:left;gap:.8rem;padding:.55rem .3rem}
+  .frise-date{width:4rem;flex:none}
+  .frise-txt{align-items:flex-start}
+  .frise-liste li::before{
+    top:0;bottom:0;height:auto;width:2px;right:auto;left:calc(.3rem + 4rem + .8rem + 7px);
+    background:var(--accent);
+  }
+  .frise-liste li:nth-child(1)::before,.frise-liste li:nth-child(6)::before{top:50%;left:calc(.3rem + 4rem + .8rem + 7px)}
+  .frise-liste li:nth-child(5)::before,.frise-liste li:nth-child(7)::before{bottom:50%;right:auto}
+  .frise-legende{justify-content:flex-start}
+}
+
+/* --- Compétences du référentiel BTS SIO mobilisées pendant un stage --- */
+.comp-score{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1rem;margin:-1rem 0 1.4rem;color:var(--muted);line-height:1.45}
+.comp-score strong{font-family:"Point median","Overpass",sans-serif;font-size:1.5rem;color:var(--accent-text);margin-right:.15rem}
+.comp-jauge{display:inline-flex;gap:4px}
+.comp-jauge i{width:22px;height:6px;border-radius:3px;background:var(--line-strong)}
+.comp-jauge i.on{background:var(--accent)}
+.competences{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:1rem;list-style:none;margin:0;padding:0}
+.competences li{
+  position:relative;display:flex;flex-direction:column;gap:.35rem;padding:1.15rem 3.2rem 1.15rem 1.2rem;
+  border-radius:14px;background:var(--card-glass);border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.competences .comp-num{font-family:"Point median","Overpass",sans-serif;font-size:.74rem;color:var(--muted);line-height:1.45}
+.competences .comp-titre{font-family:"Point median","Overpass",sans-serif;font-weight:600;font-size:1rem;line-height:1.3;color:var(--ink)}
+main .competences .comp-via{font-size:.86rem;color:var(--muted);line-height:1.45;text-align:left}
+.competences li::before{content:"";position:absolute;top:1.1rem;right:1.1rem;width:24px;height:24px;border-radius:50%;box-sizing:border-box}
+.competences li.oui{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.competences li.oui .comp-num{color:var(--accent-text)}
+.competences li.oui::before{background:var(--accent)}
+.competences li.oui::after{
+  content:"";position:absolute;top:calc(1.1rem + 5px);right:calc(1.1rem + 9px);width:6px;height:11px;
+  border:solid var(--accent-ink);border-width:0 2px 2px 0;transform:rotate(45deg);
+}
+.competences li.non{background:transparent;box-shadow:none;border-style:dashed;border-color:var(--line-strong)}
+.competences li.non .comp-titre{color:var(--muted);line-height:1.45}
+.competences li.non::before{border:1.5px dashed var(--line-strong)}
+main .competences li,main .competences span,main .frise-liste a,main .frise-liste span,main .parcours-badges span,main .comp-score{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+main .frise-liste a,main .frise-liste span{text-align:center}
+@media (max-width:760px){main .frise-liste a,main .frise-liste span{text-align:left}}
+.comp-score strong{margin-right:.4rem}
+main .timeline li{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.parcours-badges .badge-ptech strong{white-space:nowrap;flex:none}
+/* Logo P-Tech dans le badge du Bac Pro : version claire ou sombre selon le thème */
+.parcours-badges .badge-ptech img{height:13px;width:auto;flex:none;display:block}
+.parcours-badges .badge-ptech img.ptech-sombre{display:none}
+:root[data-theme="dark"] .parcours-badges .badge-ptech img.ptech-clair{display:none}
+:root[data-theme="dark"] .parcours-badges .badge-ptech img.ptech-sombre{display:block}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .parcours-badges .badge-ptech img.ptech-clair{display:none}
+  :root:not([data-theme="light"]) .parcours-badges .badge-ptech img.ptech-sombre{display:block}
+}
+
+/* ==========================================================================
+   E5 : tableau de synthèse affiché directement (PDF intégré ; image sur mobile)
+   ========================================================================== */
+main .synthese-intro{color:var(--muted);max-width:70ch;text-align:left}
+.synthese-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin:0 0 1.3rem}
+.lien-xlsx::before{content:"XLS";background:#1d8a52}
+.synthese-doc{
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  background:#fff;box-shadow:var(--shadow);
+}
+/* Sur téléphone, les navigateurs n'affichent pas les PDF intégrés : on montre une image du tableau */
+.synthese-doc{max-width:920px;margin-inline:auto}
+.synthese-actions{max-width:920px;margin-inline:auto}
+
+/* ---------- E5 : image du tableau cliquable ---------- */
+button.lien-rapport{font:inherit;font-weight:600;font-size:.86rem;cursor:pointer}
+.lien-zoom::before{
+  -webkit-mask:none;mask:none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5'/%3E%3C/svg%3E") center/14px no-repeat,
+    var(--accent);
+}
+.synthese-image{
+  position:relative;display:block;width:100%;padding:0;border:0;background:#fff;cursor:zoom-in;
+}
+.synthese-image img{display:block;width:100%;height:auto}
+.synthese-loupe{
+  position:absolute;right:1rem;bottom:1rem;display:inline-flex;align-items:center;gap:.45rem;
+  padding:.5rem .85rem;border-radius:999px;font:600 .85rem "Point median","Overpass",sans-serif;color:#fff;
+  background:rgba(20,16,50,.82);
+  box-shadow:0 8px 20px -8px rgba(0,0,0,.5);transition:transform .2s ease,background .2s ease;
+}
+.synthese-loupe svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.synthese-image:hover .synthese-loupe,.synthese-image:focus-visible .synthese-loupe{transform:translateY(-2px);background:var(--accent)}
+.synthese-image:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+
+/* ---------- Visionneuse plein écran ---------- */
+html.visionneuse-ouverte{overflow:hidden}
+.visionneuse{
+  position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;
+  background:rgba(8,7,26,.94);
+  opacity:0;transition:opacity .2s ease;
+}
+.visionneuse[hidden]{display:none}
+.visionneuse.ouverte{opacity:1}
+.visionneuse-barre{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.8rem 1rem;color:#f0eeff;flex:none;
+}
+.visionneuse-titre{font:600 .95rem "Point median","Overpass",sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.visionneuse-outils{display:flex;align-items:center;gap:.35rem;flex:none;padding:.3rem;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.visionneuse-outils button{
+  display:grid;place-items:center;width:38px;height:38px;border-radius:10px;border:0;cursor:pointer;
+  background:transparent;color:#f0eeff;transition:background .15s ease;
+}
+.visionneuse-outils button:hover{background:rgba(255,255,255,.12)}
+.visionneuse-outils button:focus-visible{outline:2px solid #8c7cff;outline-offset:1px}
+.visionneuse-outils svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.visionneuse-outils .visionneuse-fermer{background:rgba(255,255,255,.1)}
+.visionneuse-outils .visionneuse-fermer:hover{background:#8c7cff;color:#08071a}
+.visionneuse-niveau{min-width:4.2rem;text-align:center;font:500 .8rem "Point median","Overpass",sans-serif;color:#d8d4f6;font-variant-numeric:tabular-nums}
+.visionneuse-zone{position:relative;flex:1;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.visionneuse-zone.glisse{cursor:grabbing}
+.visionneuse-zone img{
+  position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;
+  background:#fff;box-shadow:0 20px 60px -20px rgba(0,0,0,.7);will-change:transform;
+}
+.visionneuse-aide{margin:0;padding:.6rem 1rem .9rem;text-align:center;font-size:.8rem;color:#a8a4cf;flex:none}
+@media (max-width:600px){
+  .visionneuse-titre{display:none}
+  .visionneuse-barre{justify-content:center}
+  .visionneuse-aide{font-size:.74rem}
+}
+
+/* ---------- Accueil : certifications ---------- */
+.certifs-liste{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:1.2rem}
+.certif{
+  display:flex;align-items:center;gap:1.4rem;padding:1.4rem 1.5rem;border-radius:var(--radius);
+  background:var(--card-glass);border:1px solid var(--line);box-shadow:var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.certif:hover{}
+.certif-badge{width:112px;height:112px;flex:none;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.18));transition:transform .3s ease}
+.certif:hover .certif-badge{transform:rotate(-4deg) scale(1.04)}
+.certif-corps{min-width:0}
+main .certif-corps p{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.certif-org{margin:0 0 .2rem;font:500 .74rem "Point median","Overpass",sans-serif;color:var(--accent2-text)}
+.certif h3{margin:0 0 .25rem;font-size:1.15rem}
+.certif-date{margin:0 0 .6rem;font-size:.84rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.certif-desc{margin:0 0 .9rem;font-size:.9rem;color:var(--muted);line-height:1.5}
+@media (max-width:520px){.certif{flex-direction:column;align-items:flex-start;gap:1rem}.certif-badge{width:92px;height:92px}}
+
+/* Compétences : preuves = pastilles à la couleur de la ligne (stages, E5, E6, veille) */
+main .skills-intro{margin:-1rem 0 2rem;color:var(--muted);text-align:left}
+.preuves{display:flex;flex-wrap:wrap;gap:.4rem}
+.preuves a{
+  --c:var(--l-stages);
+  display:inline-flex;align-items:center;gap:.45rem;min-height:2rem;font-size:.8rem;font-weight:700;line-height:1.25;text-decoration:none;
+  color:var(--ink);padding:.25rem .75rem .25rem .3rem;border-radius:999px;background:var(--card);border:2px solid var(--c);
+  transition:background .2s ease,color .2s ease;position:relative;z-index:1
+}
+.preuves a::before{content:"";flex:none;width:1.05rem;height:1.05rem;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 3px var(--card)}
+.preuves a[href^="projet-"],.preuves a[href^="e5"]{--c:var(--l-e5)}
+.preuves a[href^="projet-lumivia"],.preuves a[href^="e6"]{--c:var(--l-e6)}
+.preuves a[href^="#certif"],.preuves a[href^="veille"]{--c:var(--l-veille)}
+.preuves a:hover{background:color-mix(in srgb,var(--c) 20%,var(--card));color:var(--ink)}
+.preuves a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* ---------- Bouton « Revenir » (après un lien vers une autre page du portfolio) ---------- */
+.retour-flottant{
+  position:fixed;left:1.4rem;bottom:1.4rem;z-index:40;display:inline-flex;align-items:center;gap:.7rem;
+  max-width:min(360px,calc(100vw - 7rem));padding:.6rem 1.1rem .6rem .65rem;border-radius:16px;text-decoration:none;
+  background:var(--card);border:1px solid var(--line-strong);color:var(--ink);
+  box-shadow:var(--shadow-hover);
+  
+  opacity:0;transform:translateX(-24px);
+  transition:opacity .3s ease,transform .45s cubic-bezier(.16,1,.3,1),border-color .2s ease,box-shadow .2s ease;
+}
+.retour-flottant.visible{opacity:1;transform:none}
+.retour-flottant svg{
+  flex:none;width:34px;height:34px;padding:8px;border-radius:11px;fill:none;stroke:var(--page-accent-ink,#fff);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  background:var(--page-accent,var(--accent)); /* couleur de la page : jaune E5, vert E6, bleu stages, rouge veille */transition:transform .25s ease;
+}
+.retour-flottant:hover{border-color:var(--page-accent,var(--accent));box-shadow:0 18px 36px -12px color-mix(in srgb,var(--page-accent,var(--accent)) 75%,transparent),var(--shadow)}
+.retour-flottant:hover svg{transform:translateX(-3px)}
+.retour-flottant:focus-visible{outline:2px solid var(--page-accent,var(--accent));outline-offset:3px}
+.retour-texte{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.retour-mini{font:500 .7rem "Point median","Overpass",sans-serif;color:var(--muted);line-height:1.45}
+.retour-lieu{font-weight:600;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:600px){
+  .retour-flottant{left:1rem;bottom:1rem;padding:.5rem .85rem .5rem .5rem;gap:.55rem}
+  .retour-flottant svg{width:30px;height:30px;padding:7px}
+  .retour-lieu{font-size:.84rem}
+}
+
+/* ---------- E5 / E6 : documents et preuves de chaque réalisation ---------- */
+.projet-docs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line)}
+.doc-attente{
+  display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .75rem;border-radius:10px;font-size:.8rem;font-weight:500;
+  color:var(--muted);border:1px dashed var(--line-strong);
+}
+.doc-attente::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--d-sys,#b0620a);flex:none}
+.lien-page::before{content:"";background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/13px no-repeat,
+  var(--accent)}
+.projet-en-cours{border-style:dashed}
+.projet-en-cours .meta{background:color-mix(in srgb,var(--d-sys,#b0620a) 16%,transparent)}
+
+/* ==========================================================================
+   Pages de détail des projets (E5 / E6)
+   ========================================================================== */
+.projet-kicker{
+  display:inline-flex;align-items:center;gap:.5rem;margin:0 0 1rem;padding:.3rem .75rem;border-radius:999px;
+  font:500 .76rem "Point median","Overpass",sans-serif;
+  color:var(--accent-text);background:var(--accent-soft);
+}
+main .page-title .projet-kicker{font-size:.76rem;color:var(--accent-text);margin:0 0 1.1rem}
+
+/* Fiche d'identité du projet */
+.projet-fiche{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:1rem;margin:0 0 1.2rem}
+.projet-fiche div{
+  padding:1.1rem 1.25rem;border-radius:14px;background:var(--card-glass);border:1px solid var(--line);box-shadow:var(--shadow);
+  
+}
+.projet-fiche dt{margin:0 0 .35rem;font:500 .7rem "Point median","Overpass",sans-serif;color:var(--accent2-text)}
+.projet-fiche dd{margin:0;font-weight:500;color:var(--ink);line-height:1.45;text-align:left}
+
+/* Chiffres clés */
+.chiffres{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:0;margin:0 0 1rem;list-style:none;padding:0;
+  border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;
+  background:var(--surface);
+}
+.chiffres li{padding:1.3rem 1.2rem;text-align:center}
+.chiffres li+li{border-left:1px solid var(--line)}
+.chiffres strong{
+  display:block;font:700 clamp(1.6rem,3vw,2.2rem)/1.1 "Point median","Overpass",sans-serif;letter-spacing:-.03em;
+  background:transparent;color:var(--accent-text);
+}
+main .chiffres span{display:block;margin-top:.35rem;font-size:.84rem;color:var(--muted);text-align:center}
+@media (max-width:620px){.chiffres{grid-template-columns:1fr 1fr}.chiffres li:nth-child(odd){border-left:0}.chiffres li:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* Capture d'écran cliquable (ouvre la visionneuse) */
+.capture{
+  position:relative;display:block;width:100%;margin:0;padding:0;border:1px solid var(--line-strong);border-radius:12px;overflow:hidden;
+  background:#fff;cursor:zoom-in;box-shadow:0 18px 40px -22px rgba(10,8,40,.55);transition:transform .25s ease,box-shadow .25s ease;
+}
+.capture img{display:block;width:100%;height:auto}
+.capture::after{
+  content:"";position:absolute;right:.6rem;bottom:.6rem;width:32px;height:32px;border-radius:9px;opacity:0;transform:scale(.85);
+  transition:opacity .2s ease,transform .2s ease;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M21 21l-4.6-4.6M11 8v6M8 11h6'/%3E%3C/svg%3E") center/18px no-repeat,rgba(20,16,50,.85);
+}
+.capture:hover{transform:translateY(-3px);box-shadow:0 24px 46px -22px color-mix(in srgb,var(--accent) 70%,transparent)}
+.capture:hover::after,.capture:focus-visible::after{opacity:1;transform:none}
+.capture:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+figure.figure{margin:0}
+figure.figure figcaption{margin-top:.55rem;font-size:.8rem;color:var(--muted);text-align:left}
+
+/* Grande capture façon navigateur (page d'accueil d'un site) */
+.capture-hero{margin:0 0 1rem;border-radius:16px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:var(--shadow-hover);background:var(--card)}
+.capture-hero .barre{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;background:var(--surface);border-bottom:1px solid var(--line)}
+.capture-hero .barre i{width:10px;height:10px;border-radius:50%;background:var(--line-strong)}
+.capture-hero .barre i:nth-child(1){background:#ff6058}.capture-hero .barre i:nth-child(2){background:#ffbd2e}.capture-hero .barre i:nth-child(3){background:#28c941}
+.capture-hero .barre span{margin-left:.7rem;padding:.2rem .8rem;border-radius:7px;background:var(--card);font:500 .74rem "Point median","Overpass",sans-serif;color:var(--muted);line-height:1.45}
+.capture-hero .capture{border:0;border-radius:0;box-shadow:none}
+.capture-hero .capture:hover{transform:none}
+
+/* Étapes de réalisation : frise verticale numérotée */
+.etapes{list-style:none;margin:0;padding:0;counter-reset:etape;position:relative}
+.etapes::before{content:"";position:absolute;left:21px;top:.5rem;bottom:.5rem;width:2px;border-radius:2px;background:var(--accent)}
+.etape{position:relative;padding:0 0 2.6rem 4.2rem;counter-increment:etape}
+.etape:last-child{padding-bottom:0}
+.etape::before{
+  content:counter(etape);position:absolute;left:0;top:0;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+  font:700 1.05rem "Point median","Overpass",sans-serif;color:#fff;background:var(--accent);
+  box-shadow:0 0 0 6px var(--bg);
+}
+.etape-corps{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:1.6rem;align-items:start}
+.etape-corps.seul{grid-template-columns:1fr}
+.etape h3{margin:.55rem 0 .7rem;font-size:1.2rem}
+main .etape p{color:var(--muted);text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.etape ul.liste{margin:0 0 1rem;padding-left:1.1rem;color:var(--muted);line-height:1.45}
+main .etape ul.liste li{margin-bottom:.4rem;text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.etape ul.liste li::marker{color:var(--accent)}
+.etape .tags{margin:.4rem 0 0}
+@media (max-width:860px){.etape-corps{grid-template-columns:1fr}}
+@media (max-width:560px){.etape{padding-left:3.4rem}.etape::before{width:36px;height:36px;border-radius:11px;font-size:.95rem}.etapes::before{left:17px}}
+
+/* Partie d'un projet en deux temps */
+.partie-titre{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;margin:0 0 1.6rem}
+.partie-titre .badge{padding:.25rem .7rem;border-radius:999px;font:500 .74rem "Point median","Overpass",sans-serif;color:var(--accent-ink);background:var(--accent)}
+main .partie-titre p{margin:0;color:var(--muted);font-size:.95rem;text-align:left}
+
+table.comparatif{min-width:640px;font-size:.88rem}
+table.comparatif th,table.comparatif td{padding:.7rem .9rem}
+table.comparatif td:first-child{white-space:normal;font-family:inherit;font-size:inherit}
+table.comparatif td.montant,table.comparatif th.montant{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* Documents d'origine */
+.docs-projet{display:flex;flex-wrap:wrap;gap:.6rem}
+
+/* Cartes E5 / E6 avec page de détail */
+.projet-clic .lien-carte::after{z-index:1}
+.projet-clic .projet-docs{position:relative;z-index:2}
+.projet-clic h3 a{color:inherit;text-decoration:none}
+.projet-clic:hover h3{color:var(--accent-text)}
+.projet-apercu{display:block;margin:-1.7rem -1.7rem 1.2rem;aspect-ratio:16/8;overflow:hidden;border-bottom:1px solid var(--line);background:var(--surface);order:-2}
+.projet-apercu img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s ease}
+.projet-clic:hover .projet-apercu img{transform:scale(1.04)}
+.projet-voir{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;font-size:.93rem;color:var(--accent-text);margin-right:auto}
+.projet-voir svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}
+.projet-clic:hover .projet-voir svg{transform:translateX(5px)}
+main .etape-corps p,main .etape-corps li{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.projet-apercu{max-height:230px}
+main li.etape{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+.projet-apercu.apercu-logo{background:#fff}
+.projet-apercu.apercu-logo img{object-fit:contain;object-position:center}
+
+/* ---------- Page veille : sujet, exemple d'e-mail, signaux ---------- */
+.veille-chiffres{margin-bottom:3rem}
+.veille-chiffres sup{font-size:.55em}
+.veille-intro{color:var(--muted);max-width:70ch;margin-bottom:1.5rem}
+.veille-exemple{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.75rem;align-items:start}
+.mail{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.mail-entete{padding:1rem 1.25rem;background:var(--surface);border-bottom:1px solid var(--line)}
+.mail-entete p{margin:.2rem 0;color:var(--ink);font-size:.92rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;overflow-wrap:anywhere}
+.mail-champ{font:500 .7rem "Point median","Overpass",sans-serif;color:var(--muted);min-width:3.4rem}
+.mail-corps{padding:1.25rem}
+main .mail-corps p,main .mail-entete p{text-align:left}
+.mail-corps p{color:var(--ink);font-size:.95rem;line-height:1.6;margin:0 0 .9rem}
+.mail-corps p:last-child{margin-bottom:0}
+.mail-bouton{display:inline-block;padding:.55rem 1rem;border-radius:8px;background:#2f6fde;color:#fff;font-weight:600;font-size:.9rem}
+.signal-num{display:inline-grid;place-items:center;width:1.35rem;height:1.35rem;margin-left:.4rem;border-radius:50%;background:var(--d-cyber);color:#fff;font:700 .72rem "Point median","Overpass",sans-serif;vertical-align:middle;flex:none}
+.signaux{list-style:none;margin:0;padding:0;counter-reset:signal;display:grid;gap:.75rem}
+.signaux li{counter-increment:signal;position:relative;padding:.85rem 1rem .85rem 3.1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--card-glass)}
+.signaux li::before{content:counter(signal);position:absolute;left:1rem;top:.9rem;width:1.35rem;height:1.35rem;display:grid;place-items:center;border-radius:50%;background:var(--d-cyber);color:#fff;font:700 .72rem "Point median","Overpass",sans-serif}
+.signaux b{display:block;color:var(--ink);font-size:.95rem;margin-bottom:.2rem}
+.signaux span{display:block;color:var(--muted);font-size:.9rem;line-height:1.5}
+main .signaux li{text-align:left}
+.veille-dispositif{margin-bottom:3rem}
+@media (max-width:860px){.veille-exemple{grid-template-columns:1fr}}
+
+/* ---------- Veille : chiffres sourcés, glossaire, analyse, pistes ---------- */
+.veille-section-chiffres .chiffres{margin-bottom:0}
+.chiffre-source{display:block;margin-top:.5rem;font:500 .66rem "Point median","Overpass",sans-serif;color:var(--accent2-text);opacity:.85}
+.analyse p{color:var(--muted)}
+.phrase-cle{margin:1.4rem 0;padding:1rem 1.4rem;border-left:4px solid var(--accent);border-radius:0 14px 14px 0;background:color-mix(in srgb,var(--accent) 10%,transparent);font:600 clamp(1.05rem,2vw,1.25rem)/1.5 "Point median","Overpass",sans-serif;color:var(--ink)}
+
+/* ---------- Grilles de cases : dernière ligne centrée ----------
+   Même nombre de colonnes qu'avant (auto-fit), mais en flex pour pouvoir centrer la dernière ligne. */
+.projets{display:flex;flex-wrap:wrap;justify-content:center;container-type:inline-size}
+.projets>*{flex:0 0 100%;min-width:0}
+/* .projets : cases de 330px minimum, espacement 1.25rem */
+@container (min-width:680px){.projets>*{flex-basis:calc((100% - 1.25rem)/2)}}
+@container (min-width:1030px){.projets>*{flex-basis:calc((100% - 2.5rem)/3)}}
+/* Une seule ligne de cases : elles gardent toute la largeur, comme avant */
+@container (min-width:680px) and (max-width:1029.98px){.projets:not(:has(>:nth-child(3)))>*{flex-grow:1}}
+@container (min-width:1030px){.projets:not(:has(>:nth-child(4)))>*{flex-grow:1}}
+
+/* Bouton « tableau de synthèse » à côté de la jauge des compétences */
+.comp-score .comp-tableau{margin-left:auto}
+@media (max-width:600px){.comp-score .comp-tableau{margin-left:0}}
+
+/* Sortie de commande (console Cisco, terminal) */
+.console{margin:0;padding:1rem 1.1rem;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#0d1017;color:#d6dbe6;font:500 .78rem/1.55 "JetBrains Mono",monospace;white-space:pre;text-align:left}
+.console .ok{color:#7ee2a8}
+.console .refus{color:#ff8f8f}
+.console-titre{margin:0 0 .45rem;font:500 .72rem "JetBrains Mono",monospace;color:var(--muted)}
+
+/* Plan du site (pied de page) */
+
+/* Annule les styles des liens du menu principal (nav a) dans le plan du site */
+
+.etape,.etape-corps,.etape-corps>*,figure.figure{min-width:0}
+.console{max-width:100%}
+
+/* ---------- Niveaux de risque (étude critique) ---------- */
+:root{--r-haut:#c0262d;--r-moyen:#b35a00;--r-faible:#17803d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--r-haut:#ff8b8b;--r-moyen:#ffb866;--r-faible:#6fe3a0}}
+:root[data-theme="dark"]{--r-haut:#ff8b8b;--r-moyen:#ffb866;--r-faible:#6fe3a0}
+.chiffres strong small{font-size:.5em;letter-spacing:0;opacity:.85}
+table.risques tr.risque-haut{--r:var(--r-haut)}
+table.risques tr.risque-moyen{--r:var(--r-moyen)}
+table.risques tr.risque-faible{--r:var(--r-faible)}
+table.risques tbody tr{background:color-mix(in srgb,var(--r) 8%,transparent)}
+table.risques tbody td:first-child{box-shadow:inset 4px 0 0 var(--r);color:var(--ink)}
+table.risques td:last-child,table.risques th:last-child{text-align:center;white-space:nowrap}
+.niveau{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem;border-radius:999px;font:600 .78rem "Point median","Overpass",sans-serif;color:var(--r);background:color-mix(in srgb,var(--r) 15%,transparent);border:1px solid color-mix(in srgb,var(--r) 40%,transparent)}
+.niveau::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--r)}
+.table-scroll:has(table.risques)+p{margin-top:.75rem}
+
+/* ---------- Scores Lighthouse colorés ---------- */
+.score{display:inline-block;min-width:3.2em;padding:.18rem .6rem;border-radius:999px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums;color:var(--r);background:color-mix(in srgb,var(--r) 15%,transparent);border:1px solid color-mix(in srgb,var(--r) 38%,transparent)}
+.score-bon{--r:var(--r-faible)}
+.score-moyen{--r:var(--r-moyen)}
+.score-mauvais{--r:var(--r-haut)}
+/* Renvois vers les annexes */
+.renvoi-annexe{display:inline-flex;align-items:center;gap:.3rem;margin-left:.15rem;padding:.05rem .5rem;border-radius:6px;font:500 .74rem "Point median","Overpass",sans-serif;color:var(--accent-text);background:var(--accent-soft);text-decoration:none;white-space:nowrap}
+.renvoi-annexe::before{content:"↗"}
+.renvoi-annexe:hover{text-decoration:underline}
+[id^="annexe-"]{scroll-margin-top:7rem}
+[id^="annexe-"]:target{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- Projets groupés par épreuve (sous-barre et boutons du haut) ---------- */
+.subbar .onglets-groupes{align-items:center;column-gap:.5rem}
+.onglets-groupe{display:flex;flex-wrap:wrap;align-items:center;gap:.2rem}
+.onglets-groupe+.onglets-groupe{border-left:1px solid var(--line);padding-left:.6rem}
+.onglets-titre{display:inline-block;padding:.12rem .45rem;border-radius:6px;font:600 .7rem "Point median","Overpass",sans-serif;letter-spacing:.05em;color:var(--accent2-text);background:var(--accent2-soft);margin-right:.2rem}
+.stage-autres-groupes .onglets{display:flex;flex-wrap:wrap;align-items:center;gap:.2rem .5rem;padding:.35rem .45rem;border:1px solid var(--line);border-radius:14px;background:var(--card-glass);}
+.stage-autres-groupes .onglets a{padding:.3rem .8rem;border-radius:9px;font-size:.86rem;font-weight:500;text-decoration:none;color:var(--muted);line-height:1.45;transition:color .15s ease,background .15s ease}
+.stage-autres-groupes .onglets a:hover{color:var(--ink);background:var(--accent-soft)}
+.stage-autres-groupes .onglets a[aria-current="page"]{background:var(--accent-soft);color:var(--accent-text);font-weight:600}
+@media (max-width:760px){
+  .onglets-groupe+.onglets-groupe{border-left:0;padding-left:0}
+}
+#projets{scroll-margin-top:7rem}
+#etat-des-lieux,#mise-en-oeuvre{scroll-margin-top:7rem}
+
+/* Compétences sur les cartes des réalisations en milieu professionnel */
+.tags-comp li{color:var(--accent2-text);background:var(--accent2-soft);border-color:transparent}
+#milieu-pro{scroll-margin-top:7rem}
+
+/* ---------- Pages E5 / E6 : projets sur deux colonnes ---------- */
+@container (min-width:680px){.projets.projets-epreuve>*{flex-basis:calc((100% - 1.25rem)/2);flex-grow:0}}
+@container (min-width:1030px){.projets.projets-epreuve>*{flex-basis:calc((100% - 1.25rem)/2);flex-grow:0}}
+.projets-epreuve .projet-apercu{max-height:none;aspect-ratio:16/7}
+
+/* Réalisations en milieu professionnel : liste compacte, une ligne par réalisation */
+.projets.projets-pro{display:grid;grid-template-columns:1fr;gap:.75rem}
+.projets-pro>.projet{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:2rem;row-gap:.35rem;align-items:center;padding:1.1rem 1.4rem}
+.projets-pro>.projet>*{grid-column:1;margin:0}
+.projets-pro .projet h3{grid-row:1;font-size:1.05rem;margin:0}
+.projets-pro .projet .meta{display:none}
+.projets-pro .projet p{grid-row:2;font-size:.9rem}
+.projets-pro .tags-comp{grid-column:2;grid-row:1;justify-content:flex-end}
+.projets-pro .projet-docs{grid-column:2;grid-row:2;border-top:0;padding-top:0;margin:0;justify-content:flex-end}
+.projets-pro .projet-voir{margin-right:0;font-size:.86rem}
+@media (max-width:760px){
+  .projets-pro>.projet{grid-template-columns:1fr}
+  .projets-pro .tags-comp,.projets-pro .projet-docs{grid-column:1;grid-row:auto;justify-content:flex-start}
+}
+
+/* ---------- Tableau de synthèse plus petit + explication des compétences ---------- */
+.synthese-section .synthese-doc{max-width:560px}
+.synthese-section .synthese-actions{max-width:560px;justify-content:center}
+.comp-explic{margin:2.6rem 0 0}
+.comp-explic h3{font-size:1.2rem;margin:0 0 .5rem}
+main .comp-explic>p{color:var(--muted);max-width:75ch;margin:0 0 1.2rem;text-align:left}
+.comp-liste{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.comp-liste li{display:flex;align-items:center;gap:1rem;padding:1.15rem 1.3rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .2s ease}
+.comp-liste li:nth-child(3n){border-right:0}
+.comp-liste li:nth-last-child(-n+3){border-bottom:0}
+.comp-liste li:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
+.comp-liste .comp-code{flex:none;display:grid;place-items:center;width:3.4rem;height:3.4rem;border-radius:12px;font:700 .95rem "Point median","Overpass",sans-serif;color:var(--accent-ink);background:var(--accent);box-shadow:0 6px 16px -8px color-mix(in srgb,var(--accent) 80%,transparent)}
+.comp-liste .comp-nom{font:600 .95rem/1.35 "Point median","Overpass",sans-serif;color:var(--ink)}
+main .comp-liste li{text-align:left}
+@media (max-width:900px){
+  .comp-liste{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .comp-liste li:nth-child(3n){border-right:1px solid var(--line)}
+  .comp-liste li:nth-child(2n){border-right:0}
+  .comp-liste li:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+  .comp-liste li:nth-last-child(-n+2){border-bottom:0}
+}
+@media (max-width:560px){
+  .comp-liste{grid-template-columns:1fr}
+  .comp-liste li{border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .comp-liste li:last-child{border-bottom:0!important}
+  .comp-liste .comp-code{width:2.8rem;height:2.8rem;font-size:.85rem}
+}
+
+/* ---------- Fenêtre de détail d'une mission (dialog.fiche) ---------- */
+html.fiche-ouverte{overflow:hidden}
+dialog.fiche{width:min(560px,calc(100% - 2rem));max-height:calc(100dvh - 3rem);padding:1.6rem 1.6rem 1.2rem;border:1px solid var(--line-strong);border-radius:20px;background:var(--bg);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.55);overflow:auto}
+dialog.fiche::backdrop{background:rgba(8,7,26,.6);}
+dialog.fiche[open]{animation:fiche-entree .22s cubic-bezier(.2,.8,.2,1)}
+@keyframes fiche-entree{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.fiche-fermer{position:absolute;top:1rem;right:1rem;display:grid;place-items:center;width:34px;height:34px;border:0;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}
+.fiche-fermer:hover{background:var(--accent-soft);color:var(--ink)}
+.fiche svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fiche-tete{display:flex;align-items:center;gap:.9rem;margin:0 2.2rem 1.1rem 0}
+.fiche-icone{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:13px;color:var(--accent-text);background:var(--accent-soft);border:1px solid var(--line)}
+.fiche-icone svg{width:22px;height:22px}
+.fiche-cat{display:inline-block;margin-bottom:.3rem;padding:.12rem .5rem;border-radius:6px;font:600 .7rem "Point median","Overpass",sans-serif;letter-spacing:.03em;color:var(--accent-text);background:var(--accent-soft)}
+.fiche-titre{margin:0;font:700 1.3rem/1.25 "Point median","Overpass",sans-serif;letter-spacing:-.015em}
+.fiche-titre::before{content:none!important}
+.fiche-pratique{padding:.95rem 1.1rem;border:1px solid var(--line);border-radius:14px;background:var(--card-glass);margin-bottom:1.1rem}
+.fiche-sous{margin:0 0 .6rem;font:600 .7rem "Point median","Overpass",sans-serif;color:var(--accent2-text)}
+.fiche-pratique ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.fiche-pratique li{position:relative;padding-left:1.6rem;font-size:.9rem;line-height:1.5;text-align:left}
+.fiche-pratique li::before{content:"";position:absolute;left:0;top:.18rem;width:1rem;height:1rem;border-radius:50%;border:1.5px solid var(--accent2);background:radial-gradient(circle,var(--accent2) 0 2.5px,transparent 3px)}
+.fiche-tags{list-style:none;margin:0 0 1rem;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.fiche-tags li{padding:.22rem .6rem;border:1px solid var(--line);border-radius:7px;font:500 .74rem "Point median","Overpass",sans-serif;color:var(--muted)}
+.fiche-pied{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.8rem;padding-top:1rem;border-top:1px solid var(--line)}
+.fiche-nav{display:flex;align-items:center;gap:.6rem}
+.fiche-nav[hidden]{display:none}
+.fiche-nav button{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line-strong);border-radius:50%;background:var(--card-glass);color:var(--ink);cursor:pointer}
+.fiche-nav button:hover{border-color:var(--accent);color:var(--accent-text)}
+.fiche-compte{font:500 .8rem "Point median","Overpass",sans-serif;color:var(--muted)}
+.fiche-lien{display:inline-flex;align-items:center;gap:.4rem;margin-left:auto;font-weight:600;font-size:.88rem;color:var(--accent-text);text-decoration:none}
+.fiche-lien:hover{text-decoration:underline}
+.fiche-lien svg{width:16px;height:16px}
+.fiche.fiche-charge .fiche-corps{opacity:.4;transition:opacity .15s}
+.fiche-resume{margin:0;font-size:.95rem;line-height:1.6;text-align:left}
+.fiche-note{margin:0 0 .3rem;font-size:.82rem;line-height:1.5;color:var(--muted);text-align:left}
+
+/* Cartes cliquables : le texte « Voir le détail… » et l'espace vide de la ligne du bas
+   laissent passer le clic vers le lien de la carte ; seuls les vrais boutons (PDF…) gardent le leur. */
+.projet-clic .projet-docs,.stage-carte .stage-docs{pointer-events:none}
+.projet-clic .projet-docs a,.projet-clic .projet-docs button,.stage-carte .stage-docs a,.stage-carte .stage-docs button{pointer-events:auto}
+/* Le texte « Voir… » d'une carte cliquable se souligne au survol, pour montrer que c'est un lien */
+.projet-clic:hover:not(:has(.projet-docs a:hover)) .projet-voir,.projet-clic:has(.lien-carte:focus-visible) .projet-voir{text-decoration:underline;text-underline-offset:3px}
+/* Milieu professionnel : la carte ouvre la fiche récap, le lien « Voir la mission dans le stage » mène directement au stage */
+.projets.projets-pro .projet.projet-clic:hover .projet-voir.lien-direct:not(:hover):not(:focus-visible){text-decoration:none}
+.projets-pro a.projet-voir{text-decoration:none}
+.projets-pro a.projet-voir:hover,.projets-pro a.projet-voir:focus-visible{text-decoration:underline;text-underline-offset:3px}
+main section[id]{scroll-margin-top:7rem}
+
+/* ---------- Plan du site : titres de sections + menus déroulants ---------- */
+
+/* Téléphone : le menu s'ouvre sous le titre, dans le flux */
+
+/* ---------- Marges des grands écrans (≥1500px) : sommaire à gauche, tranche à droite ---------- */
+.sommaire,.tranche{display:none}
+@media (min-width:1500px){
+  .sommaire,.tranche{
+    display:block;position:fixed;top:120px;z-index:5;
+    width:calc((100% - 1140px) / 2 - 2.5rem);max-width:15rem;
+    border-top:3px solid var(--page-line,var(--ink));padding-top:.8rem;
+  }
+  .sommaire{left:1.25rem;max-height:calc(100vh - 160px);overflow-y:auto}
+  .sommaire p{margin:0 0 .6rem;font-size:.76rem;font-weight:700;color:var(--muted)}
+  .sommaire ol{list-style:none;margin:0;padding:0}
+  .sommaire li{border-bottom:1px solid var(--line)}
+  .sommaire a{display:block;position:relative;padding:.5rem 0 .5rem .9rem;font-size:.86rem;font-weight:600;line-height:1.3;color:var(--muted);text-decoration:none;transition:color .15s ease}
+  .sommaire a::before{content:"";position:absolute;left:0;top:.5rem;bottom:.5rem;width:3px;border-radius:2px;background:transparent;transition:background .15s ease}
+  .sommaire a:hover{color:var(--ink)}
+  .sommaire a[aria-current]{color:var(--ink);font-weight:800}
+  .sommaire a[aria-current]::before{background:var(--page-line,var(--ink))}
+  .tranche{right:1.25rem;display:flex;justify-content:flex-end;pointer-events:none;border-top:0;padding-top:0}
+  .tranche p{writing-mode:vertical-rl;display:flex;align-items:baseline;gap:1.1rem;margin:0;max-width:none;white-space:nowrap}
+  .tranche b{font:800 2.4rem/1 "Point median","Overpass",sans-serif;letter-spacing:-.03em;color:var(--ink)}
+  .tranche span{font-size:.86rem;font-weight:600;color:var(--muted)}
+}
+
+/* ---------- Pied de page : invitation à me contacter ---------- */
+.pied-action{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:2rem;row-gap:1.5rem;padding-bottom:clamp(2rem,4vw,3rem);margin-bottom:2.5rem;border-bottom:4px solid var(--ink);text-align:left}
+.pied-action p{margin:0;max-width:none;font:800 clamp(2rem,4.6vw,4rem)/.95 "Point median","Overpass",sans-serif;letter-spacing:-.045em;color:var(--ink);text-wrap:balance}
+.pied-action .btn{text-decoration:none}
+@media (max-width:800px){.pied-action{grid-template-columns:1fr}}
+
+/* ---------- Outils : logo + nom ---------- */
+.outils-logos{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 1rem;padding:0}
+.projet-fiche .outils-logos{margin-bottom:0}
+.outils-logos li{display:inline-flex;align-items:center;gap:.5rem;margin:0;padding:.3rem .7rem .3rem .3rem;border:1px solid var(--line);border-radius:10px;background:var(--card);font-weight:600;color:var(--ink);line-height:1.2}
+.outils-logos img{width:26px;height:26px;padding:3px;border-radius:7px;background:#fff;object-fit:contain;flex:none}
+
+/* ---------- Veille : fiches des articles, défilement horizontal ---------- */
+.fiches-articles{display:grid;grid-auto-flow:column;grid-auto-columns:min(85%,320px);gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:.3rem .2rem 1rem;scrollbar-width:thin}
+.fiche-article{scroll-snap-align:start;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:.6rem;padding:1.2rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--card-glass);box-shadow:var(--shadow)}
+.fiche-article .fa-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem .8rem;margin:0;font:500 .72rem "Point median","Overpass",sans-serif;letter-spacing:.03em;color:var(--accent2-text)}
+.fiche-article h3{margin:0;font-size:1.05rem;line-height:1.3}
+.fiche-article h3 a{color:var(--ink)}
+.fiche-article h3 a:hover{color:var(--accent-text)}
+.fiche-article p{margin:0;text-align:left;color:var(--muted);font-size:.95rem}
+.fiche-article .ref-page{display:block;margin-top:.35rem;font:500 .7rem "Point median","Overpass",sans-serif;color:var(--muted)}
+.fiches-nav{display:flex;justify-content:center;gap:.5rem}
+.fiches-nav button{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line-strong);border-radius:12px;background:var(--card);color:var(--ink);cursor:pointer}
+.fiches-nav button:hover{border-color:var(--accent);color:var(--accent-text)}
+.fiches-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fiches-articles.fiches-auto{scroll-snap-type:none;scroll-behavior:auto}
+.fiche-article:hover{border-color:var(--accent)}
+.fa-ouvrir{align-self:flex-start;margin-top:auto;padding:.3rem .7rem;border:1px solid var(--line-strong);border-radius:8px;background:transparent;color:var(--accent-text);font:600 .8rem "Point median","Overpass",sans-serif;cursor:pointer}
+.fa-ouvrir:hover{background:var(--accent-soft)}
+
+/* ==========================================================================
+   Couleur de page : chaque page prend la couleur de son cordon
+   (E5 safran, E6 vert, stages bleu, veille magenta, accueil encre)
+   ========================================================================== */
+body{--page-line:var(--ink);--page-accent:var(--accent);--page-accent-ink:#fff}
+body:has(nav a[href="e5.html"][aria-current="page"]),body:has(.subbar a[href="e5.html"]){--page-line:var(--l-e5);--page-accent:var(--l-e5);--page-accent-ink:var(--l-ink-e5)}
+body:has(nav a[href="e6.html"][aria-current="page"]),body:has(.subbar a[href="e6.html"]){--page-line:var(--l-e6);--page-accent:var(--l-e6);--page-accent-ink:var(--l-ink-e5)}
+body:has(nav a[href="entreprise.html"][aria-current="page"]),body:has(.subbar a[href="entreprise.html"]){--page-line:var(--l-stages);--page-accent:var(--l-stages);--page-accent-ink:var(--l-ink-e5)}
+body:has(nav a[href="veille.html"][aria-current="page"]){--page-line:var(--l-veille);--page-accent:var(--l-veille);--page-accent-ink:var(--l-ink-e5)}
+.page-title::after{height:8px;border-radius:4px;background:var(--page-line)}
+.projet,.contact-card,.certif{border:2px solid var(--line-strong)}
+.projet:has(.lien-carte):hover,a.projet:hover{border-color:var(--ink)}
+/* Carte cliquable atteinte au clavier : contour visible sur toute la carte (le lien étiré n'a pas de contour propre) */
+.projet:has(.lien-carte:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
+
+/* Cartes aplaties : posées sur le papier, séparées par des filets */
+.contact-card,.certif{background:transparent;border:0;border-top:3px solid var(--ink);border-radius:0;box-shadow:none;padding-left:0;padding-right:0}
+a.contact-card:hover{background:transparent;border-color:var(--accent)}
+a.contact-card:hover strong{text-decoration:underline;text-underline-offset:.2em}
+.projet-fiche>div{background:transparent;border:0;border-top:3px solid var(--ink);border-radius:0;box-shadow:none;padding-left:0}
+/* Pages projet : la référence de l'épreuve passe sous le titre, en pastille de ligne */
+.page-title:has(.projet-kicker){display:flex;flex-direction:column}
+.page-title:has(.projet-kicker) h1{order:-1}
+main .page-title .projet-kicker{align-self:flex-start;margin:0 0 1.2rem;padding:.2rem .7rem;border-radius:999px;background:var(--page-line);color:var(--l-ink-e5);font-weight:800;font-size:.85rem;letter-spacing:0;border:0}
+main section{scroll-margin-top:6rem}
+.projet-fiche+section{margin-top:4rem}
+.projet-fiche dt{font-weight:700;font-size:.82rem;color:var(--muted)}
+.certif-org{font-weight:700;color:var(--muted)}
+.to-top{border-radius:50%;background:var(--station);color:var(--ink);border:3px solid var(--ink);box-shadow:none}
+.to-top:hover{background:var(--ink);color:var(--bg);box-shadow:none}
+
+.parcours-badges .badge-mention{border:2px solid var(--ink);background:var(--card)}
+
+main section>h2::before,main .about>div>h2::before{border-radius:.16em}
+.timeline li::before{border-radius:5px}
+.preuves a::before{border-radius:3px}
+
+.contact-card .ico{border-radius:8px}
+.contact-toggle,.theme-toggle,.menu-toggle,.to-top{border-radius:10px}
+/* ==========================================================================
+   Baie de brassage (accueil) : un châssis 19 pouces, un panneau par domaine,
+   chaque projet ou stage est un port étiqueté avec son cordon de couleur
+   ========================================================================== */
+.baie{grid-column:1/-1;margin-top:.8rem;padding-top:1.1rem;border-top:3px solid var(--ink)}
+.baie .baie-titre{margin:0 0 .8rem;font-weight:800;font-size:.95rem;color:var(--ink);text-align:left}
+.baie-titre span{font-weight:500;color:var(--muted);margin-left:.35em}
+.baie li,.baie small{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+/* châssis : deux montants percés, une plaque de modèle, des panneaux noirs */
+.baie-chassis{
+  --trou:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='18'%3E%3Crect x='4' y='5' width='6' height='7' rx='1' fill='%23000' fill-opacity='.55'/%3E%3C/svg%3E");
+  position:relative;display:grid;gap:6px;padding:30px 26px 10px;border-radius:8px;
+  background:var(--chassis) var(--trou) left 6px top 4px/14px 18px repeat-y;
+  box-shadow:0 18px 40px -24px rgba(0,0,0,.55);
+}
+.baie-chassis::after{content:"";position:absolute;right:6px;top:4px;bottom:4px;width:14px;background:var(--trou) center top/14px 18px repeat-y;pointer-events:none}
+.baie-chassis::before{content:"Baie N. Pondepeyre · 5U";position:absolute;left:26px;top:7px;padding:.05rem .45rem;border-radius:2px;background:#33383e;color:#c9ccd0;font-size:.75rem;font-weight:700}
+/* panneau : façade, étiquette, rangée de ports, passe-câbles en bas */
+.panneau{
+  --c:var(--l-stages);
+  position:relative;display:grid;grid-template-columns:9.4rem minmax(0,1fr);align-items:stretch;
+  background:var(--facade);border-radius:4px;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(0,0,0,.5);
+  padding-bottom:12px;
+}
+.panneau::after{content:"";position:absolute;left:9.4rem;right:.55rem;bottom:5px;height:9px;border-radius:2px;background:#15171a;box-shadow:inset 0 1px 0 rgba(0,0,0,.6)}
+.panneau-e5{--c:var(--l-e5)}
+.panneau-e6{--c:var(--l-e6)}
+.panneau-veille{--c:var(--l-veille)}
+.panneau-uplink{--c:var(--etiquette);padding-bottom:0}
+.panneau-uplink::after{display:none}
+.panneau-etiquette{align-self:center;display:flex;align-items:center;gap:.5rem;min-width:0;margin:.55rem .3rem .55rem .55rem;padding:.35rem .55rem;border-radius:3px;background:var(--etiquette);color:var(--etiquette-ink)}
+.panneau-etiquette b{flex:none;padding:.1rem .35rem;border-radius:3px;background:var(--etiquette-ink);color:var(--etiquette);font-size:.75rem;font-weight:800}
+.panneau-etiquette span{position:relative;min-width:0;padding-left:1rem;font-weight:800;font-size:.84rem;line-height:1.15}
+.panneau-etiquette span::before{content:"";position:absolute;left:0;top:.2em;width:.68rem;height:.68rem;border-radius:2px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.ports{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;margin:0;padding:.5rem .55rem .2rem;list-style:none}
+.port,.port>a{display:flex;flex-direction:column;align-items:stretch;gap:5px;min-width:0;text-decoration:none;color:inherit}
+.port>a{height:100%}
+/* bande d'étiquette au-dessus du port, de même hauteur sur toute la rangée */
+.port-etiquette{flex:1 0 auto;display:grid;align-content:start;gap:1px;min-height:3rem;padding:.25rem .32rem;border-radius:2px;background:var(--etiquette);color:var(--etiquette-ink);line-height:1.18}
+.port-num{font-weight:800;font-size:.76rem;color:#565b62}
+.port-nom{font-weight:800;font-size:.8rem;letter-spacing:-.01em;overflow-wrap:break-word;hyphens:manual}
+.port-etiquette small{font-weight:500;font-size:.76rem;color:#464b51}
+.port.libre .port-etiquette{background:transparent;border:1px dashed rgba(255,255,255,.14)}
+.port.libre .port-num{color:rgba(255,255,255,.5)}
+.port.travaux .port-etiquette{border:2px dashed #8a8f95}
+/* prise RJ45 : ouverture noire, languette, LED de lien */
+.prise{position:relative;display:block;align-self:center;width:min(100%,4.4rem);height:1.9rem;margin-bottom:12px;border-radius:3px;background:var(--prise);box-shadow:inset 0 2px 0 rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.06)}
+.prise::before{content:"";position:absolute;left:50%;bottom:4px;width:34%;height:5px;margin-left:-17%;border-radius:1px;background:#2b2f34}
+.led{position:absolute;right:4px;top:4px;width:6px;height:6px;border-radius:50%;background:#33383d;transition:background .2s ease,box-shadow .2s ease}
+/* port câblé : LED de lien allumée au repos, fiche de la couleur du domaine, cordon jusqu'au passe-câbles */
+.port>a .led{background:#4fbf5a}
+.prise-fiche{position:absolute;left:50%;top:6px;bottom:-8px;width:2.7rem;max-width:72%;transform:translateX(-50%);border-radius:3px 3px 2px 2px;background:var(--c);box-shadow:inset 0 -6px 0 rgba(0,0,0,.18),inset 0 2px 0 rgba(255,255,255,.25);transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.prise-fiche::before{content:"";position:absolute;left:30%;right:30%;top:3px;height:4px;border-radius:1px;background:rgba(0,0,0,.25)}
+.prise-fiche::after{content:"";position:absolute;left:50%;top:100%;width:8px;height:22px;margin-left:-4px;border-radius:0 0 3px 3px;background:var(--c)}
+/* survol : la fiche se soulève, la LED signale l'activité */
+.port>a:hover .led,.port>a:focus-visible .led{background:var(--led);box-shadow:0 0 0 2px rgba(123,226,123,.3)}
+.port>a:hover .prise-fiche,.port>a:focus-visible .prise-fiche{transform:translate(-50%,-3px)}
+.port>a:hover .port-etiquette,.port>a:focus-visible .port-etiquette{outline:3px solid var(--c);outline-offset:1px}
+.port>a:focus-visible{outline:none}
+.port.travaux .led{background:#d9a400}
+/* liaison externe : deux ports SFP vers le CV et le contact */
+.uplinks{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;padding:.5rem .55rem}
+.uplinks a{display:inline-flex;align-items:center;gap:.6rem;min-height:2.6rem;padding:.3rem 1rem .3rem .35rem;border-radius:4px;background:var(--etiquette);color:var(--etiquette-ink);font-weight:800;font-size:.9rem;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1)}
+.prise-sfp{width:2.4rem;height:1.6rem;margin:0}
+.prise-sfp::before{display:none}
+.uplinks .led{background:#4fbf5a}
+.uplinks a:hover{transform:translateY(-2px)}
+.uplinks a:hover .led,.uplinks a:focus-visible .led{background:var(--led)}
+/* au chargement : les fiches se branchent une fois */
+.baie .prise-fiche{animation:branche-fiche .6s cubic-bezier(.16,1,.3,1) both}
+.baie .panneau:nth-child(2) .prise-fiche{animation-delay:.08s}
+.baie .panneau:nth-child(3) .prise-fiche{animation-delay:.16s}
+.baie .panneau:nth-child(4) .prise-fiche{animation-delay:.24s}
+@keyframes branche-fiche{from{transform:translate(-50%,-14px);opacity:0}to{transform:translateX(-50%);opacity:1}}
+/* tablette et téléphone : 4 puis 2 ports par rangée, ports libres masqués */
+@media (max-width:900px){
+  .panneau{grid-template-columns:minmax(0,1fr)}
+  .panneau::after{left:.55rem}
+  .panneau-etiquette{justify-self:start;margin:.55rem .55rem 0}
+  .ports{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:18px}
+  .port.libre{display:none}
+}
+@media (max-width:480px){
+  .baie-chassis{padding:30px 20px 8px;background-position:left 3px top 4px}
+  .baie-chassis::before{left:20px}
+  .baie-chassis::after{right:3px}
+  .ports{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .port-nom{font-size:.88rem;overflow-wrap:anywhere}
+  .port-etiquette small{font-size:.78rem}
+}
+
+/* ---------- Plan du site (pied de page) ---------- */
+.plan-site{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.6rem 1.4rem;text-align:left;padding-bottom:1.8rem;margin-bottom:1.4rem;border-bottom:1px solid var(--line)}
+.plan-site .plan-titre{margin:0 0 .6rem;font:600 .9rem "Point median","Overpass",sans-serif}
+.plan-site .plan-titre a{color:var(--ink);text-decoration:none}
+.plan-site ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.plan-site li a{color:var(--muted);text-decoration:none;font-size:.84rem;line-height:1.4}
+.plan-site a:hover,.plan-site a:focus-visible{color:var(--accent-text);text-decoration:underline}
+.plan-site a[aria-current="page"]{color:var(--accent-text)}
+.plan-bas{margin:0}
+@media (max-width:900px){.plan-site{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.plan-site{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Annule les styles des liens du menu principal (nav a) dans le plan du site */
+footer.site .plan-site a{display:inline;padding:0;border-radius:0;background:none;white-space:normal;font-size:inherit;font-weight:inherit}
+footer.site .plan-site li a{font-size:.84rem}
+footer.site .plan-site a[aria-current="page"]{background:none;color:var(--accent-text);font-weight:600}
+footer.site .plan-site a:hover{background:none}
+
+/* ---------- Plan du site : titres de sections + menus déroulants ---------- */
+.plan-site li{position:relative}
+.plan-deroulant{display:flex;align-items:center;gap:.2rem}
+footer.site .plan-site .plan-fleche{display:inline-grid;place-items:center;width:20px;height:20px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;transition:color .15s ease,background .15s ease,transform .2s ease}
+.plan-fleche svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.plan-fleche:hover,.plan-fleche:focus-visible{color:var(--accent-text);background:var(--accent-soft)}
+.plan-menu{position:absolute;left:-.6rem;bottom:calc(100% + .55rem);z-index:20;min-width:240px;margin:0;padding:.45rem;list-style:none;display:grid;gap:.1rem!important;
+  background:var(--bg);border:1px solid var(--line-strong);border-radius:14px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);
+  opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility 0s linear .18s}
+.plan-menu::after{content:"";position:absolute;left:1.1rem;bottom:-6px;width:10px;height:10px;background:var(--bg);border-right:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);transform:rotate(45deg)}
+.plan-menu::before{content:"";position:absolute;left:0;right:0;bottom:-.7rem;height:.7rem}
+footer.site .plan-site .plan-menu a{display:block;padding:.4rem .6rem;border-radius:8px;font-size:.84rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+footer.site .plan-site .plan-menu a:hover,footer.site .plan-site .plan-menu a:focus-visible{background:var(--accent-soft);color:var(--accent-text);text-decoration:none}
+.plan-deroulant.ouvert>.plan-menu{opacity:1;visibility:visible;transform:none;transition:opacity .18s ease,transform .18s ease}
+.plan-deroulant.ouvert>.plan-fleche svg{transform:rotate(180deg)}
+@media (hover:hover){
+  .plan-deroulant:hover>.plan-menu{opacity:1;visibility:visible;transform:none;transition:opacity .18s ease,transform .18s ease}
+  .plan-deroulant:hover>.plan-fleche{color:var(--accent-text)}
+  .plan-deroulant:hover>.plan-fleche svg{transform:rotate(180deg)}
+}
+.plan-site>div:nth-last-child(-n+2) .plan-menu{left:auto;right:-.6rem}
+.plan-site>div:nth-last-child(-n+2) .plan-menu::after{left:auto;right:1.1rem}
+/* Téléphone : le menu s'ouvre sous le titre, dans le flux */
+@media (max-width:560px){
+  .plan-deroulant{flex-wrap:wrap}
+  .plan-site .plan-menu{position:static;flex-basis:100%;min-width:0;margin-top:.35rem;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none}
+  .plan-menu::after,.plan-menu::before{display:none}
+  .plan-site .plan-deroulant.ouvert>.plan-menu{display:grid}
+  .plan-site>div:nth-last-child(-n+2) .plan-menu{right:auto}
+  footer.site .plan-site .plan-menu a{white-space:normal}
+}
+
+footer.site .plan-site a::after{display:none}
+
+
+/* Téléphone : zones tactiles d'au moins 44px */
+@media (max-width:760px){
+  .preuves a{min-height:44px;padding-top:.4rem;padding-bottom:.4rem}
+  .preuves{gap:.5rem}
+  .contact-card{min-height:56px}
+  footer.site .plan-site li a{display:inline-block;padding:.35rem 0}
+}
+
+/* ==========================================================================
+   Écran d'accueil : nom à gauche, photo dans son réseau animé à droite,
+   flèche vers la baie du parcours
+   ========================================================================== */
+.hero{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:2rem 3rem;
+  min-height:calc(100vh - 70px);min-height:calc(100svh - 70px);padding:2rem 0 5.5rem;margin-bottom:2rem}
+.hero h1{font-size:clamp(3rem,6.4vw,5.6rem);line-height:.95;margin-bottom:.35em}
+.hero .role{display:inline-flex;align-items:center;gap:.6rem;margin:0 0 1.2rem}
+/* LED de lien allumée, comme sur un port câblé (fixe, sans pulsation) */
+.hero .role::before{content:"";flex:none;width:.6rem;height:.6rem;border-radius:2px;background:#4fbf5a;box-shadow:0 0 0 3px color-mix(in srgb,#4fbf5a 22%,transparent)}
+.hero p:not(.role){max-width:56ch}
+.hero-visual{position:relative;display:grid;place-items:center;aspect-ratio:1;width:100%;max-width:520px;justify-self:end}
+.reseau{position:absolute;inset:0;width:100%;height:100%}
+.hero-visual .photo{width:46%;aspect-ratio:4/5;border:3px solid var(--ink);border-radius:10px;box-shadow:0 22px 44px -26px rgba(0,0,0,.6)}
+/* flèche vers la baie */
+.scroll-bas{position:absolute;left:50%;bottom:2.6rem;transform:translateX(-50%);display:grid;place-items:center;width:44px;height:44px;border-radius:10px;border:2px solid var(--ink);background:var(--station);color:var(--ink);transition:background .2s ease,color .2s ease}
+.scroll-bas svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.scroll-bas:hover,.scroll-bas:focus-visible{background:var(--ink);color:var(--bg)}
+/* la baie devient une section à part, sous l'écran d'accueil */
+section.baie{margin:0 0 6rem;padding-top:1.2rem;scroll-margin-top:6rem}
+section.baie .baie-titre{font-size:1rem}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);min-height:0;padding:1.5rem 0 4.5rem;gap:1.2rem}
+  .hero>div:first-child{display:block}
+  .hero-visual{order:-1;justify-self:center;max-width:340px}
+}
+@media (max-width:480px){
+  .hero-visual{max-width:280px}
+  .hero h1{font-size:2.7rem}
+  .scroll-bas{bottom:.6rem}
+}
+.hero{min-height:calc(100vh - 70px - 2rem);min-height:calc(100svh - 70px - 2rem)}
+@media (max-width:900px){.scroll-bas{display:none}.hero{min-height:0;padding-bottom:2rem}}
+/* cercle en pointillés qui tourne lentement autour de la photo */
+.hero-visual::before{content:"";position:absolute;inset:19%;border-radius:50%;border:1.5px dashed var(--line-strong);animation:tourne 60s linear infinite;pointer-events:none}
+@keyframes tourne{to{transform:rotate(360deg)}}
+
+/* ==========================================================================
+   Fond des pages : grille de points fine et deux halos (bleu à gauche, indigo à droite)
+   ========================================================================== */
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0,var(--glow1) 0,transparent 42rem),
+    radial-gradient(circle at 88% 6rem,var(--glow2) 0,transparent 36rem),
+    radial-gradient(var(--bg-grid) 1px,transparent 1px);
+  background-size:100% 100%,100% 100%,24px 24px;
+  background-repeat:no-repeat,no-repeat,repeat;
+}
+
+/* ==========================================================================
+   En-tête : forme de barre flottante arrondie (fond translucide flouté,
+   bordure fine). Contenu inchangé : nom, liens et traits de couleur de la baie.
+   ========================================================================== */
+header.site{position:sticky;top:0;z-index:30;padding-top:16px;background:transparent;border:0}
+header.site>.wrap{
+  width:calc(100% - 3rem);max-width:calc(1140px - 3rem);min-height:60px;margin:0 auto;padding:.4rem .75rem .4rem 1.2rem;
+  background:var(--barre);border:1px solid var(--line);border-radius:16px;box-shadow:var(--barre-ombre);
+  backdrop-filter:blur(40px) saturate(1.4);-webkit-backdrop-filter:blur(40px) saturate(1.4);
+}
+/* trait de couleur de l'onglet actif : posé au bas de la barre */
+nav a[aria-current="page"]::after{bottom:-.3rem;height:4px}
+/* sous-barre des pages de stage et de projet : même forme, plus fine */
+.subbar{margin-top:.5rem;background:transparent}
+header.site .subbar .wrap{
+  width:calc(100% - 3rem);max-width:calc(1140px - 3rem);margin:0 auto;padding:.35rem .5rem .35rem 1rem;
+  background:var(--barre);border:1px solid var(--line);border-radius:14px;box-shadow:var(--barre-ombre);
+  backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
+}
+/* menu déroulant (tablette, téléphone) : même forme que la barre */
+@media (max-width:960px){
+  .header-actions nav{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--barre-ombre);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px)}
+}
+@media (max-width:520px){
+  header.site{padding-top:10px}
+  header.site>.wrap,header.site .subbar .wrap{width:calc(100% - 1.5rem)}
+  header.site>.wrap{padding:.4rem .5rem .4rem .8rem}
+}
+
+/* ==========================================================================
+   Fond animé : pistes de circuit et paquets de données (toile fixe, derrière tout),
+   estompé au centre là où se trouve le texte
+   ========================================================================== */
+.fond-circuit{
+  position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 0,rgba(0,0,0,.5) 22%,rgba(0,0,0,.28) 50%,rgba(0,0,0,.5) 78%,#000 100%);
+  mask-image:linear-gradient(90deg,#000 0,rgba(0,0,0,.5) 22%,rgba(0,0,0,.28) 50%,rgba(0,0,0,.5) 78%,#000 100%);
+}
+
+/* ==========================================================================
+   Fenêtres de détail (missions de stage, articles de veille) : même langage que le site
+   (bandeau de la couleur du domaine, bordures d'encre, boutons ronds bordés)
+   ========================================================================== */
+dialog.fiche{--c:var(--l-stages);background:var(--card);border:1px solid var(--line-strong);border-top:6px solid var(--c);border-radius:14px;box-shadow:0 30px 80px -24px rgba(0,0,0,.6)}
+dialog.fiche-veille{--c:var(--l-veille)}
+dialog.fiche::backdrop{background:rgba(7,10,17,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.fiche-icone{width:44px;height:44px;border-radius:10px;border:2px solid var(--ink);background:var(--station);color:var(--ink)}
+.fiche-cat{padding:.15rem .6rem;border-radius:7px;line-height:1.45;background:var(--c);color:var(--l-ink-e5);font-weight:800;font-size:.74rem;letter-spacing:0}
+.fiche-titre{font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
+.fiche-pratique{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px}
+.fiche-sous{color:var(--muted);font-weight:700;font-size:.74rem}
+.fiche-tags li{border-radius:10px;background:var(--card);border-color:var(--line-strong);color:var(--ink2);font-size:.78rem}
+.fiche-pied{border-top:1px solid var(--line-strong)}
+.fiche-nav button,.fiche-fermer{width:36px;height:36px;border-radius:10px;border:2px solid var(--ink);background:var(--station);color:var(--ink);transition:background .2s ease,color .2s ease}
+.fiche-nav button:hover,.fiche-fermer:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fiche-compte{font-weight:700;color:var(--ink2)}
+.fiche-lien{padding:.55rem 1rem;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:700;transition:background .2s ease,color .2s ease}
+.fiche-lien:hover{text-decoration:none;background:var(--station);color:var(--ink)}
+
+/* ==========================================================================
+   Animations reprises de l'ancienne version
+   ========================================================================== */
+/* nom dans l'en-tête : tant que la souris reste dessus, il flotte doucement de haut en bas */
+.logo:hover,.logo:focus-visible{animation:flotte 1.6s ease-in-out infinite}
+@keyframes flotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+/* flèche en bas de l'accueil : rebondit doucement, s'arrête au survol */
+.scroll-bas{animation:rebond-centre 2.2s ease-in-out infinite}
+.scroll-bas:hover,.scroll-bas:focus-visible{animation-play-state:paused}
+@keyframes rebond-centre{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+/* Titres de section : point de la couleur de la page, avec un léger halo (comme une LED allumée), à la place du carré */
+main section>h2::before,main .about>div>h2::before{width:.42em;height:.42em;border:0;border-radius:50%;background:var(--page-line,var(--ink));box-shadow:0 0 0 .14em color-mix(in srgb,var(--page-line,var(--ink)) 22%,transparent)}
+main section>h2,main .about>div>h2{gap:.75rem}
+
+/* Bouton « Voir mes projets » : texte centré à l'œil (le chevron prend moins de place à droite, texte descendu d'1 px) */
+.btn{padding-top:calc(.8rem + 1px);padding-bottom:calc(.8rem - 1px)}
+.btn-menu>.btn{padding-left:1.5rem;padding-right:1.15rem;gap:.45rem}
+/* Menu déroulant E5 / E6 : au survol, fond teinté de la couleur de l'épreuve, pastille qui avance, flèche qui apparaît */
+.btn-menu-list>a{--c:var(--l-e5);position:relative;transition:background .2s ease}
+.btn-menu-list>a:nth-child(2){--c:var(--l-e6)}
+.btn-menu-list .pastille{transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease}
+.btn-menu-list>a::after{content:"";width:8px;height:8px;margin-left:auto;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:translateX(-6px) rotate(45deg);opacity:0;transition:opacity .2s ease,transform .25s cubic-bezier(.16,1,.3,1)}
+.btn-menu-list>a:hover,.btn-menu-list>a:focus-visible{background:color-mix(in srgb,var(--c) 16%,transparent)}
+.btn-menu-list>a:hover .pastille,.btn-menu-list>a:focus-visible .pastille{transform:translateX(3px);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent)}
+.btn-menu-list>a:hover::after,.btn-menu-list>a:focus-visible::after{opacity:1;transform:translateX(0) rotate(45deg)}
+.btn-menu-list>a{padding-right:1rem}
+
+/* ==========================================================================
+   Compétences : cartes par thème, une ligne par compétence, preuves en
+   étiquettes de la couleur du domaine ; la légende sert de filtre
+   ========================================================================== */
+.comp-filtres{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2.4rem}
+.comp-filtres button{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:38px;padding:.35rem .9rem;border-radius:999px;
+  border:2px solid var(--line-strong);background:var(--card);color:var(--ink2);
+  font:700 .85rem "Point median","Overpass",sans-serif;cursor:pointer;transition:border-color .2s ease,background .2s ease,color .2s ease;
+}
+.comp-filtres button[style]::before{content:"";width:.7rem;height:.7rem;border-radius:50%;background:var(--c)}
+.comp-filtres button:hover{border-color:var(--ink);color:var(--ink)}
+.comp-filtres button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.comp-filtres button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* schéma de topologie (repris de l'ancien thème) : chaque thème est un nœud relié à ses compétences
+   par un bus vertical où circule un paquet ; chaque compétence est branchée sur le bus par un port */
+.comp-grille{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem}
+.comp-carte{position:relative;padding:1.8rem 1.9rem 1.7rem;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 18px 40px -30px rgba(0,0,0,.55)}
+.comp-carte h3{display:flex;align-items:center;gap:.9rem;margin:0 0 1.5rem;font-size:1.2rem;font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+.comp-carte h3::before{
+  content:"";flex:none;width:46px;height:46px;border-radius:12px;box-sizing:border-box;
+  border:2px solid var(--ink);background:var(--station);
+}
+.comp-carte h3{position:relative}
+.comp-carte h3::after{content:"";position:absolute;left:12px;top:50%;width:22px;height:22px;margin-top:-11px;background:var(--ink);-webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
+.comp-carte:nth-child(1){--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='18' height='7' rx='2'/%3E%3Crect x='3' y='14' width='18' height='7' rx='2'/%3E%3Cpath d='M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6'/%3E%3C/svg%3E")}
+.comp-carte:nth-child(2){--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='5' r='2.5'/%3E%3Ccircle cx='5' cy='19' r='2.5'/%3E%3Ccircle cx='19' cy='19' r='2.5'/%3E%3Cpath d='M12 7.5v4.5M12 12l-5.5 4.8M12 12l5.5 4.8'/%3E%3C/svg%3E")}
+.comp-carte:nth-child(3){--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='12' rx='2'/%3E%3Cpath d='M8 20h8M12 16v4'/%3E%3C/svg%3E")}
+.comp-carte:nth-child(4){--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E")}
+.comp-carte:nth-child(5){--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16'/%3E%3C/svg%3E")}
+
+.comp-carte ul{position:relative;z-index:0;list-style:none;margin:0 0 0 22px;padding:0 0 0 2.1rem}
+/* bus vertical qui part du nœud */
+.comp-carte ul::before{content:"";position:absolute;left:0;top:-1.5rem;bottom:0;width:2px;margin-left:-1px;border-radius:2px;background:color-mix(in srgb,var(--ink) 45%,transparent);transform-origin:top}
+/* paquet lumineux qui parcourt le bus, de la couleur du filtre choisi (« Tout » : couleur du texte, blanc en sombre) */
+.skills{--paquet:var(--ink)}
+.skills[data-filtre="stages"]{--paquet:var(--l-stages)}
+.skills[data-filtre="e5"]{--paquet:var(--l-e5)}
+.skills[data-filtre="e6"]{--paquet:var(--l-e6)}
+.skills[data-filtre="veille"]{--paquet:var(--l-veille)}
+.comp-carte ul::after{
+  content:"";position:absolute;z-index:1;left:-4px;top:-1.5rem;width:8px;height:8px;border-radius:50%;
+  background:var(--paquet);box-shadow:0 0 0 2px color-mix(in srgb,var(--paquet) 55%,transparent),0 0 12px 3px color-mix(in srgb,var(--paquet) 60%,transparent);
+  transition:background .3s ease,box-shadow .3s ease;
+  animation:paquet-bus 3.4s cubic-bezier(.5,0,.5,1) infinite;
+}
+.comp-carte:nth-child(even) ul::after{animation-delay:1.7s}
+.comp-carte:nth-child(3) ul::after{animation-delay:.9s}
+.comp-carte:nth-child(5) ul::after{animation-delay:2.5s}
+@keyframes paquet-bus{0%{top:-1.5rem;opacity:0}10%,80%{opacity:1}100%{top:calc(100% - 2.2rem);opacity:0}}
+
+.comp{
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);column-gap:2rem;row-gap:.6rem;align-items:center;margin:0 0 .8rem;padding:.85rem 1.1rem;
+  border:1px solid var(--line);border-radius:12px;background:var(--surface);
+  transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;
+}
+.comp:last-child{margin-bottom:0}
+/* branche horizontale terminée par un port */
+.comp::before{
+  content:"";position:absolute;left:-2.1rem;top:50%;width:calc(2.1rem + 5px);height:10px;margin-top:-5px;
+  background:radial-gradient(circle at calc(100% - 5px) 50%,var(--card) 0 2.5px,var(--ink) 3px 4.5px,transparent 5px),
+             linear-gradient(color-mix(in srgb,var(--ink) 45%,transparent),color-mix(in srgb,var(--ink) 45%,transparent)) 0 50%/calc(100% - 8px) 2px no-repeat;
+  transition:filter .25s ease;
+}
+/* le bus s'arrête à la dernière compétence */
+.comp:last-child::after{content:"";position:absolute;z-index:2;left:calc(-2.1rem - 2px);width:4px;top:calc(50% + 1px);bottom:-2rem;background:var(--card)}
+.comp:hover{transform:translateX(6px);border-color:color-mix(in srgb,var(--ink) 40%,transparent);box-shadow:0 10px 22px -16px rgba(0,0,0,.5)}
+.comp:hover::before{filter:none}
+.comp-nom{font-weight:700;font-size:1rem;line-height:1.4;color:var(--ink);text-align:left}
+
+/* le schéma se trace quand la section apparaît */
+.comp-carte.in ul::before{animation:trace-bus .9s cubic-bezier(.2,.7,.2,1) both}
+.comp-carte.in .comp{animation:branche-comp .55s cubic-bezier(.2,.7,.2,1) backwards}
+.comp-carte.in .comp:nth-child(2){animation-delay:.15s}
+.comp-carte.in .comp:nth-child(3){animation-delay:.3s}
+.comp-carte.in .comp:nth-child(1){animation-delay:.35s}
+@keyframes trace-bus{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes branche-comp{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+
+@media (max-width:760px){
+  .comp{grid-template-columns:minmax(0,1fr)}
+  .comp::before{top:1.35rem}
+  .comp:last-child::after{top:calc(1.35rem + 1px)}
+}
+@media (max-width:520px){
+  .comp-carte{padding:1.3rem 1.1rem 1.2rem}
+  .comp-carte ul{margin-left:18px;padding-left:1.4rem}
+  .comp-carte h3::before{width:38px;height:38px;border-radius:10px}
+  .comp-carte h3::after{left:10px;width:18px;height:18px;margin-top:-9px}
+  .comp-carte ul::before{top:-1.5rem}
+  .comp::before{left:-1.4rem;width:calc(1.4rem + 5px)}
+  .comp:last-child::after{left:calc(-1.4rem - 2px)}
+  .comp{padding:.75rem .85rem .85rem}
+}
+
+/* preuves : étiquette teintée, trait de la couleur du domaine à gauche */
+.skills .comp-preuves{display:flex;flex-wrap:wrap;gap:.5rem}
+.skills .comp-preuves a{
+  --c:var(--l-stages);
+  display:inline-flex;align-items:center;min-height:0;padding:.32rem .7rem .32rem .6rem;
+  border:0;border-left:3px solid var(--c);border-radius:4px 7px 7px 4px;
+  background:color-mix(in srgb,var(--c) 13%,transparent);color:var(--ink2);
+  font-size:.82rem;font-weight:600;line-height:1.35;text-decoration:none;box-shadow:none;
+  transition:background .15s ease,color .15s ease;
+}
+.skills .comp-preuves a::before{content:none}
+.skills .comp-preuves a[data-d="e5"]{--c:var(--l-e5)}
+.skills .comp-preuves a[data-d="e6"]{--c:var(--l-e6)}
+.skills .comp-preuves a[data-d="veille"]{--c:var(--l-veille)}
+.skills .comp-preuves a:hover{background:color-mix(in srgb,var(--c) 28%,transparent);color:var(--ink)}
+.skills .comp-preuves a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* filtre : on ne garde que les preuves du domaine choisi, et les compétences qui en ont */
+.skills[data-filtre="stages"] .comp-preuves a:not([data-d="stages"]),
+.skills[data-filtre="e5"] .comp-preuves a:not([data-d="e5"]),
+.skills[data-filtre="e6"] .comp-preuves a:not([data-d="e6"]),
+.skills[data-filtre="veille"] .comp-preuves a:not([data-d="veille"]){display:none}
+.skills[data-filtre="stages"] .comp:not(:has(a[data-d="stages"])),
+.skills[data-filtre="e5"] .comp:not(:has(a[data-d="e5"])),
+.skills[data-filtre="e6"] .comp:not(:has(a[data-d="e6"])),
+.skills[data-filtre="veille"] .comp:not(:has(a[data-d="veille"])),
+.skills[data-filtre="stages"] .comp-carte:not(:has(a[data-d="stages"])),
+.skills[data-filtre="e5"] .comp-carte:not(:has(a[data-d="e5"])),
+.skills[data-filtre="e6"] .comp-carte:not(:has(a[data-d="e6"])),
+.skills[data-filtre="veille"] .comp-carte:not(:has(a[data-d="veille"])){display:none}
+
+@media (max-width:640px){
+  .comp-filtres button{min-height:44px}
+  .skills .comp-preuves a{min-height:36px;font-size:.82rem}
+}
+
+/* fenêtre de détail : bandeau et étiquette de la couleur du domaine de la preuve */
+dialog.fiche[data-d="e5"]{--c:var(--l-e5)}
+dialog.fiche[data-d="e6"]{--c:var(--l-e6)}
+dialog.fiche[data-d="veille"]{--c:var(--l-veille)}
+
+/* impression / enregistrement en PDF : tous les blocs visibles, décors et boutons flottants masqués */
+@media print{
+  .reveal{opacity:1!important;transform:none!important}
+  .fond-circuit,.tranche,.sommaire,.to-top,.retour-flottant,.reseau{display:none!important}
+}
+
+/* veille : outils présentés avec une phrase sur leur fonctionnement */
+.outils-veille{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.75rem}
+.outils-veille li{align-items:flex-start;gap:.75rem;padding:.85rem 1rem .9rem .85rem}
+.outils-veille li>span{display:flex;flex-direction:column;gap:.25rem}
+.outils-veille small{font-weight:400;font-size:.9rem;line-height:1.45;color:var(--ink2)}
+
+/* ---------- Détail d'une mission de stage (bouton « Voir le détail ») ----------
+   Fermé : un simple bouton en bas de la carte. Ouvert : la carte passe en pleine largeur,
+   avec le contexte (et la difficulté) à gauche et les étapes numérotées à droite. */
+.detail-mission{margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line)}
+.projet .tags+.detail-mission{margin-top:.2rem}
+.detail-mission summary{
+  display:inline-flex;align-items:center;gap:.45rem;cursor:pointer;list-style:none;
+  font-weight:600;font-size:.92rem;color:var(--accent-text);border-radius:6px;
+}
+.detail-mission summary::-webkit-details-marker{display:none}
+.detail-mission summary{line-height:1}
+.detail-mission summary::after{
+  content:"";flex:none;width:1rem;height:1rem;background:currentColor;transition:transform .25s ease;
+  transform:translateY(-2.5px); /* centre optique : la police Overpass place le texte un peu haut */
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.detail-mission[open] summary::after{transform:translateY(-2.5px) rotate(180deg)}
+.detail-mission summary:hover{text-decoration:underline;text-underline-offset:3px}
+.detail-mission summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.detail-mission .fermer,.detail-mission[open] .ouvrir{display:none}
+.detail-mission[open] .fermer{display:inline}
+.projets>.projet:has(>.detail-mission[open]){flex-basis:100%}
+.detail-corps{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:1.2rem 2.2rem;margin-top:1.1rem;animation:detail-ouvre .35s cubic-bezier(.2,.7,.2,1)}
+@keyframes detail-ouvre{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.detail-titre{margin:0 0 .45rem!important;font:700 .72rem/1.4 "Point median","Overpass",sans-serif!important;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)!important}
+.detail-cote p:not(.detail-titre){margin:0 0 1.1rem;font-size:.94rem;line-height:1.55}
+.detail-cote p:last-child{margin-bottom:0}
+.detail-etapes{list-style:none;margin:0;padding:0;counter-reset:etape;display:grid;gap:.6rem}
+.detail-etapes li{
+  counter-increment:etape;position:relative;padding:.1rem 0 0 2.3rem;min-height:1.7rem;
+  font-size:.94rem;line-height:1.5;color:var(--ink2);
+}
+.detail-etapes li::before{
+  content:counter(etape);position:absolute;left:0;top:0;width:1.6rem;height:1.6rem;border-radius:50%;
+  display:grid;place-items:center;font:700 .78rem/1 "Point median","Overpass",sans-serif;
+  color:var(--ink);border:2px solid var(--page-line,var(--ink));
+}
+@media (max-width:700px){.detail-corps{grid-template-columns:minmax(0,1fr)}}
+@media print{.detail-mission summary{display:none}.detail-corps{animation:none}}
+/* captures dans le détail d'une mission : vignettes qui s'ouvrent dans la visionneuse */
+.detail-images{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.1rem}
+.detail-image{
+  display:flex;flex-direction:column;gap:.4rem;width:min(100%,15rem);padding:0;border:0;background:none;
+  font:inherit;text-align:left;cursor:zoom-in;color:var(--muted);
+}
+.detail-image img{width:100%;height:8.5rem;object-fit:cover;object-position:top center;border-radius:8px;border:1px solid var(--line);background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.detail-image:hover img{transform:translateY(-2px);box-shadow:0 10px 22px -14px rgba(0,0,0,.6)}
+.detail-image span{font-size:.82rem;line-height:1.4}
+.detail-image:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* fenêtre de détail d'une mission (ouverte par « Voir le détail ») */
+dialog.fiche.fiche-detail{width:min(900px,calc(100% - 2rem))}
+.fiche-detail .detail-resume{margin:0 0 .9rem;color:var(--muted);line-height:1.55}
+.fiche-detail .tags{margin:0 0 .4rem}
+.fiche-detail .detail-corps{margin:1.1rem 0 1.2rem;padding-top:1.1rem;border-top:1px solid var(--line)}
+/* visionneuse ouverte par-dessus une fenêtre : affichée dans la couche supérieure (popover) */
+.visionneuse[popover]{margin:0;padding:0;border:0;width:auto;height:auto;max-width:none;max-height:none;overflow:hidden;color:inherit}
+
+/* sous-barre des projets : pastilles E5 en jaune et E6 en vert, comme dans le reste du site */
+.onglets-groupe[data-titre="Épreuve E5"] .onglets-titre{background:var(--l-e5);color:var(--l-ink-e5);font-weight:800}
+.onglets-groupe[data-titre="Épreuve E6"] .onglets-titre{background:var(--l-e6);color:var(--l-ink-e5);font-weight:800}
+
+/* E6 réalisation 2 : plan d'adressage, une couleur par zone */
+table.plan-adressage th.zone{vertical-align:middle;font:800 .9rem "Point median","Overpass",sans-serif;color:var(--l-ink-e5);border-right:1px solid var(--line)}
+table.plan-adressage .z-admin{background:var(--l-stages)}
+table.plan-adressage .z-equipe{background:var(--l-e6)}
+table.plan-adressage .z-dmz,table.plan-adressage .z-fw{background:var(--l-veille)}
+table.plan-adressage td{font-family:inherit;font-size:.92rem;padding:.55rem .9rem}
+table.plan-adressage td:nth-last-child(3){font-weight:700;color:var(--ink);white-space:nowrap}
+table.plan-adressage td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.plan-notes{margin-top:1rem}
+/* brouillon : information à faire confirmer avant publication */
+.a-confirmer{display:inline-block;margin-left:.4rem;padding:0 .4rem;border-radius:5px;font-size:.75rem;font-weight:700;background:#fde68a;color:#7c2d12}
+
+/* E6 réalisation 2 : état de chaque machine dans le plan d'adressage */
+.etat{display:inline-block;padding:.1rem .5rem;border-radius:6px;font-size:.75rem;font-weight:700;white-space:nowrap;color:var(--muted);background:var(--surface);border:1px solid var(--line)}
+.etat-ok{color:var(--l-ink-e5);background:var(--l-e6);border-color:transparent}
+table.plan-adressage td small{font-weight:400;color:var(--muted)}
+.etape code{font-size:.88em;padding:.05rem .3rem;border-radius:4px;background:var(--surface)}
+
+/* fiche récap d'un projet : image de la carte en tête */
+.fiche-image{display:block;box-sizing:border-box;width:100%;height:9.5rem;margin:0 0 1rem;border-radius:10px;border:1px solid var(--line);object-fit:cover;object-position:top center;background:var(--surface)}
+.fiche-image-logo{object-fit:contain;padding:.6rem;background:#fff}
+
+/* outil entre parenthèses dans le titre d’un projet (distingue les deux projets StadiumCompany) */
+.titre-outil{font-weight:500;color:var(--muted);white-space:nowrap}
+
+/* pages E6 : compétences du bloc 2 (E6) puis du bloc 1 (E5, tableau de synthèse) */
+.comp-bloc{margin:1.6rem 0 .6rem;font-size:1.05rem;font-weight:700;color:var(--ink)}
+#competences h2+.comp-bloc{margin-top:.4rem}
+.comp-bloc-intro{margin:0 0 .8rem;color:var(--muted);font-size:.95rem}

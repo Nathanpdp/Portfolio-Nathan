@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Étude critique de SNCF Connect – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E5 – Audit ergonomique, technique, sécurité et RGPD du site SNCF Connect, avec Lighthouse, Wappalyzer et Nmap">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e5.html#projets">← Projets E5</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html">Portfolio</a><a href="projet-audit.html" aria-current="page">Étude critique</a><a href="projet-nathphone.html">NathPhone</a><a href="projet-acl.html">ACL IPv4</a><a href="projet-stadium.html">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html">Lumivia</a><a href="projet-infrastructure.html">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e5.html#projets">← Retour aux projets de l’épreuve E5</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E5 · Atelier 4</p>
+<h1>Étude critique du site SNCF Connect</h1>
+<p>En consultant junior, j’ai audité SNCF Connect sans aucune intrusion : ergonomie, performances, sécurité visible de l’extérieur et RGPD. Chaque constat repose sur une mesure et mène à une recommandation.</p>
+</div>
+
+<div class="capture-hero">
+<div class="barre" aria-hidden="true"><i></i><i></i><i></i><span>https://www.sncf-connect.com</span></div>
+<button class="capture" type="button" data-zoom="images/projets/audit-accueil.jpg" data-zoom-titre="Page d’accueil de SNCF Connect"><img src="images/projets/audit-accueil.jpg" width="800" height="609" alt="Page d’accueil de SNCF Connect : titre Trains, bus, transports en commun, onglets de recherche, champ de saisie d’une destination et bandeau sur l’ouverture des ventes"></button>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Date</dt><dd>20/11/2026</dd></div>
+<div><dt>Outils</dt><dd><ul class="outils-logos"><li><img src="images/outils/lighthouse.svg" alt="" width="24" height="24">Lighthouse</li><li><img src="images/outils/wappalyzer.svg" alt="" width="24" height="24">Wappalyzer</li><li><img src="images/outils/nmap.png" alt="" width="256" height="256">Nmap</li><li><img src="images/outils/curl.svg" alt="" width="24" height="24">curl</li><li><img src="images/outils/googlechrome.svg" alt="" width="24" height="24">Chrome DevTools</li></ul></dd></div>
+</dl>
+
+<section><h2>Résultats de l’audit</h2>
+<ol class="etapes">
+
+<li class="etape"><div class="etape-corps seul">
+<div><h3>Performances et accessibilité</h3>
+<div class="table-scroll">
+<table class="comparatif">
+<thead><tr><th scope="col">Lighthouse</th><th scope="col" class="montant">Ordinateur</th><th scope="col" class="montant">Mobile</th></tr></thead>
+<tbody>
+<tr><td>Performance</td><td class="montant"><span class="score score-moyen">84</span></td><td class="montant"><span class="score score-moyen">61</span></td></tr>
+<tr><td>Accessibilité</td><td class="montant"><span class="score score-bon">96</span></td><td class="montant"><span class="score score-bon">100</span></td></tr>
+<tr><td>Décalage de mise en page (CLS)</td><td class="montant"><span class="score score-mauvais">0,293</span></td><td class="montant"><span class="score score-bon">0</span></td></tr>
+<tr><td>Temps de blocage total</td><td class="montant"><span class="score score-bon">50 ms</span></td><td class="montant"><span class="score score-mauvais">1 470 ms</span></td></tr>
+</tbody>
+</table>
+</div>
+<p>Site accessible, mais lourd sur mobile (20,4 s avant d’être utilisable) et instable au chargement sur ordinateur. <a class="renvoi-annexe" href="#annexe-1">Voir annexes 1 et 2</a></p>
+</div>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Sécurité vue de l’extérieur</h3>
+<p>Nmap ne voit que 4 ports web tenus par Cloudflare : aucun service d’administration exposé. En revanche, la CSP est minimale et il manque Referrer-Policy et Permissions-Policy. <a class="renvoi-annexe" href="#annexe-3">Voir annexes 3 et 4</a></p>
+<ul class="tags"><li>Nmap</li><li>En-têtes HTTP</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/audit-nmap.png" data-zoom-titre="Résultat du scan Nmap"><img src="images/projets/audit-nmap.png" width="1109" height="622" alt="Terminal PowerShell affichant le résultat de Nmap : ports 80, 443, 8080 et 8443 ouverts avec le service Cloudflare http proxy, 96 ports filtrés" loading="lazy"></button><figcaption>Seuls des ports web derrière Cloudflare répondent</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Conformité RGPD</h3>
+<p>« Refuser tout » n’apparaît qu’au second niveau de la fenêtre de cookies, et des identifiants sont posés avant tout choix : un écart avec les règles de la CNIL.</p>
+<ul class="tags"><li>RGPD</li><li>Cookies</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/audit-cookies-parametres.jpg" data-zoom-titre="Second niveau de la gestion du consentement"><img src="images/projets/audit-cookies-parametres.jpg" width="800" height="600" alt="Gestion du consentement de SNCF Connect : finalités Statistique, Publicitaires, Personnalisation et Requis avec des boutons Refuser et Accepter, et les boutons Refuser tout, Accepter tout et Enregistrer" loading="lazy"></button><figcaption>Le second niveau, où « Refuser tout » apparaît enfin</figcaption></figure>
+</div></li>
+
+</ol>
+</section>
+
+<section><h2>Risques et recommandations</h2>
+<div class="table-scroll">
+<table class="comparatif risques">
+<thead><tr><th scope="col">Constat</th><th scope="col">Recommandation</th><th scope="col">Niveau</th></tr></thead>
+<tbody>
+<tr class="risque-haut"><td>Refus de cookies moins visible que l’acceptation</td><td>« Refuser tout » dès le premier niveau</td><td><span class="niveau">Élevé</span></td></tr>
+<tr class="risque-haut"><td>Mobile : 20,4 s avant interactivité</td><td>Alléger le JavaScript, différer la publicité</td><td><span class="niveau">Élevé</span></td></tr>
+<tr class="risque-moyen"><td>CLS de 0,293 sur ordinateur</td><td>Déclarer la taille des images</td><td><span class="niveau">Moyen</span></td></tr>
+<tr class="risque-moyen"><td>CSP limitée, 30 cookies tiers</td><td>CSP stricte et en-têtes manquants</td><td><span class="niveau">Moyen</span></td></tr>
+<tr class="risque-faible"><td>Ports exposés : web uniquement</td><td>Aucune action</td><td><span class="niveau">Faible</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section><h2>Conclusion</h2>
+<p class="bilan">Un site solide et peu exposé, dont les faiblesses viennent du mobile, des services tiers et du recueil du consentement. J’ai indiqué les limites de mes outils : le site bloque les requêtes automatiques et Nmap ne voit que Cloudflare.</p>
+</section>
+
+<section><h2>Compétences mobilisées</h2>
+<p class="comp-score"><span><strong>1</strong>compétence sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.3</span><span class="comp-titre">Développer la présence en ligne de l’organisation</span><span class="comp-via">Analyse de l’image et de la visibilité d’un site (ergonomie, accessibilité, SEO), au regard du cadre juridique (RGPD, règles de la CNIL)</span></li>
+</ul>
+</section>
+
+<section><h2>Annexes</h2>
+<p>Les rapports bruts des outils permettent de vérifier chaque mesure.</p>
+<div class="docs-projet"><a class="lien-rapport" id="annexe-1" href="documents/Etude%20critique/sncf-connect-desktop.html" target="_blank" rel="noopener">Annexe 1 · Rapport Lighthouse, ordinateur</a><a class="lien-rapport" id="annexe-2" href="documents/Etude%20critique/sncf-connect-mobile.html" target="_blank" rel="noopener">Annexe 2 · Rapport Lighthouse, mobile</a><a class="lien-rapport" id="annexe-3" href="documents/Etude%20critique/nmap-capture.png" target="_blank" rel="noopener">Annexe 3 · Capture du scan Nmap</a><a class="lien-rapport" id="annexe-4" href="documents/Etude%20critique/wappalyzer.txt" target="_blank" rel="noopener">Annexe 4 · Résultat Wappalyzer</a></div>
+</section>
+
+<section><h2>Sujet de l’atelier</h2>
+<div class="docs-projet"><a class="lien-rapport" href="documents/E5-E6/Cahier_des_charges_Atelier_4_Audit_site_web.pdf">Cahier des charges</a><a class="lien-rapport" href="documents/E5-E6/Guide_Etudiant_Atelier_4_Audit_Site_Web.pdf">Guide de l’atelier</a></div>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

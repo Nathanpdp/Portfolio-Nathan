@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Filtrage par ACL IPv4 – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E5 – Filtrage du trafic entre réseaux avec des ACL IPv4 standards, nommées et étendues sur des routeurs Cisco reliés en OSPF">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e5.html#projets">← Projets E5</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html">Portfolio</a><a href="projet-audit.html">Étude critique</a><a href="projet-nathphone.html">NathPhone</a><a href="projet-acl.html" aria-current="page">ACL IPv4</a><a href="projet-stadium.html">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html">Lumivia</a><a href="projet-infrastructure.html">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e5.html#projets">← Retour aux projets de l’épreuve E5</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E5 · 2e année</p>
+<h1>Filtrage et sécurisation d’un réseau par ACL IPv4</h1>
+<p>Sur une maquette Packet Tracer de trois routeurs en OSPF, j’ai posé des ACL pour ne laisser passer entre les réseaux que les échanges autorisés.</p>
+</div>
+
+<div class="capture-hero">
+<div class="barre" aria-hidden="true"><i></i><i></i><i></i><span>Cisco Packet Tracer</span></div>
+<button class="capture" type="button" data-zoom="images/projets/acl-topologie.png" data-zoom-titre="Topologie du TP"><img src="images/projets/acl-topologie.png" width="1867" height="840" alt="Topologie : R1 avec les réseaux 192.168.11.0 et 192.168.12.0, R2 au centre relié à Internet, R3 avec les réseaux 192.168.21.0 et 192.168.22.0, liaisons série en OSPF zone 0"></button>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Date</dt><dd>06/11/2026, travail individuel</dd></div>
+<div><dt>Technologies</dt><dd>ACL IPv4 (standards, nommées, étendues), OSPF, SSH</dd></div>
+<div><dt>Outil</dt><dd><ul class="outils-logos"><li><img src="images/cisco-logo.webp" alt="" width="600" height="600">Cisco Packet Tracer</li></ul></dd></div>
+</dl>
+
+<section><h2>Les étapes du projet</h2>
+<ol class="etapes">
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Réseau, OSPF et SSH</h3>
+<p>Adressage, routage OSPF en zone 0 avec route par défaut diffusée par R2, et administration de R1 réservée au SSH v2 avec un compte local.</p>
+<ul class="tags"><li>OSPF</li><li>SSH</li></ul></div>
+<figure class="figure"><p class="console-titre">R2 · voisins OSPF</p><pre class="console">R2#sh ip ospf neighbor
+Neighbor ID     State     Address     Interface
+192.168.22.254  <span class="ok">FULL</span>/ -  10.0.23.2   Serial0/3/1
+192.168.12.254  <span class="ok">FULL</span>/ -  10.0.12.1   Serial0/3/0</pre><figcaption>R2 voit R1 et R3 en OSPF</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>ACL standards, numérotée et nommée</h3>
+<p>Une ACL standard ne lit que la source : je l’ai placée au plus près de la destination. Le <code>deny any</code> explicite permet de compter les refus.</p>
+<ul class="tags"><li>ACL standard</li><li>Placement</li></ul></div>
+<figure class="figure"><p class="console-titre">R3 · access-list 1</p><pre class="console">Standard IP access list 1
+ 10 permit 192.168.11.0 0.0.0.255 <span class="ok">(14 matches)</span>
+ 20 permit 192.168.12.0 0.0.0.255 <span class="ok">(9 matches)</span>
+ 30 deny any <span class="refus">(3 matches)</span></pre><figcaption>Les compteurs prouvent le filtrage</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>ACL étendues</h3>
+<p>Filtrage sur source et destination, placé au plus près de la source pour que le trafic refusé ne traverse pas le réseau.</p>
+<ul class="tags"><li>ACL étendue</li></ul></div>
+<figure class="figure"><p class="console-titre">R1 · ACL 112</p><pre class="console">Extended IP access list 112
+ 10 permit ip 192.168.12.0 0.0.0.255
+              192.168.21.0 0.0.0.255 <span class="ok">(5 matches)</span>
+ 20 deny ip any any <span class="refus">(88 matches)</span></pre><figcaption>Une ACL par réseau source, en entrée de R1</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Accès web contrôlé</h3>
+<p>Le LAN 22 ne peut que naviguer et pinguer ; seules les réponses reviennent, grâce à <code>established</code>. Limite : ce mot-clé ne remplace pas un vrai pare-feu.</p>
+<ul class="tags"><li>HTTP et HTTPS</li><li>established</li></ul></div>
+<figure class="figure"><p class="console-titre">R3 · WEB_RETOUR</p><pre class="console">Extended IP access list WEB_RETOUR
+ 10 permit tcp any 192.168.22.0 0.0.0.255 established <span class="ok">(3 matches)</span>
+ 15 permit icmp any 192.168.22.0 0.0.0.255 echo-reply <span class="ok">(8 matches)</span>
+ 20 deny ip any any <span class="refus">(2 matches)</span></pre><figcaption>Seules les réponses passent</figcaption></figure>
+</div></li>
+
+</ol>
+</section>
+
+<section><h2>Bilan</h2>
+<p class="bilan">Je sais choisir le type d’ACL selon le besoin et la placer correctement, puis la vérifier par des tests et par <code>show access-lists</code>.</p>
+</section>
+
+<section><h2>Compétences mobilisées</h2>
+<p class="comp-score"><span><strong>2</strong>compétences sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.1</span><span class="comp-titre">Gérer le patrimoine informatique</span><span class="comp-via">Règles d’accès entre les réseaux, accès d’administration réservé au SSH avec un compte local</span></li>
+<li class="oui"><span class="comp-num">B1.5</span><span class="comp-titre">Mettre à disposition des utilisateurs un service informatique</span><span class="comp-via">Mise en service des ACL et vérification par des tests et par les compteurs</span></li>
+</ul>
+</section>
+
+<section><h2>Sujet du projet</h2>
+<div class="docs-projet"><a class="lien-rapport" href="documents/E5-E6/4-TP%20ACL%20IPV4.pdf">Cahier des charges</a></div>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -3,49 +3,202 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Épreuve E5 – Nathan Pondepeyre</title>
-<meta name="description" content="Portfolio BTS SIO option SISR de Nathan Pondepeyre, IRIS École supérieure d’informatique">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light dark">
+<title>Épreuve E5 du BTS SIO – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E5 de Nathan Pondepeyre : tableau de synthèse et réalisations en support et mise à disposition de services informatiques, en cours et en stage.">
 <link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
 </head>
 <body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="site"><div class="wrap">
-<a class="logo" href="index.html">Nathan Pondepeyre</a>
-<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Entreprise</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
 </div></header>
-<main><div class="wrap">
-<div class="page-title"><h1>Épreuve E5</h1><p>Les projets réalisés pour l’épreuve E5 pendant ma première et ma deuxième année.</p></div>
-<section><h2>Première année</h2><div class="projets">
-<article class="projet">
-<p class="meta">Année 1 – salle de TP / entreprise fictive</p>
-<h3>Titre du projet 1</h3>
-<p>Décris ici le besoin, la solution mise en place et ton rôle dans le projet.</p>
-<ul class="liste"><li>Réalisation 1</li><li>Réalisation 2</li><li>Résultat obtenu</li></ul>
-<ul class="tags"><li>Windows Server</li><li>Active Directory</li><li>VLAN</li></ul>
-<a class="lien" href="documents/mon-projet.pdf">Télécharger la documentation (PDF)</a>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="page-title"><h1>Épreuve E5</h1><p>Oral de 40 minutes sur le support et la mise à disposition de services informatiques. Le jury s’appuie sur le tableau de synthèse et sur les réalisations ci-dessous, faites en cours et en stage.</p></div>
+<section class="synthese-section" id="tableau-synthese"><h2>Tableau de synthèse</h2>
+<p class="synthese-intro">Mes réalisations et les compétences du bloc 1 qu’elles mobilisent.</p>
+<div class="synthese-actions">
+<a class="lien-rapport lien-xlsx" href="documents/BTS_SIO_Annexe_VI_5_Epreuve_E5_Tableau_de_synthese_2026.xlsx" download>Télécharger le tableau (Excel)</a>
+<button class="lien-rapport lien-zoom" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Ouvrir en plein écran</button>
+</div>
+<div class="synthese-doc">
+<button class="synthese-image" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles" aria-label="Agrandir le tableau de synthèse">
+<img src="images/tableau-de-synthese.png" width="1400" height="1980" alt="Tableau de synthèse des réalisations professionnelles, session 2026">
+<span class="synthese-loupe" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.6-4.6M11 8v6M8 11h6"/></svg>Agrandir</span>
+</button>
+</div>
+<div class="comp-explic">
+<h3>Les compétences du bloc 1</h3>
+<p>Une colonne verte du tableau par compétence, dans cet ordre :</p>
+<ul class="comp-liste">
+<li><span class="comp-code">B1.1</span><span class="comp-nom">Gérer le patrimoine informatique</span></li>
+<li><span class="comp-code">B1.2</span><span class="comp-nom">Répondre aux incidents et aux demandes d’assistance et d’évolution</span></li>
+<li><span class="comp-code">B1.3</span><span class="comp-nom">Développer la présence en ligne de l’organisation</span></li>
+<li><span class="comp-code">B1.4</span><span class="comp-nom">Travailler en mode projet</span></li>
+<li><span class="comp-code">B1.5</span><span class="comp-nom">Mettre à disposition des utilisateurs un service informatique</span></li>
+<li><span class="comp-code">B1.6</span><span class="comp-nom">Organiser son développement professionnel</span></li>
+</ul>
+</div>
+</section>
+<section id="projets"><h2>Première année</h2>
+<p class="synthese-intro">L’atelier 1, sur la société fictive Lumivia, compte pour les deux épreuves. Ses deux parties sont listées ici pour l’E5 et détaillées dans la page de l’E6.</p>
+<div class="projets projets-epreuve">
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/logo-lumivia.svg" width="640" height="320" alt="" loading="lazy"></span>
+<p class="meta">Atelier 1, partie 1 · Lumivia · détaillé en E6</p>
+<h3><a class="lien-carte" href="projet-lumivia.html#etat-des-lieux">Audit d’infrastructure informatique : Lumivia</a></h3>
+<p>En groupe, nous avons dressé l’état des lieux du système d’information de Lumivia et recueilli les besoins de ses utilisateurs.</p>
+<ul class="tags"><li>Audit</li><li>État des lieux</li><li>Inventaire</li><li>Analyse des besoins</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir l’état des lieux dans l’E6 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/Guide%20Projet-%20Atelier1.pdf">Cahier des charges</a></div>
 </article>
-<article class="projet">
-<p class="meta">Année 1 – contexte du projet</p>
-<h3>Titre du projet 2</h3>
-<p>Décris ici le besoin, la solution mise en place et ton rôle dans le projet.</p>
-<ul class="liste"><li>Réalisation 1</li><li>Réalisation 2</li><li>Résultat obtenu</li></ul>
-<ul class="tags"><li>Windows Server</li><li>Active Directory</li><li>VLAN</li></ul>
-<a class="lien" href="documents/mon-projet.pdf">Télécharger la documentation (PDF)</a>
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/logo-lumivia.svg" width="640" height="320" alt="" loading="lazy"></span>
+<p class="meta">Atelier 1, partie 2 · Lumivia · détaillé en E6</p>
+<h3><a class="lien-carte" href="projet-lumivia.html#mise-en-oeuvre">Environnement virtualisé : domaine Windows Server de Lumivia</a></h3>
+<p>Seul, j’ai mis en place un domaine Windows Server virtualisé (Active Directory, DNS, DHCP) et y ai intégré un poste client.</p>
+<ul class="tags"><li>Virtualisation</li><li>Windows Server</li><li>Active Directory</li><li>DNS / DHCP</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir la mise en œuvre dans l’E6 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/Atelier1-IRIS.pdf">Fiche de l’atelier</a></div>
 </article>
+
+<article class="projet projet-clic">
+<span class="projet-apercu" aria-hidden="true"><img src="images/sncf-logo.jpg" width="1000" height="667" alt="" loading="lazy" style="object-position:center"></span>
+<p class="meta">Atelier 4</p>
+<h3><a class="lien-carte" href="projet-audit.html">Étude critique d’un site web</a></h3>
+<p>Dans le rôle d’un consultant junior, j’ai audité le site SNCF Connect : ergonomie, performances, sécurité visible de l’extérieur et respect du RGPD. Chaque constat s’appuie sur un outil (Lighthouse, Wappalyzer, Nmap) et débouche sur une recommandation.</p>
+<ul class="tags"><li>Google Lighthouse</li><li>Wappalyzer</li><li>Nmap</li><li>RGPD</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/Cahier_des_charges_Atelier_4_Audit_site_web.pdf">Cahier des charges</a><a class="lien-rapport" href="documents/E5-E6/Guide_Etudiant_Atelier_4_Audit_Site_Web.pdf">Guide de l’atelier</a></div>
+</article>
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/prestashop_logo.png" width="1080" height="540" alt="" loading="lazy"></span>
+<p class="meta">Atelier 7</p>
+<h3><a class="lien-carte" href="projet-nathphone.html">Boutique en ligne PrestaShop</a></h3>
+<p>NathPhone est une boutique fictive de téléphones et d’accessoires que j’ai mise en ligne sur Ubuntu Server. J’ai installé le serveur, rempli un catalogue de plus de 20 produits, sécurisé le site (HTTPS, OWASP), vérifié le RGPD et tout testé.</p>
+<ul class="tags"><li>Ubuntu Server</li><li>PrestaShop</li><li>HTTPS</li><li>RGPD</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/Atelier7_PrestaShop_BTS_SIO.pdf">Cahier des charges</a></div>
+</article>
+
 </div></section>
-<section><h2>Deuxième année</h2><div class="projets">
-<article class="projet">
-<p class="meta">Année 2 – contexte du projet</p>
-<h3>Titre du projet 3</h3>
-<p>Décris ici le besoin, la solution mise en place et ton rôle dans le projet.</p>
-<ul class="liste"><li>Réalisation 1</li><li>Réalisation 2</li><li>Résultat obtenu</li></ul>
-<ul class="tags"><li>Windows Server</li><li>Active Directory</li><li>VLAN</li></ul>
-<a class="lien" href="documents/mon-projet.pdf">Télécharger la documentation (PDF)</a>
+<section id="deuxieme-annee"><h2>Deuxième année</h2>
+<p class="synthese-intro">L’environnement virtualisé de StadiumCompany, ma réalisation 2 de l’E6, compte aussi pour l’E5 : la mise à disposition des services et les dépannages sont listés ici et détaillés dans la page de l’E6. Il est distinct de l’atelier VLAN sous Packet Tracer, qui porte sur la même entreprise fictive.</p>
+<div class="projets projets-epreuve">
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/cisco-logo.webp" width="600" height="600" alt="" loading="lazy"></span>
+<p class="meta">06/11/2026</p>
+<h3><a class="lien-carte" href="projet-acl.html">Filtrage et sécurisation d’un réseau par ACL IPv4</a></h3>
+<p>Sur trois routeurs Cisco reliés en OSPF, j’ai configuré des ACL standards, nommées et étendues pour ne laisser passer entre les réseaux que les échanges autorisés, puis limité un réseau à la navigation web.</p>
+<ul class="tags"><li>Packet Tracer</li><li>ACL</li><li>OSPF</li><li>SSH</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/4-TP%20ACL%20IPV4.pdf">Cahier des charges</a></div>
 </article>
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/StadiumCompany.png" width="900" height="520" alt="" loading="lazy"></span>
+<p class="meta">05/10/2026</p>
+<h3><a class="lien-carte" href="projet-stadium.html">StadiumCompany : segmentation VLAN et interconnexion des sites <span class="titre-outil">(Cisco Packet Tracer)</span></a></h3>
+<p>En groupe, sous Cisco Packet Tracer, nous avons séparé les services d’un stade en sept VLAN, mis en place le routage inter-VLAN et VTP, puis relié le stade à sa billetterie et à son magasin par des routes statiques.</p>
+<ul class="tags"><li>Packet Tracer</li><li>VLAN</li><li>VTP</li><li>Routes statiques</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/StadiumCompany-2eme-annee.pdf">Cahier des charges</a></div>
+</article>
+
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/StadiumCompany.png" width="900" height="520" alt="" loading="lazy"></span>
+<p class="meta">Réalisation 2 de l’E6 · StadiumCompany · détaillé en E6</p>
+<h3><a class="lien-carte" href="projet-infrastructure.html#mise-en-oeuvre">StadiumCompany : mise à disposition des services réseau <span class="titre-outil">(VMware)</span></a></h3>
+<p>Sur une plateforme virtualisée, j’ai mis en service le domaine Active Directory, le DNS sur Ares et le DHCP sur Kratos, puis vérifié qu’un poste Windows 11 reçoit son adresse et s’enregistre dans le DNS.</p>
+<ul class="tags"><li>Active Directory</li><li>DNS</li><li>DHCP</li><li>pfSense</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir la mise en œuvre dans l’E6 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</article>
+
+<article class="projet projet-clic">
+<span class="projet-apercu apercu-logo" aria-hidden="true"><img src="images/StadiumCompany.png" width="900" height="520" alt="" loading="lazy"></span>
+<p class="meta">Réalisation 2 de l’E6 · StadiumCompany · détaillé en E6</p>
+<h3><a class="lien-carte" href="projet-infrastructure.html#depannage">StadiumCompany : résolution d’incidents sur la plateforme <span class="titre-outil">(VMware)</span></a></h3>
+<p>Trois pannes diagnostiquées puis corrigées : la réplication Active Directory bloquée, le DNS filtré par une règle de pare-feu inversée et un enregistrement DNS resté sur une ancienne adresse.</p>
+<ul class="tags"><li>repadmin</li><li>Journal pfSense</li><li>DNS</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir les dépannages dans l’E6 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+</article>
+
+</div></section>
+<section id="deux-annees"><h2>Sur les deux années</h2><div class="projets projets-epreuve">
+
+<article class="projet projet-clic">
+<span class="projet-apercu" aria-hidden="true"><img src="images/projets/portfolio-accueil-sombre.png" width="1440" height="900" alt="" loading="lazy"></span>
+<p class="meta">Atelier 2 · 2026 – 2027</p>
+<h3><a class="lien-carte" href="projet-portfolio.html">Création de mon portfolio professionnel</a></h3>
+<p>Le site que vous lisez, écrit en HTML, CSS et JavaScript sans CMS, avec l’aide d’une IA. Il a un thème clair et un thème sombre, une page par stage, des compétences qui renvoient à leurs preuves et une page par épreuve.</p>
+<ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Identité numérique</li></ul>
+<div class="projet-docs"><span class="projet-voir">Voir le détail du projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="lien-rapport" href="documents/E5-E6/Atelier_2_Portfolio_BTS_SIO.pdf">Cahier des charges</a></div>
+</article>
+
+<article class="projet">
+<span class="projet-apercu" aria-hidden="true"><img src="images/logo-veille.svg?v=4" width="1600" height="700" alt="" loading="lazy"></span>
+<p class="meta">Développement professionnel</p>
+<h3>Veille technologique et certification</h3>
+<p>Je suis l’évolution du phishing depuis l’arrivée des IA génératives grâce à une veille organisée, et j’ai obtenu la certification Cisco Networking Academy « Introduction to Cybersecurity ».</p>
+<ul class="liste">
+<li>Sources officielles (CERT-FR, Cybermalveillance.gouv.fr), flux RSS sur Feedly et synthèse de chaque article</li>
+<li>Certification Cisco obtenue le 11/02/2026 : menaces, attaques et protection des organisations</li>
+</ul>
+<ul class="tags"><li>Veille</li><li>Cisco NetAcad</li><li>Cybersécurité</li></ul>
+<div class="projet-docs"><a class="lien-rapport lien-page" href="veille.html">Ma veille</a><a class="lien-rapport" href="documents/Certificat.pdf">Certificat Cisco</a></div>
+</article>
+
+</div></section>
+<section id="milieu-pro"><h2>En milieu professionnel</h2>
+<p class="synthese-intro">Stage de 1re année chez Econocom, au château de Versailles (juin–juillet 2026).</p>
+<div class="projets projets-pro">
+
+<article class="projet projet-clic">
+<p class="meta">Stage 1re année · Econocom</p>
+<h3><a class="lien-carte" href="stage1.html#projet-masterisation-de-postes">Masterisation de postes (MECM, PXE) via tickets Simply Desk</a></h3>
+<p>Préparation de postes neufs ou réutilisés à chaque ticket : démarrage réseau, séquence de tâches MECM, intégration au domaine et logiciels.</p>
+<ul class="tags tags-comp"><li>B1.1 Patrimoine</li><li>B1.2 Assistance</li><li>B1.5 Mise à disposition</li></ul>
+<div class="projet-docs"><a class="projet-voir lien-direct" href="stage1.html#projet-masterisation-de-postes">Voir la mission dans le stage <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</article>
+
+<article class="projet projet-clic">
+<p class="meta">Stage 1re année · Econocom</p>
+<h3><a class="lien-carte" href="stage1.html#projet-installation-et-remplacement-de-postes">Installation et remplacement de postes de travail</a></h3>
+<p>Remplacement de postes masterisés avec les techniciens : branchement, vérification du réseau et de la session, clôture de l’intervention.</p>
+<ul class="tags tags-comp"><li>B1.2 Assistance</li><li>B1.5 Mise à disposition</li></ul>
+<div class="projet-docs"><a class="projet-voir lien-direct" href="stage1.html#projet-installation-et-remplacement-de-postes">Voir la mission dans le stage <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</article>
+
+<article class="projet projet-clic">
+<p class="meta">Stage 1re année · Econocom</p>
+<h3><a class="lien-carte" href="stage1.html#projet-rotation-des-bandes-de-sauvegarde">Rotation hebdomadaire des bandes de sauvegarde</a></h3>
+<p>Remplacement des bandes en salle serveur avec les administrateurs réseau, étiquetage selon le serveur d’origine et archivage.</p>
+<ul class="tags tags-comp"><li>B1.1 Patrimoine</li></ul>
+<div class="projet-docs"><a class="projet-voir lien-direct" href="stage1.html#projet-rotation-des-bandes-de-sauvegarde">Voir la mission dans le stage <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</article>
+
+<article class="projet projet-clic">
+<p class="meta">Stage 1re année · Econocom</p>
+<h3><a class="lien-carte" href="stage1.html#projet-support-technique-vpn-et-double-authentification">Support technique</a></h3>
+<p>Traitement de tickets d’assistance, surtout sur le VPN FortiClient, et configuration de la double authentification avec Microsoft Authenticator.</p>
+<ul class="tags tags-comp"><li>B1.2 Assistance</li><li>B1.5 Mise à disposition</li></ul>
+<div class="projet-docs"><a class="projet-voir lien-direct" href="stage1.html#projet-support-technique-vpn-et-double-authentification">Voir la mission dans le stage <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</article>
+
+<article class="projet projet-clic">
+<p class="meta">Stage 1re année · Econocom</p>
+<h3><a class="lien-carte" href="stage1.html#projet-inventaire-du-parc-dans-simply-desk">Inventaire du parc informatique dans Simply Desk</a></h3>
+<p>Enregistrement des ordinateurs livrés, avec une fiche par équipement (série, immobilisation, nom, modèle) pour suivre leur cycle de vie.</p>
+<ul class="tags tags-comp"><li>B1.1 Patrimoine</li></ul>
+<div class="projet-docs"><a class="projet-voir lien-direct" href="stage1.html#projet-inventaire-du-parc-dans-simply-desk">Voir la mission dans le stage <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</article>
+
 </div></section>
 </div></main>
-<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="index.html#contact">Me contacter</a></div></footer>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
 </body>
 </html>

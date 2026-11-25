@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Modernisation du SI de Lumivia – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E6 – Modernisation du système d’information de Lumivia : étude, proposition et mise en œuvre d’un domaine Windows Server (AD DS, DNS, DHCP)">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html">Épreuve E5</a></li><li><a href="e6.html" aria-current="page">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e6.html#projets">← Projets E6</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html">Portfolio</a><a href="projet-audit.html">Étude critique</a><a href="projet-nathphone.html">NathPhone</a><a href="projet-acl.html">ACL IPv4</a><a href="projet-stadium.html">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html" aria-current="page">Lumivia</a><a href="projet-infrastructure.html">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e6.html#projets">← Retour aux projets de l’épreuve E6</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E6 · Réalisation 1 · Atelier 1</p>
+<h1>Modernisation du système d’information de Lumivia</h1>
+<p>Une petite société audiovisuelle travaille encore sous Windows XP, sans serveur ni Wi-Fi. En groupe, nous avons conçu sa nouvelle infrastructure ; seul, j’ai mis en service le domaine Windows Server.</p>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Période</dt><dd>1re année de BTS, 2025–2026</dd></div>
+<div><dt>Technologies</dt><dd>Windows Server, AD DS, DNS, DHCP, VLAN, VPN</dd></div>
+<div><dt>Outil</dt><dd><ul class="outils-logos"><li><img src="images/outils/vmware.svg" alt="" width="24" height="24">VMware Workstation</li></ul></dd></div>
+</dl>
+
+<section id="etat-des-lieux"><h2>Partie 1 · Étude et proposition</h2>
+<div class="partie-titre"><span class="badge">En groupe</span><p>Besoins, architecture et budget.</p></div>
+<div class="etape-corps">
+<div>
+<ul class="liste">
+<li>Un VLAN par service : <b>10</b> Administratif, <b>20</b> Audiovisuel, <b>30</b> Paie</li>
+<li>Trois groupes Active Directory avec leurs droits : Secrétaire, Monteur de film, Salarié</li>
+<li>Switch Gigabit, routeur pare-feu, Wi-Fi WPA2/WPA3, serveur de fichiers et VPN NordLayer pour l’accès à distance</li>
+<li>Postes choisis après comparatif, budget total estimé à <strong>9&nbsp;439&nbsp;€</strong></li>
+</ul>
+</div>
+<figure class="figure">
+<button class="capture" type="button" data-zoom="images/projets/lumivia1-01.png" data-zoom-titre="Schéma réseau proposé pour Lumivia"><img src="images/projets/lumivia1-01.png" width="913" height="492" alt="Schéma réseau : deux PC fixes, routeur avec pare-feu, switch, point d’accès Wi-Fi, six portables et une imprimante" loading="lazy"></button>
+<figcaption>Schéma réseau de la solution proposée</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="mise-en-oeuvre"><h2>Partie 2 · Mise en œuvre sur Windows Server</h2>
+<div class="partie-titre"><span class="badge">En individuel</span><p>Un serveur Windows Server et un client Windows 10 en machines virtuelles.</p></div>
+<ol class="etapes">
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Rôles et domaine</h3>
+<p>Ajout des rôles AD DS, DNS et DHCP, création de la forêt et du domaine <strong>Iris.net</strong>, puis de trois comptes utilisateurs.</p>
+<ul class="tags"><li>AD DS</li><li>DNS</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/lumivia2-01.png" data-zoom-titre="Ajout des rôles et fonctionnalités"><img src="images/projets/lumivia2-01.png" width="1020" height="766" alt="Gestionnaire de serveur Windows, option Ajouter des rôles et des fonctionnalités entourée" loading="lazy"></button><figcaption>Ajout des rôles depuis le Gestionnaire de serveur</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Client joint au domaine</h3>
+<p>Réseau virtuel dédié, ping validé, puis jonction du client à Iris.net et ouverture de session avec un compte du domaine.</p>
+<ul class="tags"><li>Jonction au domaine</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/lumivia2-06.png" data-zoom-titre="Session ouverte avec un compte du domaine"><img src="images/projets/lumivia2-06.png" width="1018" height="766" alt="Menu Démarrer de Windows 10 indiquant l’utilisateur IRIS\User connecté" loading="lazy"></button><figcaption>Session ouverte sur le domaine</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>DHCP</h3>
+<p>Étendue de 192.168.62.5 à 192.168.62.10 : le client en adressage automatique reçoit <strong>192.168.62.5</strong>.</p>
+<ul class="tags"><li>DHCP</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/lumivia2-09.png" data-zoom-titre="Le client reçoit 192.168.62.5"><img src="images/projets/lumivia2-09.png" width="1016" height="776" alt="Résultat ipconfig : adresse IPv4 192.168.62.5, suffixe DNS Iris.net" loading="lazy"></button><figcaption>Le client reçoit 192.168.62.5</figcaption></figure>
+</div></li>
+
+</ol>
+</section>
+
+<section id="contribution"><h2>Ma contribution personnelle</h2>
+<div class="resume-bloc contribution">
+<div class="resume-col">
+<h3>Travail collectif</h3>
+<p>Partie 1, menée en groupe.</p>
+<ul class="resume-liste"><li>Recueil des besoins des utilisateurs</li><li>Choix du matériel et des postes après comparatif</li><li>Plan des VLAN et des groupes Active Directory</li><li>Schéma réseau et budget de 9&nbsp;439&nbsp;€</li></ul>
+</div>
+<div class="resume-col">
+<h3>Mes configurations</h3>
+<p>Partie 2, réalisée seul sur machines virtuelles.</p>
+<ul class="resume-liste"><li>Rôles AD DS, DNS et DHCP sur Windows Server</li><li>Forêt et domaine Iris.net, trois comptes utilisateurs</li><li>Réseau virtuel dédié au serveur et au client</li><li>Jonction du client Windows 10 au domaine</li><li>Étendue DHCP de 192.168.62.5 à 192.168.62.10</li></ul>
+</div>
+<div class="resume-col">
+<h3>Mes vérifications</h3>
+<p>Contrôles réalisés seul pendant la partie 2.</p>
+<ul class="resume-liste"><li>Ping validé sur le réseau virtuel</li><li>Session ouverte avec un compte du domaine</li><li>Adresse 192.168.62.5 reçue par le client, contrôlée avec ipconfig</li></ul>
+</div>
+</div>
+</section>
+
+<section id="competences"><h2>Compétences mobilisées</h2>
+<h3 class="comp-bloc">Épreuve E6 · bloc 2 (option SISR)</h3>
+<p class="comp-score"><span><strong>2</strong>compétences sur 3 du bloc 2 (option SISR)</span><span class="comp-jauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B2.1</span><span class="comp-titre">Concevoir une solution d’infrastructure réseau</span><span class="comp-via">Analyse des besoins, comparatifs, VLAN, groupes AD, schéma réseau et budget</span></li>
+<li class="oui"><span class="comp-num">B2.2</span><span class="comp-titre">Installer, tester et déployer une solution d’infrastructure réseau</span><span class="comp-via">Domaine Iris.net avec AD DS, DNS et DHCP, jonction du client et tests</span></li>
+<li class="non"><span class="comp-num">B2.3</span><span class="comp-titre">Exploiter, dépanner et superviser une solution d’infrastructure réseau</span><span class="comp-via">Non mobilisée dans ce projet</span></li>
+</ul>
+<h3 class="comp-bloc">Épreuve E5 · bloc 1</h3>
+<p class="comp-bloc-intro">Les deux parties de l’atelier comptent aussi pour l’E5 : voir les lignes « Audit d’infrastructure informatique » et « Environnement virtualisé » du tableau de synthèse.</p>
+<p class="comp-score"><span><strong>2</strong>compétences sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.1</span><span class="comp-titre">Gérer le patrimoine informatique</span><span class="comp-via">État des lieux du parc existant (partie 1), puis comptes du domaine Iris.net (partie 2)</span></li>
+<li class="oui"><span class="comp-num">B1.5</span><span class="comp-titre">Mettre à disposition des utilisateurs un service informatique</span><span class="comp-via">Déploiement du domaine, du DNS et du DHCP, testé avec un client joint au domaine</span></li>
+</ul>
+</section>
+
+<section><h2>Bilan</h2>
+<p class="bilan">Je suis passé de la proposition à la mise en œuvre : domaine, comptes, poste client joint et distribution automatique des adresses.</p>
+</section>
+
+<section><h2>Sujet de l’atelier</h2>
+<div class="docs-projet"><a class="lien-rapport" href="documents/E5-E6/Contexte%20Atelier1.pdf">Contexte de l’atelier</a><a class="lien-rapport" href="documents/E5-E6/Atelier1-IRIS.pdf">Cahier des charges</a></div>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+Static site generator
+Next.js
+(16.4.1)
+Ecommerce
+Cart Functionality
+CMS
+Drupal
+(10)
+Issue trackers
+Instana
+Development
+Emotion
+Programming languages
+PHP
+Java
+Web frameworks
+Next.js
+(16.4.1)
+UI frameworks
+Bootstrap
+Material UI
+Tailwind CSS
+Reverse proxies
+Envoy
+Web servers
+Next.js
+(16.4.1)
+PaaS
+Amazon Web Services
+JavaScript frameworks
+React
+Next.js
+(16.4.1)
+Emotion
+Prototype
+Tag managers
+Tealium
+Google Tag Manager
+Segmentation
+Tealium AudienceStream
+Security
+DataDome
+reCAPTCHA
+Cloudflare Bot Management
+Retargeting
+RTB House
+RUM
+Datadog
+Instana
+Performance
+Priority Hints
+Marketing automation
+Batch
+JavaScript libraries
+jQuery
+(3.7.1)
+Framer Motion
+Preact
+core-js
+(3.42.0)
+Customer data platform
+Tealium
+Cookie compliance
+Didomi
+CDN
+Cloudflare
+Analytics
+Google Analytics
+(GA4)
+Datadog
+Instana
+Google Ads Conversion Tracking
+Advertising
+DoubleClick Floodlight
+Google Publisher Tag
+Microsoft Advertising
+Google Ads
+AppNexus
+A/B Testing
+AB Tasty
+Miscellaneous
+Open Graph
+HTTP/2

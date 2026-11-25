@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>VLAN et interconnexion de StadiumCompany – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E5 – Segmentation par VLAN, routage inter-VLAN, VTP et interconnexion de trois sites sous Cisco Packet Tracer pour StadiumCompany">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e5.html#projets">← Projets E5</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html">Portfolio</a><a href="projet-audit.html">Étude critique</a><a href="projet-nathphone.html">NathPhone</a><a href="projet-acl.html">ACL IPv4</a><a href="projet-stadium.html" aria-current="page">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html">Lumivia</a><a href="projet-infrastructure.html">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e5.html#projets">← Retour aux projets de l’épreuve E5</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E5 · 2e année</p>
+<h1>Segmentation VLAN et interconnexion des sites de StadiumCompany</h1>
+<p>En groupe de trois, sous Packet Tracer : séparer les services d’un stade par VLAN et le relier à sa billetterie et à son magasin.</p>
+</div>
+
+<div class="capture-hero">
+<div class="barre" aria-hidden="true"><i></i><i></i><i></i><span>Cisco Packet Tracer</span></div>
+<button class="capture" type="button" data-zoom="images/projets/stadium-schema.png" data-zoom-titre="Schéma de la maquette StadiumCompany"><img src="images/projets/stadium-schema.png" width="909" height="860" alt="Schéma Packet Tracer : le routeur R-Stade et ses deux commutateurs avec les VLAN du stade, relié au routeur R-FAI, lui-même relié aux routeurs SD-Magasin et SD-Billetterie"></button>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Date</dt><dd>05/10/2026, groupe de trois</dd></div>
+<div><dt>Technologies</dt><dd>VLAN, VTP, routage inter-VLAN, routes statiques</dd></div>
+<div><dt>Outil</dt><dd><ul class="outils-logos"><li><img src="images/cisco-logo.webp" alt="" width="600" height="600">Cisco Packet Tracer</li></ul></dd></div>
+</dl>
+
+<section><h2>Les étapes du projet</h2>
+<ol class="etapes">
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Sept VLAN, propagés par VTP</h3>
+<p>Un VLAN et un sous-réseau 172.20.x.0/24 par service (administration, équipe, Wi-Fi, fournisseurs, restaurant, caméras, VIP-Presse). VTP diffuse les VLAN du commutateur serveur au commutateur client.</p>
+<ul class="tags"><li>VLAN</li><li>VTP</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/stadium-vlan.png" data-zoom-titre="Vérification des VLAN"><img src="images/projets/stadium-vlan.png" width="698" height="408" alt="Résultat de show vlan sur Switch2 : VLAN 10 Administration, 20 Equipe, 30 WIFI, 40 Fournisseur, 50 Restaurant, 100 Camera-IP et 200 VIP-Presse avec leurs ports" loading="lazy"></button><figcaption>Les sept VLAN et leurs ports avec <code>show vlan</code></figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Routage inter-VLAN</h3>
+<p>R-Stade route entre les VLAN avec une sous-interface par VLAN, et envoie le reste vers R-FAI par une route par défaut.</p>
+<ul class="tags"><li>Sous-interfaces</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/stadium-route-stade.png" data-zoom-titre="Table de routage de R-Stade"><img src="images/projets/stadium-route-stade.png" width="697" height="707" alt="show ip route sur R-Stade : réseaux 172.20.0.0 à 172.20.6.0 connectés sur les sous-interfaces FastEthernet0/0.x et route par défaut via 10.0.0.2" loading="lazy"></button><figcaption>La table de routage de R-Stade</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Interconnexion des trois sites</h3>
+<p>Liaisons série entre routeurs et routes statiques : R-FAI connaît les réseaux du stade, du magasin et de la billetterie.</p>
+<ul class="tags"><li>Routes statiques</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/stadium-route-fai.png" data-zoom-titre="Table de routage de R-FAI"><img src="images/projets/stadium-route-fai.png" width="699" height="709" alt="show ip route sur R-FAI : routes statiques vers 172.20.0.0 à 172.20.6.0 via 10.0.0.1, vers 192.168.0.0 via 200.200.0.2 et vers 192.168.1.0 via 200.200.0.6" loading="lazy"></button><figcaption>Les routes statiques de R-FAI</figcaption></figure>
+</div></li>
+
+</ol>
+</section>
+
+<section><h2>Bilan</h2>
+<p class="bilan">Chaque partie a été vérifiée par <code>show vlan</code>, <code>show vtp status</code> et <code>show ip route</code>.</p>
+</section>
+
+<section><h2>Compétences mobilisées</h2>
+<p class="comp-score"><span><strong>2</strong>compétences sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i class="on"></i><i></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.1</span><span class="comp-titre">Gérer le patrimoine informatique</span><span class="comp-via">Plan d’adressage, schéma du réseau et documentation des VLAN et des tables de routage</span></li>
+<li class="oui"><span class="comp-num">B1.5</span><span class="comp-titre">Mettre à disposition des utilisateurs un service informatique</span><span class="comp-via">Mise en service du réseau segmenté et de l’interconnexion des sites, vérifiées par les commandes show</span></li>
+</ul>
+</section>
+
+<section><h2>Sujet du projet</h2>
+<div class="docs-projet"><a class="lien-rapport" href="documents/E5-E6/StadiumCompany-2eme-annee.pdf">Cahier des charges</a></div>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

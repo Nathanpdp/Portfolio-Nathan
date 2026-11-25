@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Boutique PrestaShop NathPhone – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E5 – NathPhone, boutique en ligne PrestaShop déployée et sécurisée sur Ubuntu Server">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html" aria-current="page">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e5.html#projets">← Projets E5</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html">Portfolio</a><a href="projet-audit.html">Étude critique</a><a href="projet-nathphone.html" aria-current="page">NathPhone</a><a href="projet-acl.html">ACL IPv4</a><a href="projet-stadium.html">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html">Lumivia</a><a href="projet-infrastructure.html">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e5.html#projets">← Retour aux projets de l’épreuve E5</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E5 · Atelier 7</p>
+<h1>NathPhone, ma boutique en ligne PrestaShop</h1>
+<p>Une boutique fictive de téléphones et d’accessoires, montée de A à Z sur Ubuntu Server : serveur web, boutique, sécurité, RGPD et tests.</p>
+</div>
+
+<div class="capture-hero">
+<div class="barre" aria-hidden="true"><i></i><i></i><i></i><span>https://boutique.local</span></div>
+<button class="capture" type="button" data-zoom="images/projets/presta-04.png" data-zoom-titre="Page d’accueil de NathPhone"><img src="images/projets/presta-04.png" width="1387" height="723" alt="Page d’accueil de la boutique NathPhone : logo, menu Téléphones, Coques, Vitres de protection et bannière sur les verres de protection"></button>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Période</dt><dd>1re année de BTS, 2026</dd></div>
+<div><dt>Technologies</dt><dd>Ubuntu Server, Apache, PHP 8.1, MySQL, PrestaShop 8.2.1</dd></div>
+<div><dt>Outils</dt><dd><ul class="outils-logos"><li><img src="images/outils/phpmyadmin.svg" alt="" width="24" height="24">phpMyAdmin</li><li><img src="images/outils/owasp.svg" alt="" width="24" height="24">OWASP ZAP</li></ul></dd></div>
+</dl>
+
+<section><h2>Les étapes du projet</h2>
+<ol class="etapes">
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Serveur LAMP et PrestaShop</h3>
+<p>Apache, PHP et MySQL sécurisé avec une base et un utilisateur dédiés, hôte virtuel <code>boutique.local</code>, dossier d’installation supprimé.</p>
+<ul class="tags"><li>Apache</li><li>MySQL</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/presta-02.png" data-zoom-titre="Base de données dans phpMyAdmin"><img src="images/projets/presta-02.png" width="1309" height="724" alt="phpMyAdmin affichant les tables de la base prestashop_boutique" loading="lazy"></button><figcaption>Les tables de la boutique dans phpMyAdmin</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Boutique et catalogue</h3>
+<p>Plus de 20 produits avec variantes, transporteurs, paiement de démonstration, code promo, Google Analytics et référencement.</p>
+<ul class="tags"><li>Back-office</li><li>SEO</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/presta-08.png" data-zoom-titre="Fiche produit avec variantes de couleur"><img src="images/projets/presta-08.png" width="1385" height="729" alt="Fiche produit Apple iPhone 17e à 720 euros avec choix de couleur et plusieurs photos" loading="lazy"></button><figcaption>Une fiche produit avec ses variantes</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Sécurisation</h3>
+<p>HTTPS forcé, en-têtes de sécurité, <code>.htaccess</code> renforcé, PHP et MySQL durcis, dossier d’administration renommé, puis analyse OWASP ZAP et corrections.</p>
+<ul class="tags"><li>HTTPS</li><li>OWASP ZAP</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/presta-11.png" data-zoom-titre="La boutique servie en HTTPS"><img src="images/projets/presta-11.png" width="1571" height="66" alt="Barre d’adresse : https://boutique.local" loading="lazy"></button><figcaption>La boutique servie en HTTPS (certificat auto-signé)</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>RGPD</h3>
+<p>Mentions légales, politique de confidentialité, module de consentement, registre des traitements et page d’exercice des droits.</p>
+<ul class="tags"><li>RGPD</li><li>LCEN</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/presta-13.png" data-zoom-titre="Configuration du module RGPD"><img src="images/projets/presta-13.png" width="1576" height="937" alt="Module RGPD officiel : cases de consentement activées sur le formulaire de création de compte" loading="lazy"></button><figcaption>Le module RGPD et ses consentements</figcaption></figure>
+</div></li>
+
+<li class="etape"><div class="etape-corps">
+<div><h3>Tests finaux</h3>
+<p>Parcours client complet jusqu’à la commande, puis contrôle de chaque protection.</p>
+<ul class="tags"><li>Recette</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/presta-15.png" data-zoom-titre="Commande confirmée"><img src="images/projets/presta-15.png" width="1385" height="720" alt="Confirmation de commande d’un Apple iPhone 17e, total 734,28 euros" loading="lazy"></button><figcaption>Une commande test confirmée</figcaption></figure>
+</div></li>
+
+</ol>
+</section>
+
+<section><h2>Compétences mobilisées</h2>
+<p class="comp-score"><span><strong>3</strong>compétences sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i></i><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.3</span><span class="comp-titre">Développer la présence en ligne de l’organisation</span><span class="comp-via">Boutique en ligne, référencement, Google Analytics et pages légales</span></li>
+<li class="oui"><span class="comp-num">B1.4</span><span class="comp-titre">Travailler en mode projet</span><span class="comp-via">Projet mené en 8 étapes, du serveur à la recette finale</span></li>
+<li class="oui"><span class="comp-num">B1.5</span><span class="comp-titre">Mettre à disposition des utilisateurs un service informatique</span><span class="comp-via">Déploiement du service web, sécurisation et tests de bout en bout</span></li>
+</ul>
+</section>
+
+<section><h2>Sujet de l’atelier</h2>
+<div class="docs-projet"><a class="lien-rapport" href="documents/E5-E6/Atelier7_PrestaShop_BTS_SIO.pdf">Cahier des charges</a></div>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

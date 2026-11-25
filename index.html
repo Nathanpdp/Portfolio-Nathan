@@ -3,34 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Accueil – Nathan Pondepeyre</title>
-<meta name="description" content="Portfolio BTS SIO option SISR de Nathan Pondepeyre, IRIS École supérieure d’informatique">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="light dark">
+<title>Nathan Pondepeyre – Portfolio BTS SIO option SISR</title>
+<meta name="description" content="Portfolio de Nathan Pondepeyre, étudiant en BTS SIO option SISR à IRIS : projets des épreuves E5 et E6, stages en entreprise, veille technologique et contact.">
 <link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
 </head>
 <body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
 <header class="site"><div class="wrap">
-<a class="logo" href="index.html">Nathan Pondepeyre</a>
-<nav aria-label="Navigation principale"><ul><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="e5.html">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Entreprise</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="e5.html">Épreuve E5</a></li><li><a href="e6.html">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
 </div></header>
-<main><div class="wrap">
+<main id="contenu" tabindex="-1"><div class="wrap">
 <div class="hero">
 <div>
 <h1>Nathan Pondepeyre</h1>
 <p class="role">Étudiant en BTS SIO option SISR</p>
-<p>Je me forme à l’administration des systèmes et des réseaux : installer, sécuriser et maintenir l’infrastructure informatique d’une organisation. Ce portfolio présente l'ensemble de mes projets, mon expérience en stage ainsi que ma veille technologique, réalisés et développés au cours de ma formation au sein de l'école IRIS.</p>
-<div class="btns"><a class="btn" href="e5.html">Voir mes projets</a><a class="btn alt" href="documents/CV_Nathan_Pondepeyre.pdf">Télécharger mon CV</a></div>
+<p>Je me forme à installer, sécuriser et maintenir l’infrastructure informatique d’une organisation. Ici vous trouverez : mes projets à IRIS, mes stages et ma veille technologique.</p>
+<div class="btns"><div class="btn-menu"><a class="btn" href="e5.html" aria-expanded="false">Voir mes projets<svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="btn-menu-list"><a href="e5.html"><span class="pastille">E5</span><span class="choix"><strong>Épreuve E5</strong><small>Support et services informatiques</small></span></a><a href="e6.html"><span class="pastille">E6</span><span class="choix"><strong>Épreuve E6</strong><small>Administration systèmes et réseaux</small></span></a></div></div><a class="btn alt" href="documents/CV_Nathan_Pondepeyre.pdf">Télécharger mon CV</a></div>
 </div>
-<!-- Pour mettre ta photo : dépose-la dans le dossier images/ (photo.jpg) puis remplace <span>NP</span> par :
-     <img src="images/photo.jpg" alt="Photo de Nathan Pondepeyre"> -->
-<div class="photo" role="img" aria-label="Espace pour la photo de Nathan Pondepeyre"><span>NP</span></div>
-</div>
+<div class="hero-visual"><canvas class="reseau" aria-hidden="true"></canvas><div class="photo"><img src="images/img-accueil.jpg" width="900" height="1200" alt="Photo de Nathan Pondepeyre" fetchpriority="high"></div></div>
+<a class="scroll-bas" href="#baie" aria-label="Descendre vers la baie du parcours" title="Baie du parcours"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
 
-<section class="about">
+</div>
+<section class="baie" id="baie" aria-label="Baie du parcours : stages, épreuves et veille">
+<div class="baie-titre">Baie du parcours <span>· chaque port mène à sa page</span></div>
+<div class="baie-chassis">
+<div class="panneau panneau-stages">
+<div class="panneau-etiquette"><b>U1</b><span>Stages</span></div>
+<ol class="ports">
+<li class="port"><a href="stage-seconde-1.html"><span class="port-etiquette"><span class="port-num">01</span><span class="port-nom">SEPTAM</span><small>Seconde, 1er stage</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="stage-seconde-2.html"><span class="port-etiquette"><span class="port-num">02</span><span class="port-nom">SEPTAM</span><small>Seconde, 2e stage</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="stage-premiere-1.html"><span class="port-etiquette"><span class="port-num">03</span><span class="port-nom">ACCEDIA</span><small>Première, 1er stage</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="stage-premiere-2.html"><span class="port-etiquette"><span class="port-num">04</span><span class="port-nom">ACCEDIA</span><small>Première, 2e stage</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="stage-terminale.html"><span class="port-etiquette"><span class="port-num">05</span><span class="port-nom">Federation Studios</span><small>Terminale</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="stage1.html"><span class="port-etiquette"><span class="port-num">06</span><span class="port-nom">Econocom</span><small>BTS 1re année</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="stage2.html"><span class="port-etiquette"><span class="port-num">07</span><span class="port-nom">Sertech</span><small>BTS 2e année · en cours</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">08</span></span><span class="prise"></span></li>
+</ol>
+</div>
+<div class="panneau panneau-e5">
+<div class="panneau-etiquette"><b>U2</b><span>Épreuve E5</span></div>
+<ol class="ports">
+<li class="port"><a href="projet-acl.html"><span class="port-etiquette"><span class="port-num">01</span><span class="port-nom">ACL IPv4</span></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="projet-stadium.html"><span class="port-etiquette"><span class="port-num">02</span><span class="port-nom">Stadium&shy;Company</span></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="projet-nathphone.html"><span class="port-etiquette"><span class="port-num">03</span><span class="port-nom">PrestaShop</span></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="projet-audit.html"><span class="port-etiquette"><span class="port-num">04</span><span class="port-nom">Étude critique</span></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="projet-portfolio.html"><span class="port-etiquette"><span class="port-num">05</span><span class="port-nom">Portfolio</span></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">06</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">07</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">08</span></span><span class="prise"></span></li>
+</ol>
+</div>
+<div class="panneau panneau-e6">
+<div class="panneau-etiquette"><b>U3</b><span>Épreuve E6</span></div>
+<ol class="ports">
+<li class="port"><a href="projet-lumivia.html"><span class="port-etiquette"><span class="port-num">01</span><span class="port-nom">Lumivia</span><small>Réalisation 1</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="projet-infrastructure.html"><span class="port-etiquette"><span class="port-num">02</span><span class="port-nom">Stadium&shy;Company</span><small>Réalisation 2 · en cours</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">03</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">04</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">05</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">06</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">07</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">08</span></span><span class="prise"></span></li>
+</ol>
+</div>
+<div class="panneau panneau-veille">
+<div class="panneau-etiquette"><b>U4</b><span>Veille</span></div>
+<ol class="ports">
+<li class="port"><a href="veille.html"><span class="port-etiquette"><span class="port-num">01</span><span class="port-nom">Veille technologique</span><small>Phishing</small></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port"><a href="#certifications"><span class="port-etiquette"><span class="port-num">02</span><span class="port-nom">Certification Cisco</span></span><span class="prise"><span class="prise-fiche"></span><span class="led"></span></span></a></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">03</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">04</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">05</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">06</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">07</span></span><span class="prise"></span></li>
+<li class="port libre" aria-hidden="true"><span class="port-etiquette"><span class="port-num">08</span></span><span class="prise"></span></li>
+</ol>
+</div>
+<div class="panneau panneau-uplink">
+<div class="panneau-etiquette"><b>U5</b><span>Liaison externe</span></div>
+<div class="uplinks"><a href="documents/CV_Nathan_Pondepeyre.pdf"><span class="prise prise-sfp"><span class="led"></span></span>CV (PDF)</a><a href="#contact"><span class="prise prise-sfp"><span class="led"></span></span>Me contacter</a></div>
+</div>
+</div>
+</section>
+
+<section class="about" id="a-propos">
 <div><h2>À propos de moi</h2>
-<p>Présente-toi en quelques lignes : ce qui t’a amené à l’informatique, ce que tu aimes dans l’administration systèmes et réseaux, et ce que tu veux faire après le BTS (poursuite d’études, emploi, spécialisation…).</p></div>
+<p>J'ai 19 ans. Après un Bac Pro Systèmes Numériques, j'ai choisi le BTS SIO pour progresser en systèmes et réseaux. Je vise ensuite un Master 2, sans avoir encore choisi de spécialité.</p></div>
 <ul class="facts">
 <li><span>Formation</span><strong>BTS SIO option SISR</strong></li>
 <li><span>École</span><strong>IRIS – École supérieure d’informatique</strong></li>
@@ -38,35 +101,73 @@
 </ul>
 </section>
 
-<section>
+<section id="parcours">
 <h2>Parcours</h2>
 <ul class="timeline">
 <li><h3>BTS SIO option SISR</h3><p>IRIS – École supérieure d’informatique · 2025 – 2027</p></li>
-<li><h3>Bac Pro Systèmes Numériques (SN)</h3><p>École La Tournelle, La Garenne-Colombes · 2022 – 2025</p></li>
+<li><h3>Bac Pro Systèmes Numériques (SN)</h3><p>École La Tournelle, La Garenne-Colombes · 2022 – 2025</p>
+<div class="parcours-badges"><span class="badge-mention"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 16.8l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>Obtenu avec mention Bien</span><span class="badge-ptech"><img class="ptech-clair" src="images/logo-ptech.png" alt="P-Tech" width="1280" height="242"><img class="ptech-sombre" src="images/logo-ptech-sombre.png" alt="P-Tech" width="1280" height="242">Formation en partenariat avec BNP Paribas, IBM et Orange</span></div></li>
 </ul>
 </section>
 
-<section>
+<section class="certifs" id="certifications">
+<h2>Certifications</h2>
+<div class="certifs-liste">
+<article class="certif">
+<img class="certif-badge" src="documents/introduction-to-cybersecurity.png" width="600" height="600" alt="Badge Cisco Networking Academy « Introduction to Cybersecurity », vérifié">
+<div class="certif-corps">
+<p class="certif-org">Cisco Networking Academy</p>
+<h3>Introduction to Cybersecurity</h3>
+<p class="certif-date">Obtenue le 11/02/2026</p>
+<p class="certif-desc">Les bases de la cybersécurité : les menaces et attaques les plus courantes, les failles qu'elles exploitent, et comment s'en protéger, en tant qu'utilisateur comme en entreprise.</p>
+<a class="lien-rapport" href="documents/Certificat.pdf">Voir le certificat</a>
+</div>
+</article>
+</div>
+</section>
+
+<section class="skills" id="competences">
 <h2>Compétences</h2>
-<div class="cols">
-<div class="panel"><h3>Systèmes</h3><ul><li>Windows Server, Active Directory</li><li>Linux (Debian, Ubuntu)</li><li>Virtualisation (VMware, VirtualBox)</li></ul></div>
-<div class="panel"><h3>Réseaux</h3><ul><li>VLAN, routage, pare-feu</li><li>DHCP, DNS</li><li>Supervision et sauvegarde</li></ul></div>
+<p class="skills-intro">Chaque compétence renvoie au stage ou à l’épreuve où je l’ai mise en pratique.</p>
+<div class="comp-filtres" role="group" aria-label="Filtrer les preuves par domaine"><button type="button" data-filtre="tout" aria-pressed="true">Tout</button><button type="button" data-filtre="stages" aria-pressed="false" style="--c:var(--l-stages)">Stages</button><button type="button" data-filtre="e5" aria-pressed="false" style="--c:var(--l-e5)">Épreuve E5</button><button type="button" data-filtre="e6" aria-pressed="false" style="--c:var(--l-e6)">Épreuve E6</button><button type="button" data-filtre="veille" aria-pressed="false" style="--c:var(--l-veille)">Veille et certification</button></div>
+<div class="comp-grille">
+<article class="comp-carte"><h3>Systèmes</h3><ul>
+<li class="comp"><span class="comp-nom">Administration de Windows Server et d’Active Directory</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-premiere-2.html#projet-creation-d-utilisateurs-dans-l-active-directory">Première-2 · Utilisateurs AD</a><a data-d="stages" href="stage-terminale.html#projet-support-technique">Terminale · GPO et domaine</a><a data-d="e5" href="projet-lumivia.html#mise-en-oeuvre">E5 · Domaine Lumivia</a><a data-d="e6" href="projet-lumivia.html">E6 · Lumivia</a><a data-d="e6" href="projet-infrastructure.html">E6 · StadiumCompany</a></span></li>
+<li class="comp"><span class="comp-nom">Virtualisation et serveurs Linux</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-premiere-2.html#projet-creation-d-un-serveur-virtuel-pour-netwrix">Première-2 · Serveur Netwrix</a><a data-d="e5" href="projet-lumivia.html#mise-en-oeuvre">E5 · Environnement virtualisé</a><a data-d="e5" href="projet-nathphone.html">E5 · PrestaShop sur Ubuntu Server</a><a data-d="e6" href="projet-infrastructure.html">E6 · StadiumCompany</a></span></li>
+</ul></article>
+<article class="comp-carte"><h3>Réseaux</h3><ul>
+<li class="comp"><span class="comp-nom">Conception et configuration de réseaux (VLAN, routage, ACL, DHCP)</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-premiere-1.html#projet-creation-d-un-reseau-pour-le-bureau-d-etude">Première-1 · Réseau du bureau d’étude</a><a data-d="e5" href="projet-stadium.html">E5 · StadiumCompany</a><a data-d="e5" href="projet-acl.html">E5 · ACL IPv4</a><a data-d="e6" href="projet-lumivia.html">E6 · Lumivia</a><a data-d="e6" href="projet-infrastructure.html">E6 · StadiumCompany</a></span></li>
+<li class="comp"><span class="comp-nom">Câblage, baie de brassage et dépannage</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-premiere-1.html#projet-cablage-des-nouveaux-locaux-d-amg-fechoz">Première-1 · Câblage AMG Fechoz</a><a data-d="stages" href="stage-premiere-1.html#projet-maintenance-et-depannage">Première-1 · Maintenance</a></span></li>
+</ul></article>
+<article class="comp-carte"><h3>Support et parc</h3><ul>
+<li class="comp"><span class="comp-nom">Déploiement et maintenance des postes de travail</span><span class="preuves comp-preuves"><a data-d="stages" href="stage1.html#projet-masterisation-de-postes">BTS 1re année · Masterisation</a><a data-d="stages" href="stage1.html#projet-installation-et-remplacement-de-postes">BTS 1re année · Remplacement de postes</a><a data-d="stages" href="stage-premiere-2.html#projet-deploiement-de-postes">Première-2 · Déploiement</a><a data-d="stages" href="stage-premiere-1.html#projet-deploiement-de-mon-poste-de-travail">Première-1 · WDS</a></span></li>
+<li class="comp"><span class="comp-nom">Assistance aux utilisateurs et gestion des tickets</span><span class="preuves comp-preuves"><a data-d="stages" href="stage1.html#projet-support-technique-vpn-et-double-authentification">BTS 1re année · VPN et MFA</a><a data-d="stages" href="stage-premiere-2.html#projet-support-technique">Première-2 · Support Moovapps</a><a data-d="stages" href="stage-terminale.html#projet-support-technique">Terminale · GLPI et imprimantes</a></span></li>
+<li class="comp"><span class="comp-nom">Gestion du parc : inventaire, cartographie, sauvegardes</span><span class="preuves comp-preuves"><a data-d="stages" href="stage1.html#projet-inventaire-du-parc-dans-simply-desk">BTS 1re année · Inventaire</a><a data-d="stages" href="stage1.html#projet-rotation-des-bandes-de-sauvegarde">BTS 1re année · Sauvegardes</a><a data-d="stages" href="stage-premiere-2.html#projet-cartographie-du-systeme-d-information">Première-2 · Mercator</a><a data-d="e5" href="projet-lumivia.html#etat-des-lieux">E5 · Audit Lumivia</a></span></li>
+</ul></article>
+<article class="comp-carte"><h3>Cybersécurité</h3><ul>
+<li class="comp"><span class="comp-nom">Sensibilisation et protection des utilisateurs</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-terminale.html#projet-campagnes-de-sensibilisation-au-phishing">Terminale · Campagnes KnowBe4</a><a data-d="stages" href="stage-premiere-2.html#projet-creation-d-utilisateurs-dans-l-active-directory">Première-2 · Droits dans l’AD</a><a data-d="veille" href="veille.html">Veille · Phishing et IA</a></span></li>
+<li class="comp"><span class="comp-nom">Analyse des risques et audit de sécurité</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-terminale.html#projet-participation-a-des-reunions">Terminale · Réunions avec Synetis</a><a data-d="e5" href="projet-audit.html">E5 · Étude critique de SNCF Connect</a><a data-d="veille" href="#certifications">Certification Cisco</a></span></li>
+</ul></article>
+<article class="comp-carte"><h3>Web et documentation</h3><ul>
+<li class="comp"><span class="comp-nom">Développement et mise en ligne de sites web</span><span class="preuves comp-preuves"><a data-d="e5" href="projet-portfolio.html">E5 · Ce portfolio</a><a data-d="e5" href="projet-nathphone.html">E5 · Boutique NathPhone</a><a data-d="stages" href="stage-terminale.html#projet-etude-de-cas-une-fausse-page-lucca">Terminale · Fausse page Lucca</a></span></li>
+<li class="comp"><span class="comp-nom">Documentation technique</span><span class="preuves comp-preuves"><a data-d="stages" href="stage-premiere-1.html#projet-inventaire-des-cables-rj45">Première-1 · Inventaire Confluence</a><a data-d="stages" href="stage-premiere-1.html#projet-creation-d-un-reseau-pour-le-bureau-d-etude">Première-1 · Doc. du réseau</a></span></li>
+</ul></article>
 </div>
 </section>
 
 <section id="contact">
 <h2>Me contacter</h2>
-<p class="contact-intro">Une question, une opportunité de stage ou d’alternance ? N’hésitez pas à me écrire.</p>
+<p class="contact-intro">Pour une question, un stage ou une alternance, écrivez-moi.</p>
 <div class="contact-grid">
 <a class="contact-card" href="mailto:pondepeyrenathan@gmail.com">
 <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
 <span><small>Mail</small><strong>pondepeyrenathan@gmail.com</strong></span>
 </a>
-<div class="contact-card">
+<a class="contact-card" href="tel:+33766090634">
 <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
 <span><small>Téléphone</small><strong>07 66 09 06 34</strong></span>
-</div>
-<a class="contact-card" href="https://www.linkedin.com/public-profile/settings/?trk=d_flagship3_profile_self_view_public_profile&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BgSqDRBngQoCDdZqlF95bjw%3D%3D">
+</a>
+<a class="contact-card" href="https://www.linkedin.com/in/nathan-pondepeyre-2b8aa33b7">
 <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
 <span><small>LinkedIn</small><strong>Voir mon profil</strong></span>
 </a>
@@ -74,6 +175,8 @@
 </section>
 
 </div></main>
-<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="#contact">Me contacter</a></div></footer>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>StadiumCompany : environnement virtualisé – Nathan Pondepeyre</title>
+<meta name="description" content="Épreuve E6, réalisation 2 de Nathan Pondepeyre : infrastructure virtualisée avec Windows Server, services réseau, DMZ et pare-feu pfSense">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="icon" type="image/png" sizes="256x256" href="images/favicon-np.png?v=4">
+<link rel="apple-touch-icon" href="images/favicon-np-180.png">
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="site"><div class="wrap">
+<a class="logo" href="index.html"><span class="prenom">Nathan</span> <span class="nom">Pondepeyre</span></a>
+<nav aria-label="Navigation principale"><ul><li><a href="index.html">Accueil</a></li><li><a href="e5.html">Épreuve E5</a></li><li><a href="e6.html" aria-current="page">Épreuve E6</a></li><li><a href="entreprise.html">Stages</a></li><li><a href="veille.html">Veille technologique</a></li></ul></nav>
+</div>
+<div class="subbar"><div class="wrap">
+<a class="retour" href="e6.html#projets">← Projets E6</a>
+<div class="onglets onglets-groupes"><span class="onglets-groupe" data-titre="Épreuve E5"><span class="onglets-titre">E5</span><a href="projet-portfolio.html">Portfolio</a><a href="projet-audit.html">Étude critique</a><a href="projet-nathphone.html">NathPhone</a><a href="projet-acl.html">ACL IPv4</a><a href="projet-stadium.html">Réseau VLAN</a></span><span class="onglets-groupe" data-titre="Épreuve E6"><span class="onglets-titre">E6</span><a href="projet-lumivia.html">Lumivia</a><a href="projet-infrastructure.html" aria-current="page">StadiumCompany</a></span></div>
+</div></div>
+</header>
+<main id="contenu" tabindex="-1"><div class="wrap">
+<!-- Réalisation en cours. Points à vérifier avec Nathan : rôle de Glpi (PKI dans son tableau), rôle du Windows Core, étendue DHCP (.2-.10 dans le plan), réseau 172.20.3.0 = LAN_WIFI. Contribution personnelle et compétences B2.x à rédiger. Capture Kratos à refaire après autorisation. -->
+<div class="stage-nav" role="navigation" aria-label="Navigation entre les projets"><a class="stage-retour" href="e6.html#deuxieme-annee">← Retour aux projets de l’épreuve E6</a><div class="stage-autres"></div></div>
+<div class="page-title sans-trait">
+<p class="projet-kicker">Épreuve E6 · Réalisation 2 · en cours</p>
+<h1>StadiumCompany : environnement virtualisé</h1>
+<p>Une plateforme en machines virtuelles, construite à partir d’un plan d’adressage : un domaine Active Directory, les services DNS et DHCP, et un pare-feu pfSense qui relie et filtre les réseaux. Les serveurs d’administration et un premier poste client fonctionnent ; la DMZ et les outils de supervision viendront ensuite.</p>
+</div>
+
+<dl class="projet-fiche">
+<div><dt>Période</dt><dd>2e année de BTS, 2026–2027</dd></div>
+<div><dt>Technologies</dt><dd>Windows Server 2025, AD DS, DNS, DHCP, pfSense, Windows 11</dd></div>
+<div><dt>Outil</dt><dd><ul class="outils-logos"><li><img src="images/outils/vmware.svg" alt="" width="24" height="24">VMware Workstation</li></ul></dd></div>
+</dl>
+
+<section id="environnement"><h2>L’environnement</h2>
+<p class="veille-intro">Plan d’adressage de la plateforme, et machines déjà en service.</p>
+<div class="table-scroll"><table class="comparatif plan-adressage">
+<thead><tr><th scope="col">Zone</th><th scope="col">Machine</th><th scope="col">Rôle</th><th scope="col">Adresse</th><th scope="col">État</th></tr></thead>
+<tbody>
+<tr><th scope="rowgroup" rowspan="11" class="zone z-admin">Administration</th><td>Hermes</td><td>AD1, catalogue global (site Paris)</td><td>172.20.1.2</td><td><span class="etat etat-ok">En service</span></td></tr>
+<tr><td>Neptune1 <small>(NEPTUNE)</small></td><td>AD2 (site Londres)</td><td>172.20.1.3</td><td><span class="etat etat-ok">En service</span></td></tr>
+<tr><td>Neptune2 <small>(NEPTUNE2)</small></td><td>AD3, domaine enfant it.stadiumcompany.local</td><td>172.20.1.4</td><td><span class="etat etat-ok">En service</span></td></tr>
+<tr><td>Kratos1 <small>(Kratos)</small></td><td>DHCP1</td><td>172.20.1.5</td><td><span class="etat etat-ok">En service</span></td></tr>
+<tr><td>Kratos2</td><td>DHCP2</td><td>172.20.1.6</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Ocs</td><td>OCS Inventory</td><td>172.20.1.7</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Glpi</td><td>GLPI</td><td>172.20.1.8</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Nagiosxi</td><td>Nagios XI</td><td>172.20.1.9</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Ares</td><td>DNS</td><td>172.20.1.10</td><td><span class="etat etat-ok">En service</span></td></tr>
+<tr><td>ACR</td><td>PKI</td><td>172.20.1.12</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>ACS</td><td>PKI</td><td>172.20.1.13</td><td><span class="etat">À venir</span></td></tr>
+<tr><th scope="rowgroup" rowspan="4" class="zone z-equipe">Équipe</th><td>Windows 11 <small>(Pc1…)</small></td><td>Postes clients</td><td>DHCP</td><td><span class="etat etat-ok">En service</span></td></tr>
+<tr><td>Ubuntu 23</td><td>Poste client</td><td>DHCP</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Debian 12</td><td>Poste client</td><td>DHCP</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Windows Core</td><td>À définir</td><td>DHCP</td><td><span class="etat">À venir</span></td></tr>
+<tr><th scope="rowgroup" rowspan="5" class="zone z-dmz">DMZ</th><td>Zimbra</td><td>Messagerie</td><td>172.20.4.2</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>AH1</td><td>Apache2</td><td>172.20.4.3</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>AH2</td><td>Apache2</td><td>172.20.4.4</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Haproxy</td><td>HAProxy</td><td>172.20.4.5</td><td><span class="etat">À venir</span></td></tr>
+<tr><td>Webiis</td><td>IIS</td><td>172.20.4.6</td><td><span class="etat">À venir</span></td></tr>
+<tr><th scope="rowgroup" rowspan="1" class="zone z-fw">Pare-feu</th><td>heimdall</td><td>pfSense</td><td>172.20.1.1 · 172.20.2.1 · 172.20.3.1 · 172.20.4.1</td><td><span class="etat etat-ok">En service</span></td></tr>
+</tbody></table></div>
+<ul class="liste plan-notes">
+<li>Domaine : <strong>stadiumcompany.local</strong>, avec le domaine enfant it.stadiumcompany.local</li>
+<li>Étendue DHCP des postes : 172.20.2.20 → 172.20.2.40</li>
+<li>Réseau 172.20.3.0 : interface LAN_WIFI du pare-feu</li>
+</ul>
+</section>
+
+<section id="mise-en-oeuvre"><h2>Mise en œuvre</h2>
+<ol class="etapes">
+<li class="etape"><div class="etape-corps">
+<div><h3>Domaine et contrôleurs</h3>
+<p>Forêt <strong>stadiumcompany.local</strong> avec deux contrôleurs : Hermes, catalogue global du site Paris, et Neptune, sur le site Londres. Neptune2 dirige le domaine enfant <strong>it.stadiumcompany.local</strong>.</p>
+<ul class="tags"><li>AD DS</li><li>Sites</li><li>Domaine enfant</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-hermes-controleurs.png" data-zoom-titre="Les contrôleurs du domaine stadiumcompany.local"><img src="images/projets/e6r2-hermes-controleurs.png" width="634" height="240" alt="Utilisateurs et ordinateurs Active Directory : HERMES, catalogue global du site Paris, et NEPTUNE, site Londres" loading="lazy"></button><figcaption>Les contrôleurs du domaine stadiumcompany.local</figcaption></figure>
+</div></li>
+<li class="etape"><div class="etape-corps">
+<div><h3>DNS sur Ares</h3>
+<p>Ares héberge la zone directe <strong>stadiumcompany.local</strong> et la zone inverse du réseau des serveurs. Les mises à jour dynamiques sont acceptées : les contrôleurs et les postes s’y enregistrent seuls.</p>
+<ul class="tags"><li>DNS</li><li>Zone directe</li><li>Zone inverse</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-ares-zone-directe.png" data-zoom-titre="La zone stadiumcompany.local sur Ares"><img src="images/projets/e6r2-ares-zone-directe.png" width="744" height="370" alt="Gestionnaire DNS d’Ares : enregistrements des serveurs et de Pc1 en 172.20.2.20" loading="lazy"></button><figcaption>La zone stadiumcompany.local sur Ares</figcaption></figure>
+</div></li>
+<li class="etape"><div class="etape-corps">
+<div><h3>DHCP sur Kratos</h3>
+<p>Une étendue pour le réseau des postes, de <strong>172.20.2.20 à 172.20.2.40</strong>, qui donne aussi la passerelle 172.20.2.1, le DNS d’Ares et le suffixe du domaine.</p>
+<ul class="tags"><li>DHCP</li><li>Étendue</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-kratos-etendue.png" data-zoom-titre="L’étendue des postes sur Kratos"><img src="images/projets/e6r2-kratos-etendue.png" width="794" height="310" alt="Console DHCP de Kratos : pool d’adresses de 172.20.2.20 à 172.20.2.40" loading="lazy"></button><figcaption>L’étendue des postes sur Kratos</figcaption></figure>
+</div></li>
+<li class="etape"><div class="etape-corps">
+<div><h3>Pare-feu pfSense (heimdall)</h3>
+<p>Cinq interfaces : WAN, ADMINISTRATION, LAN_EQUIPE, LAN_WIFI et LAN_DMZ. Le relais DHCP transmet les demandes des postes à Kratos. Seuls les flux utiles sont ouverts : les réponses DHCP de Kratos et le DNS des postes vers Ares.</p>
+<ul class="tags"><li>pfSense</li><li>Relais DHCP</li><li>Règles de filtrage</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-pfsense-administration.png" data-zoom-titre="La règle des réponses DHCP sur ADMINISTRATION"><img src="images/projets/e6r2-pfsense-administration.png" width="1017" height="535" alt="Règles pfSense de l’interface ADMINISTRATION : réponses DHCP de Kratos vers le relais" loading="lazy"></button><figcaption>La règle des réponses DHCP sur ADMINISTRATION</figcaption></figure>
+</div></li>
+<li class="etape"><div class="etape-corps">
+<div><h3>Poste client</h3>
+<p>Pc1, sous Windows 11 et joint au domaine, reçoit <strong>172.20.2.20</strong> de Kratos, avec la passerelle 172.20.2.1 et le DNS 172.20.1.10.</p>
+<ul class="tags"><li>Windows 11</li><li>Client DHCP</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-ipconfig-pc1.png" data-zoom-titre="Pc1 reçoit 172.20.2.20"><img src="images/projets/e6r2-ipconfig-pc1.png" width="1021" height="585" alt="Résultat ipconfig /all sur Pc1 : DHCP activé, adresse 172.20.2.20, serveur DHCP 172.20.1.5, DNS 172.20.1.10" loading="lazy"></button><figcaption>Pc1 reçoit 172.20.2.20</figcaption></figure>
+</div></li>
+</ol>
+</section>
+
+<section id="depannage"><h2>Dépannages</h2>
+<p class="veille-intro">Trois pannes rencontrées pendant la mise en service, de l’erreur constatée à la vérification.</p>
+<ol class="etapes">
+<li class="etape"><div class="etape-corps">
+<div><h3>Réplication bloquée vers Hermes</h3>
+<p><b>Constat :</b> <code>repadmin /replsummary</code> indique 6 échecs sur 6 et l’erreur 1722, « serveur RPC indisponible ». Les contrôleurs n’affichent pas la même liste.</p><p><b>Cause :</b> Neptune et Neptune2 étaient suspendus. Une fois relancés, Hermes n’avait pas encore refait de tentative ; le DNS et le port 135 étaient corrects.</p><p><b>Correction :</b> réplication forcée avec <code>repadmin /replicate</code>, puis <code>/syncall</code> : 0 échec.</p>
+<ul class="tags"><li>repadmin</li><li>RPC</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-replsummary.png" data-zoom-titre="Réplication rétablie : 0 échec"><img src="images/projets/e6r2-replsummary.png" width="1111" height="470" alt="repadmin /replsummary sur Hermes : 0 échec pour HERMES, NEPTUNE et NEPTUNE2" loading="lazy"></button><figcaption>Réplication rétablie : 0 échec</figcaption></figure>
+</div></li>
+<li class="etape"><div class="etape-corps">
+<div><h3>DNS bloqué par le pare-feu</h3>
+<p><b>Constat :</b> depuis Pc1, <code>nslookup</code> n’obtient aucune réponse. Le journal de pfSense montre les requêtes vers 172.20.1.10:53 rejetées par la règle par défaut de LAN_EQUIPE.</p><p><b>Cause :</b> la règle « DNS vers Ares » avait la source et la destination inversées.</p><p><b>Correction :</b> source LAN_EQUIPE subnets, destination Ares, port 53. Pc1 résout les noms et s’enregistre dans Ares.</p>
+<ul class="tags"><li>Journal pfSense</li><li>Règles</li></ul></div>
+<figure class="figure"><button class="capture" type="button" data-zoom="images/projets/e6r2-pfsense-lan-equipe.png" data-zoom-titre="La règle DNS corrigée sur LAN_EQUIPE"><img src="images/projets/e6r2-pfsense-lan-equipe.png" width="1017" height="455" alt="Règles pfSense de LAN_EQUIPE : DNS des postes vers Ares, port 53" loading="lazy"></button><figcaption>La règle DNS corrigée sur LAN_EQUIPE</figcaption></figure>
+</div></li>
+<li class="etape"><div class="etape-corps">
+<div><h3>Enregistrement DNS périmé</h3>
+<p><b>Constat :</b> Pc1 reste en 172.20.1.6 dans Ares alors qu’il a reçu 172.20.2.20.</p><p><b>Correction :</b> suppression de l’ancien enregistrement, puis <code>ipconfig /registerdns</code> en administrateur sur Pc1 : il réapparaît avec la bonne adresse.</p>
+<ul class="tags"><li>DNS dynamique</li></ul></div>
+
+</div></li>
+</ol>
+</section>
+
+<section id="competences"><h2>Compétences mobilisées</h2>
+<h3 class="comp-bloc">Épreuve E6 · bloc 2 (option SISR)</h3>
+<p class="comp-score"><span><strong>2</strong>compétences sur 3 du bloc 2 (option SISR)</span><span class="comp-jauge" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i></span></p>
+<ul class="competences">
+<li class="non"><span class="comp-num">B2.1</span><span class="comp-titre">Concevoir une solution d’infrastructure réseau</span><span class="comp-via">Non mobilisée : le plan d’adressage de la plateforme était fourni</span></li>
+<li class="oui"><span class="comp-num">B2.2</span><span class="comp-titre">Installer, tester et déployer une solution d’infrastructure réseau</span><span class="comp-via">Domaine stadiumcompany.local, DNS, DHCP, relais et filtrage pfSense, tests depuis un poste client</span></li>
+<li class="oui"><span class="comp-num">B2.3</span><span class="comp-titre">Exploiter, dépanner et superviser une solution d’infrastructure réseau</span><span class="comp-via">Dépannage de la réplication Active Directory, du filtrage DNS et d’un enregistrement périmé</span></li>
+</ul>
+<h3 class="comp-bloc">Épreuve E5 · bloc 1</h3>
+<p class="comp-bloc-intro">Ce projet compte aussi pour l’E5 : voir la ligne « StadiumCompany : environnement virtualisé » du tableau de synthèse.</p>
+<p class="comp-score"><span><strong>3</strong>compétences sur 6 du bloc 1 du référentiel BTS SIO</span><span class="comp-jauge" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i></span><button class="lien-rapport lien-zoom comp-tableau" type="button" data-zoom="images/tableau-de-synthese-hd.png" data-zoom-titre="Tableau de synthèse des réalisations professionnelles">Voir le tableau de synthèse</button></p>
+<ul class="competences">
+<li class="oui"><span class="comp-num">B1.1</span><span class="comp-titre">Gérer le patrimoine informatique</span><span class="comp-via">Continuité du service d’annuaire : trois contrôleurs qui se répliquent, réplication vérifiée et rétablie avec repadmin</span></li>
+<li class="oui"><span class="comp-num">B1.2</span><span class="comp-titre">Répondre aux incidents et aux demandes d’assistance et d’évolution</span><span class="comp-via">Trois incidents diagnostiqués et résolus : réplication, filtrage du DNS, enregistrement périmé</span></li>
+<li class="oui"><span class="comp-num">B1.5</span><span class="comp-titre">Mettre à disposition des utilisateurs un service informatique</span><span class="comp-via">Déploiement du DNS et du DHCP, testés depuis un poste client</span></li>
+</ul>
+</section>
+
+<section id="suite"><h2>Prochaines étapes</h2>
+<ul class="liste">
+<li>Ouvrir sur LAN_EQUIPE les flux Active Directory, pour les sessions de domaine depuis les postes</li>
+<li>Faire de Neptune un catalogue global, puisqu’il est seul sur le site Londres</li>
+<li>Installer Kratos2 et configurer le basculement DHCP avec Kratos1</li>
+<li>Mettre en place la PKI, OCS et GLPI, Nagios XI, puis la DMZ (Zimbra, Apache2, HAProxy, IIS)</li>
+</ul>
+</section>
+</div></main>
+<footer class="site"><div class="wrap">© 2026 Nathan Pondepeyre – Portfolio BTS SIO option SISR – <a href="mentions-legales.html">Mentions légales</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>
