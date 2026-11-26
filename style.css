@@ -431,7 +431,6 @@ a.projet:hover h3,a.projet:hover h2{color:var(--accent-text)}
 .i-lieu{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E")}
 .i-service{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='3' width='16' height='18' rx='2'/%3E%3Cpath d='M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3'/%3E%3C/svg%3E")}
 .i-duree{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E")}
-.i-tuteur{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21a8 8 0 0 1 16 0'/%3E%3C/svg%3E")}
 
 .entreprise-desc{margin:1.4rem 0 0;color:var(--muted);max-width:none}
 
@@ -1021,7 +1020,7 @@ main .skills-intro{margin:-1rem 0 2rem;color:var(--muted);text-align:left}
 .retour-flottant{
   position:fixed;left:1.4rem;bottom:1.4rem;z-index:40;display:inline-flex;align-items:center;gap:.7rem;
   max-width:min(360px,calc(100vw - 7rem));padding:.6rem 1.1rem .6rem .65rem;border-radius:16px;text-decoration:none;
-  background:var(--card);border:1px solid var(--line-strong);color:var(--ink);
+  background:var(--card);border:1.5px solid color-mix(in srgb,var(--page-accent,var(--accent)) 55%,transparent);color:var(--ink);
   box-shadow:var(--shadow-hover);
   
   opacity:0;transform:translateX(-24px);
@@ -1386,12 +1385,6 @@ main section[id]{scroll-margin-top:7rem}
   .tranche b{font:800 2.4rem/1 "Point median","Overpass",sans-serif;letter-spacing:-.03em;color:var(--ink)}
   .tranche span{font-size:.86rem;font-weight:600;color:var(--muted)}
 }
-
-/* ---------- Pied de page : invitation à me contacter ---------- */
-.pied-action{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:2rem;row-gap:1.5rem;padding-bottom:clamp(2rem,4vw,3rem);margin-bottom:2.5rem;border-bottom:4px solid var(--ink);text-align:left}
-.pied-action p{margin:0;max-width:none;font:800 clamp(2rem,4.6vw,4rem)/.95 "Point median","Overpass",sans-serif;letter-spacing:-.045em;color:var(--ink);text-wrap:balance}
-.pied-action .btn{text-decoration:none}
-@media (max-width:800px){.pied-action{grid-template-columns:1fr}}
 
 /* ---------- Outils : logo + nom ---------- */
 .outils-logos{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 1rem;padding:0}

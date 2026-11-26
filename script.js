@@ -697,15 +697,6 @@ function idsProjets(doc) {
 (function () {
   var footer = document.querySelector('footer.site .wrap');
   if (!footer || document.querySelector('.plan-site')) return;
-  var action; // posé plus bas, au-dessus du plan du site
-  // Fin de page : contact, sauf sur l'accueil qui se termine déjà par la section contact
-  if (!document.getElementById('contact')) {
-    action = document.createElement('div');
-    action.className = 'pied-action';
-    action.innerHTML =
-      '<p>Pour une question, un stage ou une alternance, écrivez-moi.</p>' +
-      '<div><a class="btn" href="index.html#contact">Me contacter</a></div>';
-  }
   var plan = [
     ['Accueil', 'index.html', [
       ['À propos de moi', 'index.html#a-propos'],
@@ -832,7 +823,6 @@ function idsProjets(doc) {
   var bas = document.createElement('p');
   bas.className = 'plan-bas';
   while (footer.firstChild) bas.appendChild(footer.firstChild);
-  if (action) footer.appendChild(action);
   footer.appendChild(nav);
   footer.appendChild(bas);
 
