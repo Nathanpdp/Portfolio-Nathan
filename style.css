@@ -1046,16 +1046,9 @@ main .skills-intro{margin:-1rem 0 2rem;color:var(--muted);text-align:left}
 
 /* ---------- E5 / E6 : documents et preuves de chaque réalisation ---------- */
 .projet-docs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin-top:auto;padding-top:1rem;border-top:1px solid var(--line)}
-.doc-attente{
-  display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .75rem;border-radius:10px;font-size:.8rem;font-weight:500;
-  color:var(--muted);border:1px dashed var(--line-strong);
-}
-.doc-attente::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--d-sys,#b0620a);flex:none}
 .lien-page::before{content:"";background:
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/13px no-repeat,
   var(--accent)}
-.projet-en-cours{border-style:dashed}
-.projet-en-cours .meta{background:color-mix(in srgb,var(--d-sys,#b0620a) 16%,transparent)}
 
 /* ==========================================================================
    Pages de détail des projets (E5 / E6)
@@ -1972,8 +1965,6 @@ table.plan-adressage td{font-family:inherit;font-size:.92rem;padding:.55rem .9re
 table.plan-adressage td:nth-last-child(3){font-weight:700;color:var(--ink);white-space:nowrap}
 table.plan-adressage td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
 .plan-notes{margin-top:1rem}
-/* brouillon : information à faire confirmer avant publication */
-.a-confirmer{display:inline-block;margin-left:.4rem;padding:0 .4rem;border-radius:5px;font-size:.75rem;font-weight:700;background:#fde68a;color:#7c2d12}
 
 /* E6 réalisation 2 : état de chaque machine dans le plan d'adressage */
 .etat{display:inline-block;padding:.1rem .5rem;border-radius:6px;font-size:.75rem;font-weight:700;white-space:nowrap;color:var(--muted);background:var(--surface);border:1px solid var(--line)}

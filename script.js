@@ -1006,7 +1006,7 @@ function idsProjets(doc) {
   };
 
   var ouvrir = function (lien) {
-    var groupe = lien.closest('.preuves, .projets-pro, section') || document.body;
+    var groupe = lien.closest('.preuves, .projets-pro, .plan-menu, section') || document.body;
     liste = [];
     var vus = [];
     var ajouter = function (h, dom) {
@@ -1314,7 +1314,7 @@ function idsProjets(doc) {
     // sur téléphone, la barre d'adresse fait varier la hauteur : on ne régénère que pour un vrai changement de taille
     clearTimeout(minuterie);
     minuterie = setTimeout(function () {
-      if (Math.abs(window.innerWidth - w) > 40 || window.innerHeight > h + 120) { preparer(); if (fixe) image(0); }
+      if (Math.abs(window.innerWidth - w) > 40 || Math.abs(window.innerHeight - h) > 120) { preparer(); if (fixe) image(0); }
     }, 200);
   });
   // changement de thème : nouvelles couleurs
