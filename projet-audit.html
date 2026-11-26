@@ -27,7 +27,7 @@
 <div class="page-title sans-trait">
 <p class="projet-kicker">Épreuve E5 · Atelier 4</p>
 <h1>Étude critique du site SNCF Connect</h1>
-<p>En consultant junior, j’ai audité SNCF Connect sans aucune intrusion : ergonomie, performances, sécurité visible de l’extérieur et RGPD. Chaque constat repose sur une mesure et mène à une recommandation.</p>
+<p>En consultant junior, j’ai audité SNCF Connect : ergonomie, performances, sécurité visible de l’extérieur et RGPD. Mes tests externes sont restés limités et non authentifiés, sans tentative d’exploitation. Chaque constat repose sur une mesure et mène à une recommandation.</p>
 </div>
 
 <div class="capture-hero">
@@ -62,7 +62,7 @@
 
 <li class="etape"><div class="etape-corps">
 <div><h3>Sécurité vue de l’extérieur</h3>
-<p>Nmap ne voit que 4 ports web tenus par Cloudflare : aucun service d’administration exposé. En revanche, la CSP est minimale et il manque Referrer-Policy et Permissions-Policy. <a class="renvoi-annexe" href="#annexe-3">Voir annexes 3 et 4</a></p>
+<p>Les autres outils observent le site comme un simple visiteur ; Nmap, lui, sonde activement le serveur. Mon scan des 100 ports les plus courants, avec détection des services, n’a trouvé que 4 ports web tenus par Cloudflare : aucun service d’administration exposé. En revanche, la CSP est minimale et il manque Referrer-Policy et Permissions-Policy. <a class="renvoi-annexe" href="#annexe-3">Voir annexes 3 et 4</a></p>
 <ul class="tags"><li>Nmap</li><li>En-têtes HTTP</li></ul></div>
 <figure class="figure"><button class="capture" type="button" data-zoom="images/projets/audit-nmap.png" data-zoom-titre="Résultat du scan Nmap"><img src="images/projets/audit-nmap.png" width="1109" height="622" alt="Terminal PowerShell affichant le résultat de Nmap : ports 80, 443, 8080 et 8443 ouverts avec le service Cloudflare http proxy, 96 ports filtrés" loading="lazy"></button><figcaption>Seuls des ports web derrière Cloudflare répondent</figcaption></figure>
 </div></li>
