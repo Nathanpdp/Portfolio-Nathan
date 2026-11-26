@@ -8,3 +8,4 @@ Lancer le site.bat
 .vercelignore
 # étape intermédiaire (xlsx -> PDF -> PNG), liée nulle part sur le site
 documents/tableau-de-synthese.pdf
+.gitignore
